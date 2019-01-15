@@ -1,29 +1,29 @@
-# Why Rust and WebAssembly?
+# 为什么要 Rust 和 WebAssembly 合作？
 
-## Low-Level Control with High-Level Ergonomics
+## 高级人体工程学的底层控制
 
-JavaScript Web应用程序很难获得并保持可靠的性能.JavaScript的动态类型系统和垃圾收集暂停没有帮助.如果您不小心徘徊在JIT的快乐路径上,看似很小的代码更改可能导致严重的性能回归.
+JavaScript Web 应用程序很难获得，并保持可靠的性能。JavaScript 的动态类型系统和垃圾回收暂停没有帮助。如果您不小心徘徊在 JIT 的快乐路径上，看似很小的代码更改可能导致严重的性能退化。
 
-Rust为程序员提供了低级控制和可靠的性能.它不受困扰JavaScript的非确定性垃圾收集暂停的影响.程序员可以控制间接,单态化和内存布局.
+Rust 为程序员提供了低层控制和可靠的性能。它不受 病态 JavaScript 的非确定性垃圾收集暂停的影响。程序员可以以间接，单态化和内存布局，去控制。
 
-## Small `.wasm` Sizes
+## 小`.wasm`尺寸
 
-代码大小非常重要,因为`.wasm`必须通过网络下载.Rust缺少运行时,可以实现小型运行`.wasm`大小,因为没有像垃圾收集器那样包含额外的膨胀.您只需为实际使用的功能支付(代码大小).
+代码大小非常重要，因为`.wasm`必须通过网络下载。Rust 缺少运行时，可以实现小的`.wasm`尺寸，因为没有包含像垃圾收集器的额外膨胀。您只需为实际使用的函数支付对应的代码大小。
 
-## Do *Not* Rewrite Everything
+## 不要重写一切
 
-不需要丢弃现有的代码库.您可以从将性能最敏感的JavaScript函数移植到Rust开始,立即获益.如果你愿意,你甚至可以在那里停下来.
+不需要丢弃现有的代码库。您可以从将性能最好的 JavaScript 函数移植到 Rust 开始，立即获益。如果你愿意，你甚至可以在那里停(调试)下来。
 
-## Plays Well With Others
+## 与他人相处得很好
 
-Rust和WebAssembly与现有的JavaScript工具集成.它支持ECMAScript模块,您可以继续使用您喜欢的工具,如npm,Webpack和Greenkeeper.
+Rust 和 WebAssembly 与现有的 JavaScript 工具集成。它支持 ECMAScript 模块，您可以继续使用您喜欢的工具，如 npm，Webpack 和 Greenkeeper.
 
-## The Amenities You Expect
+## 你想要的便利设施
 
-Rust拥有开发人员所期望的现代化设施,例如:
+Rust 拥有开发人员所期望的现代化设施，例如:
 
--   强大的包管理`cargo`,
+- 强大的包管理`cargo`，
 
--   富有表现力(和零成本)的抽象,
+- 富有表现力(和零成本)的抽象，
 
--   和一个热情的社区!😊
+- 和一个热情的社区!😊

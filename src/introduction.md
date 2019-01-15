@@ -34,10 +34,10 @@ pull request!**][repo]
 
 [Rust]: https://www.rust-lang.org
 [WebAssembly]: https://webassembly.org/
-[trpl]: https://doc.rust-lang.org/book/
+[trpl]: https://kaisery.github.io/trpl-zh-cn/
 [mdn]: https://developer.mozilla.org/en-US/docs/Learn
-[why-rust-wasm]: ./why-rust-and-webassembly.html
-[background]: ./background-and-concepts.html
-[tutorial]: ./game-of-life/introduction.html
-[reference]: ./reference/index.html
+[why-rust-wasm]: ./why-rust-and-webassembly.zh.html
+[background]: ./background-and-concepts.zh.html
+[tutorial]: ./game-of-life/introduction.zh.html
+[reference]: ./reference/index.zh.html
 [repo]: https://github.com/rustwasm/book
