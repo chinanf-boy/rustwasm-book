@@ -1,0 +1,40 @@
+[book]
+title = "Rust 和 WebAssembly"
+authors = ["yobrave"]
+description = "立即开始学习如何一起使用 Rust 和 WebAssembly."
+language = "zh-CN"
+
+[build]
+build-dir = "docs"
+create-missing = true
+use-default-preprocessors = false
+
+[preprocessor.links]
+# renderers = ["html"]
+
+[output.html]
+mathjax-support = false
+theme = "theme"
+curly-quotes = true
+google-analytics = "UA-128555056-1"
+# additional-css = ["theme/custom.css"]
+git_repository_url = "https://github.com/chinanf-boy/rustwasm-book"
+git_repository_icon = "fa-github"
+# additional-js = ["theme/custom.js"]
+
+[output.html.playpen]
+# editor = "./path/to/editor"
+editable = false
+
+[output.html.search]
+enable = true
+# searcher = "./path/to/searcher"
+limit-results = 30
+teaser-word-count = 30
+use-boolean-and = true
+boost-title = 2
+boost-hierarchy = 1
+boost-paragraph = 1
+expand = true
+heading-split-level = 3
+# copy-js = true
