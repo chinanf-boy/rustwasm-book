@@ -13,7 +13,7 @@
 
 它可以作为 如何整洁做事 的指南. 」
 
-[中文](./readme.md) | [english](https://github.com/rustwasm/book)
+[中文](./readme.zh.md) | [english](https://github.com/rustwasm/book)
 
 ---
 
@@ -33,36 +33,36 @@
 
 <!-- doc-templite END generated -->
 
-- [x] [README.md](README.md)
-- [ ] [src/setup.md](src/setup.md)
+- [x] README.md
 - [ ] [src/SUMMARY.md](src/SUMMARY.md)
-- [ ] [src/introduction.md](src/introduction.md)
-- [ ] [src/why-rust-and-webassembly.md](src/why-rust-and-webassembly.md)
-- [ ] [src/background-and-concepts.md](src/background-and-concepts.md)
-- [ ] [src/game-of-life/deploying-to-production.md](src/game-of-life/deploying-to-production.md)
-- [ ] [src/game-of-life/hello-world.md](src/game-of-life/hello-world.md)
-- [ ] [src/game-of-life/code-size.md](src/game-of-life/code-size.md)
-- [ ] [src/game-of-life/implementing.md](src/game-of-life/implementing.md)
-- [ ] [src/game-of-life/setup.md](src/game-of-life/setup.md)
-- [ ] [src/game-of-life/time-profiling.md](src/game-of-life/time-profiling.md)
-- [ ] [src/game-of-life/introduction.md](src/game-of-life/introduction.md)
-- [ ] [src/game-of-life/testing.md](src/game-of-life/testing.md)
-- [ ] [src/game-of-life/interactivity.md](src/game-of-life/interactivity.md)
-- [ ] [src/game-of-life/rules.md](src/game-of-life/rules.md)
-- [ ] [src/game-of-life/publishing-to-npm.md](src/game-of-life/publishing-to-npm.md)
-- [ ] [src/game-of-life/debugging.md](src/game-of-life/debugging.md)
-- [ ] [src/what-is-webassembly.md](src/what-is-webassembly.md)
-- [ ] [src/reference/deploying-to-production.md](src/reference/deploying-to-production.md)
-- [ ] [src/reference/add-wasm-support-to-crate.md](src/reference/add-wasm-support-to-crate.md)
-- [ ] [src/reference/code-size.md](src/reference/code-size.md)
-- [ ] [src/reference/js-ffi.md](src/reference/js-ffi.md)
-- [ ] [src/reference/time-profiling.md](src/reference/time-profiling.md)
-- [ ] [src/reference/index.md](src/reference/index.md)
-- [ ] [src/reference/which-crates-work-with-wasm.md](src/reference/which-crates-work-with-wasm.md)
-- [ ] [src/reference/crates.md](src/reference/crates.md)
-- [ ] [src/reference/project-templates.md](src/reference/project-templates.md)
-- [ ] [src/reference/debugging.md](src/reference/debugging.md)
-- [ ] [src/reference/tools.md](src/reference/tools.md)
+- [x] [src/setup.md](src/setup.zh.md)
+- [ ] [src/introduction.md](src/introduction.zh.md)
+- [ ] [src/why-rust-and-webassembly.md](src/why-rust-and-webassembly.zh.md)
+- [ ] [src/background-and-concepts.md](src/background-and-concepts.zh.md)
+- [ ] [src/game-of-life/deploying-to-production.md](src/game-of-life/deploying-to-production.zh.md)
+- [ ] [src/game-of-life/hello-world.md](src/game-of-life/hello-world.zh.md)
+- [ ] [src/game-of-life/code-size.md](src/game-of-life/code-size.zh.md)
+- [ ] [src/game-of-life/implementing.md](src/game-of-life/implementing.zh.md)
+- [ ] [src/game-of-life/setup.md](src/game-of-life/setup.zh.md)
+- [ ] [src/game-of-life/time-profiling.md](src/game-of-life/time-profiling.zh.md)
+- [ ] [src/game-of-life/introduction.md](src/game-of-life/introduction.zh.md)
+- [ ] [src/game-of-life/testing.md](src/game-of-life/testing.zh.md)
+- [ ] [src/game-of-life/interactivity.md](src/game-of-life/interactivity.zh.md)
+- [ ] [src/game-of-life/rules.md](src/game-of-life/rules.zh.md)
+- [ ] [src/game-of-life/publishing-to-npm.md](src/game-of-life/publishing-to-npm.zh.md)
+- [ ] [src/game-of-life/debugging.md](src/game-of-life/debugging.zh.md)
+- [ ] [src/what-is-webassembly.md](src/what-is-webassembly.zh.md)
+- [ ] [src/reference/deploying-to-production.md](src/reference/deploying-to-production.zh.md)
+- [ ] [src/reference/add-wasm-support-to-crate.md](src/reference/add-wasm-support-to-crate.zh.md)
+- [ ] [src/reference/code-size.md](src/reference/code-size.zh.md)
+- [ ] [src/reference/js-ffi.md](src/reference/js-ffi.zh.md)
+- [ ] [src/reference/time-profiling.md](src/reference/time-profiling.zh.md)
+- [ ] [src/reference/index.md](src/reference/index.zh.md)
+- [ ] [src/reference/which-crates-work-with-wasm.md](src/reference/which-crates-work-with-wasm.zh.md)
+- [ ] [src/reference/crates.md](src/reference/crates.zh.md)
+- [ ] [src/reference/project-templates.md](src/reference/project-templates.zh.md)
+- [ ] [src/reference/debugging.md](src/reference/debugging.zh.md)
+- [ ] [src/reference/tools.md](src/reference/tools.zh.md)
 
 ### 贡献
 
