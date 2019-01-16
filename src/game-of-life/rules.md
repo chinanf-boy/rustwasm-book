@@ -1,7 +1,7 @@
 # Rules of Conway's Game of Life
 
-*Note: If you are already familiar with Conway's Game of Life and its rules,
-feel free to skip to the next section!*
+_Note: If you are already familiar with Conway's Game of Life and its rules,
+feel free to skip to the next section!_
 
 [Wikipedia gives a great description of the rules of Conway's Game of
 Life:][wikipedia]
@@ -63,8 +63,8 @@ Put it all together, and we get this universe after the next tick:
 
 From these simple, deterministic rules, strange and exciting behavior emerges:
 
-| Gosper's glider gun | Pulsar | Space ship |
-|---|---|---|
+| Gosper's glider gun                                                                                | Pulsar                                                                                 | Space ship                                                                                                   |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
 | ![Gosper's glider gun](https://upload.wikimedia.org/wikipedia/commons/e/e5/Gospers_glider_gun.gif) | ![Pulsar](https://upload.wikimedia.org/wikipedia/commons/0/07/Game_of_life_pulsar.gif) | ![Lighweight space ship](https://upload.wikimedia.org/wikipedia/commons/3/37/Game_of_life_animated_LWSS.gif) |
 
 <center>
@@ -73,29 +73,29 @@ From these simple, deterministic rules, strange and exciting behavior emerges:
 
 ## Exercises
 
-* Compute by hand the next tick of our example universe. Notice anything
+- Compute by hand the next tick of our example universe. Notice anything
   familiar?
 
   <details>
     <summary>Answer</summary>
 
-    It should be the initial state of the example universe:
+  It should be the initial state of the example universe:
 
     <img src='../images/game-of-life/initial-universe.png' alt='Initial Universe' width=80 />
 
-    This pattern is *periodic*: it returns to the initial state after every two
-    ticks.
+  This pattern is _periodic_: it returns to the initial state after every two
+  ticks.
 
   </details>
 
-* Can you find an initial universe that is stable? That is, a universe in which
+- Can you find an initial universe that is stable? That is, a universe in which
   every generation is always the same.
 
   <details>
     <summar>Answer</summary>
 
-    There are an infinite number of stable universes! The trivially stable
-    universe is the empty universe. A two-by-two square of live cells is also a
-    stable universe.
+  There are an infinite number of stable universes! The trivially stable
+  universe is the empty universe. A two-by-two square of live cells is also a
+  stable universe.
 
   </details>
