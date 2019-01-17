@@ -58,10 +58,10 @@
   - [x] [参考：js-ffi](src/reference/js-ffi.zh.md)
   - [ ] [参考：时间分析](src/reference/time-profiling.zh.md)
   - [ ] [参考：哪些 crates 与 wasm 一起工作](src/reference/which-crates-work-with-wasm.zh.md)
-  - [ ] [参考：crates](src/reference/crates.zh.md)
+  - [x] [参考：crates](src/reference/crates.zh.md)
   - [x] [参考：项目模版](src/reference/project-templates.zh.md)
   - [x] [参考：调试](src/reference/debugging.zh.md)
-  - [ ] [参考：工具](src/reference/tools.zh.md)
+  - [x] [参考：工具](src/reference/tools.zh.md)
 
 ### 贡献
 
