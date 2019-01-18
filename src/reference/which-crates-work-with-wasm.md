@@ -1,8 +1,8 @@
 # Which Crates Will Work Off-the-Shelf with WebAssembly?
 
-It is easiest to list the things that do *not* currently work with WebAssembly;
+It is easiest to list the things that do _not_ currently work with WebAssembly;
 crates which avoid these things tend to be portable to WebAssembly and usually
-*Just Work*. A good rule of thumb is that if a crate supports embedded and
+_Just Work_. A good rule of thumb is that if a crate supports embedded and
 `#![no_std]` usage, it probably also supports WebAssembly.
 
 ## Things a Crate Might do that Won't Work with WebAssembly
@@ -38,7 +38,7 @@ target will panic, which triggers a wasm trap.
 
 Crates that provide the implementation of a particular
 [algorithm](https://crates.io/categories/algorithms) or [data
-structure](https://crates.io/categories/data-structures), for example A* graph
+structure](https://crates.io/categories/data-structures), for example A\* graph
 search or splay trees, tend to work well with WebAssembly.
 
 ### `#![no_std]`
