@@ -1,26 +1,24 @@
-# How to Add WebAssembly Support to a General-Purpose Crate
+# 怎么为 一个 通用箱 添加 WebAssembly 支持
 
-本节适用于希望支持WebAssembly的通用包装箱作者.
+本节适用于，希望支持 WebAssembly 的通用箱作者。
 
-## Maybe Your Crate Already Supports WebAssembly!
+## 也许，你的 箱子 以及 支持 WebAssembly!
 
-查看有关的信息[what kinds of things can make a general-purpose
-crate *not* portable for WebAssembly](./which-crates-work-with-wasm.html).如果您的箱子没有任何这些东西,它可能已经支持WebAssembly!
+查看有关[什么样的事情能让一个通用箱 _不能_ 移植到 WebAssembly](./which-crates-work-with-wasm.zh.html)的信息。如果您的箱子没有任何这些东西，它可能已经支持 WebAssembly!
 
-您可以随时通过运行进行检查`cargo build`对于WebAssembly目标:
+您可以随时通过运行`cargo build`，检查 WebAssembly 目标:
 
 ```
 cargo build --target wasm32-unknown-unknown
 ```
 
-如果该命令失败,那么您的crate现在不支持WebAssembly.如果它没有失败,那么你的箱子*威力*支持WebAssembly.你可以100%确定它(并继续这样做!)[adding tests for wasm and
-running those tests in CI.](#maintaining-ongoing-support-for-webassembly)
+如果该命令失败，那么您的 crate 现在不支持 WebAssembly。如果它没有失败，那么你的箱子*不一定*支持 WebAssembly。但你可以 100% 确定它(继续跟着做!)[为 wasm 添加测试 ，还有在 CI 上运行这些测试。](#maintaining-ongoing-support-for-webassembly)
 
-## Adding Support for WebAssembly
+## 添加 WebAssembly 支持
 
-### Avoid Performing I/O Directly
+### 避免 直接执行 I/O
 
-在Web上,I / O始终是异步的,并且没有文件系统.从库中分解因子I / O,让用户执行I / O,然后将输入切片传递到库中.
+在 Web 上，I/O 始终是异步的，且时没有文件系统。从库中分出 I/O 因素吧，让用户以为自己在执行 I/O，但其实将输入 slice 传递到库中。
 
 例如,重构这个:
 
@@ -42,9 +40,9 @@ pub fn parse_thing(contents: &[u8]) -> Result<MyThing, MyError> {
 }
 ```
 
-### Add `wasm-bindgen` as a Dependency
+### 添加 `wasm-bindgen` 作为依赖
 
-如果您需要与外界进行互动(即您不能让图书馆的消费者为您推动这种互动),那么您需要添加`wasm-bindgen`(和`js-sys`和`web-sys`如果你需要它们)作为编译目标WebAssembly的依赖项:
+如果您需要与外界进行互动(即，您不能让 库 的使用者为您推动这种互动)，那么您需要添加`wasm-bindgen`(还有`js-sys`和`web-sys`，若你需要它们)作为编译 WebAssembly 目标的依赖项:
 
 ```toml
 [target.'cfg(target_arch = "wasm32")'.dependencies]
@@ -53,11 +51,9 @@ js-sys = "0.3"
 web-sys = "0.3"
 ```
 
-### Avoid Synchronous I/O
+### 避免 同步 I/O
 
-如果必须在库中执行I / O,则它不能同步.Web上只有异步I / O.使用[the `futures`
-crate](https://crates.io/crates/futures)和[the `wasm-bindgen-futures`
-crate](https://rustwasm.github.io/wasm-bindgen/api/wasm_bindgen_futures/)管理异步I / O.如果您的库函数在某些未来类型中是通用的`F`那么未来可以通过实现`fetch`在Web上或通过操作系统提供的非阻塞I / O.
+如果你必须在库中执行 I/O，那它不能同步。Web 上只有异步 I/O。使用[`futures`箱](https://crates.io/crates/futures)和[`wasm-bindgen-futures`箱](https://rustwasm.github.io/wasm-bindgen/api/wasm_bindgen_futures/)管理异步 I/O。如果您的库函数为某些 future 类型`F`的通用函数，那么 future 是可以实现的，可能是通过在 Web 上`fetch`，或是通过操作系统提供的非阻塞 I/O。
 
 ```rust
 pub fn do_stuff<F>(future: F) -> impl Future<Item = MyOtherThing>
@@ -68,7 +64,7 @@ where
 }
 ```
 
-您还可以为WebAssembly和Web以及本机目标定义特征并实现它:
+您还可以为 WebAssembly 和 Web 以及本机目标，定义一个 trait 并实现它:
 
 ```rust
 trait ReadMyThing {
@@ -97,58 +93,58 @@ impl ReadMyThing for NativeReadMyThing {
 }
 ```
 
-### Avoid Spawning Threads
+### 避免 派生线程
 
-Wasm还不支持线程(但是[experimental work is
-ongoing](https://rustwasm.github.io/2018/10/24/multithreading-rust-and-wasm.html)),所以试图在wasm中产生线程会引起恐慌.
+Wasm 还不支持线程(但是[实验型工作还是在继续](https://rustwasm.github.io/2018/10/24/multithreading-rust-and-wasm.html))，所以试图在 wasm 中产生线程会引起恐慌。
 
-您可以使用`#[cfg(..)]`■启用线程和非线程代码路径,具体取决于目标是否为WebAssembly:
+您可以使用`#[cfg(..)]`启用代码路径，是不是线程和非线程，具体取决于目标是否为 WebAssembly:
 
 ```rust
 #![cfg(target_arch = "wasm32")]
 fn do_work() {
-    // Do work with only this thread...
+    // 只使用这个线程…
 }
 
 #![cfg(not(target_arch = "wasm32"))]
 fn do_work() {
     use std::thread;
 
-    // Spread work to helper threads....
+    // 将工作扩展到助手线程….
     thread::spawn(|| {
         // ...
     });
 }
 ```
 
-另一个选择是从库中分解线程产生,并允许用户"自带线程"类似于分解文件I / O并允许用户自带I / O.这具有与想要拥有自己的自定义线程池的应用程序一起玩的副作用.
+另一种选择是将从库中生成的线程分离出来，并允许用户带上“自己的线程”，类似于将文件 I/O 分离出来，并允许用户带上自己的 I/O。这有一个副作用，就是对想要拥有自己自定义线程池的应用程序要进行友好处理。
 
 ## Maintaining Ongoing Support for WebAssembly
 
-### Building for `wasm32-unknown-unknown` in CI
+> 维护对 WebAssembly 的持续支持
 
-通过让CI脚本运行以下命令,确保在定位WebAssembly时编译不会失败:
+### 在 CI 上，构建成 `wasm32-unknown-unknown`
+
+通过让 CI 脚本运行以下命令，确保为 WebAssembly 目标时编译不会失败:
 
 ```
 rustup target add wasm32-unknown-unknown
 cargo check --target wasm32-unknown-unknown
 ```
 
-例如,您可以将此添加到您的`.travis.yml`Travis CI的配置:
+例如,您可以将此 Travis CI 的配置添加到您的`.travis.yml`:
 
 ```yaml
 matrix:
   include:
     - language: rust
       rust: stable
-      name: "check wasm32 support"
+      name: 'check wasm32 support'
       install: rustup target add wasm32-unknown-unknown
       script: cargo check --target wasm32-unknown-unknown
 ```
 
-### Testing in Node.js and Headless Browsers
+### 在 Node.js 和 Headless 浏览器 上测试
 
-您可以使用`wasm-bindgen-test`和`wasm-pack test`子命令在Node.js或无头浏览器中运行wasm测试.您甚至可以将这些测试集成到CI中.
+您可以在 Node.js 或无头浏览器中，使用`wasm-bindgen-test`和`wasm-pack test`子命令，运行 wasm 测试。您甚至可以将这些测试集成到 CI 中。
 
-[Learn more about testing wasm
-here.](https://rustwasm.github.io/wasm-bindgen/wasm-bindgen-test/index.html)
+[学习 ，更多 测试 wasm 的资源](https://rustwasm.github.io/wasm-bindgen/wasm-bindgen-test/index.html)

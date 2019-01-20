@@ -8,7 +8,7 @@
 
 ### `window.performance.now()` 计时器
 
-[`performance.now()`函数][perf-now]返回自加载网页以来，以毫秒为单位测量的单调时间戳.
+[`performance.now()`函数][perf-now]返回自加载网页以来，以毫秒为单位测量的单调时间戳。
 
 调用`performance.now`的开销很小，因此我们可以从中创建简单的粒度测量，而不会扭曲系统其他部分的性能，并对测量造成偏差。
 
