@@ -1,0 +1,240 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>你应该知道的 Crates(箱)  - Rust 和 WebAssembly</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="立即开始学习如何一起使用 Rust 和 WebAssembly.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">var path_to_root = "../";</script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = 'light'; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li><a href="../introduction.zh.html"><strong aria-hidden="true">1.</strong> 介绍</a></li><li><a href="../why-rust-and-webassembly.zh.html"><strong aria-hidden="true">2.</strong> 为啥 Rust 要与 WebAssembly 合作?</a></li><li><a href="../background-and-concepts.zh.html"><strong aria-hidden="true">3.</strong> 背景和概念</a></li><li><ol class="section"><li><a href="../what-is-webassembly.zh.html"><strong aria-hidden="true">3.1.</strong> 什么是 WebAssembly?</a></li><li class="spacer"></li></ol></li><li><a href="../game-of-life/introduction.zh.html"><strong aria-hidden="true">4.</strong> 教程</a></li><li><ol class="section"><li><a href="../game-of-life/setup.zh.html"><strong aria-hidden="true">4.1.</strong> 安装</a></li><li><a href="../game-of-life/hello-world.zh.html"><strong aria-hidden="true">4.2.</strong> Hello, World!</a></li><li><a href="../game-of-life/rules.zh.html"><strong aria-hidden="true">4.3.</strong> 规则们</a></li><li><a href="../game-of-life/implementing.zh.html"><strong aria-hidden="true">4.4.</strong> 实现康威的生命游戏</a></li><li><a href="../game-of-life/testing.zh.html"><strong aria-hidden="true">4.5.</strong> 测试 生命</a></li><li><a href="../game-of-life/debugging.zh.html"><strong aria-hidden="true">4.6.</strong> 调试</a></li><li><a href="../game-of-life/interactivity.zh.html"><strong aria-hidden="true">4.7.</strong> 添加 交互性</a></li><li><a href="../game-of-life/time-profiling.zh.html"><strong aria-hidden="true">4.8.</strong> 时间 分析</a></li><li><a href="../game-of-life/code-size.zh.html"><strong aria-hidden="true">4.9.</strong> 收缩 .wasm 尺寸</a></li><li><a href="../game-of-life/publishing-to-npm.zh.html"><strong aria-hidden="true">4.10.</strong> 发布到 npm</a></li><li class="spacer"></li></ol></li><li><a href="../reference/index.zh.html"><strong aria-hidden="true">5.</strong> 参考</a></li><li><ol class="section"><li><a href="../reference/crates.zh.html" class="active"><strong aria-hidden="true">5.1.</strong> 你应该知道的 Crates(箱) </a></li><li><a href="../reference/tools.zh.html"><strong aria-hidden="true">5.2.</strong> 你应该知道的 工具 </a></li><li><a href="../reference/project-templates.zh.html"><strong aria-hidden="true">5.3.</strong> 项目模版 Templates</a></li><li><a href="../reference/debugging.zh.html"><strong aria-hidden="true">5.4.</strong> 调试</a></li><li><a href="../reference/time-profiling.zh.html"><strong aria-hidden="true">5.5.</strong> 时间 分析</a></li><li><a href="../reference/code-size.zh.html"><strong aria-hidden="true">5.6.</strong> 收缩 .wasm 尺寸</a></li><li><a href="../reference/js-ffi.zh.html"><strong aria-hidden="true">5.7.</strong> javascript 互操作</a></li><li><a href="../reference/which-crates-work-with-wasm.zh.html"><strong aria-hidden="true">5.8.</strong> 哪些 现成的(crates)箱能与 WebAssembly 合作？</a></li><li><a href="../reference/add-wasm-support-to-crate.zh.html"><strong aria-hidden="true">5.9.</strong> 如何向通用 箱 添加 WebAssembly 支持</a></li><li><a href="../reference/deploying-to-production.zh.html"><strong aria-hidden="true">5.10.</strong> 将 Rust 和 Webassembly 部署到生产中</a></li></ol></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Rust 和 WebAssembly</h1> 
+
+                        <div class="right-buttons">
+                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <a class="header" href="#a您应该知道的箱子" id="a您应该知道的箱子"><h1>您应该知道的箱子</h1></a>
+<p>这是一个精选的箱子列表,关于 Rust 和 WebAssembly 开发.</p>
+<p><a href="https://crates.io/categories/wasm">您还可以浏览 WebAssembly 类别中,发布到 crates.io 的所有包. </a></p>
+<a class="header" href="#a与-javascript-和-dom-交互" id="a与-javascript-和-dom-交互"><h2>与 JavaScript 和 DOM 交互</h2></a>
+<a class="header" href="#wasm-bindgena-hrefhttpscratesiocrateswasm-bindgencratesioaa-hrefhttpsgithubcomrustwasmwasm-bindgengithuba" id="wasm-bindgena-hrefhttpscratesiocrateswasm-bindgencratesioaa-hrefhttpsgithubcomrustwasmwasm-bindgengithuba"><h3><code>wasm-bindgen</code>|<a href="https://crates.io/crates/wasm-bindgen">crates.io</a>|<a href="https://github.com/rustwasm/wasm-bindgen">github</a></h3></a>
+<p><code>wasm-bindgen</code>促进 Rust 和 JavaScript 之间的高级交互. 它允许人们将 JavaScript 内容导入 Rust 和 Rust 内容导出到 JavaScript.</p>
+<a class="header" href="#js-sysa-hrefhttpscratesiocratesjs-syscratesioaa-hrefhttpsgithubcomrustwasmwasm-bindgentreemastercratesjs-sysgithuba" id="js-sysa-hrefhttpscratesiocratesjs-syscratesioaa-hrefhttpsgithubcomrustwasmwasm-bindgentreemastercratesjs-sysgithuba"><h3><code>js-sys</code>|<a href="https://crates.io/crates/js-sys">crates.io</a>|<a href="https://github.com/rustwasm/wasm-bindgen/tree/master/crates/js-sys">github</a></h3></a>
+<p>原生<code>wasm-bindgen</code>导入所有 JavaScript 全局类型和方法,例如<code>Object</code>,<code>Function</code>,<code>eval</code>等. 这些 API 可以在所有标准 ECMAScript 环境 中移植,而不仅仅是 Web,例如 Node.js.</p>
+<a class="header" href="#a错误报告" id="a错误报告"><h2>错误报告</h2></a>
+<a class="header" href="#console_error_panic_hooka-hrefhttpscratesiocratesconsole_error_panic_hookcratesioaa-hrefhttpsgithubcomrustwasmconsole_error_panic_hookgithuba" id="console_error_panic_hooka-hrefhttpscratesiocratesconsole_error_panic_hookcratesioaa-hrefhttpsgithubcomrustwasmconsole_error_panic_hookgithuba"><h3><code>console_error_panic_hook</code>|<a href="https://crates.io/crates/console_error_panic_hook">crates.io</a>|<a href="https://github.com/rustwasm/console_error_panic_hook">github</a></h3></a>
+<p>这个箱子让你调试<code>wasm32-unknown-unknown</code>的 panics,通过提供一个恐慌钩子, 来将恐慌消息转发到<code>console.error</code>.</p>
+<a class="header" href="#a动态分配" id="a动态分配"><h2>动态分配</h2></a>
+<a class="header" href="#wee_alloca-hrefhttpscratesiocrateswee_alloccratesioaa-hrefhttpsgithubcomrustwasmwee_allocgithuba" id="wee_alloca-hrefhttpscratesiocrateswee_alloccratesioaa-hrefhttpsgithubcomrustwasmwee_allocgithuba"><h3><code>wee_alloc</code>|<a href="https://crates.io/crates/wee_alloc">crates.io</a>|<a href="https://github.com/rustwasm/wee_alloc">github</a></h3></a>
+<p>该 <strong>W</strong>asm-<strong>E</strong>nabled, <strong>E</strong>lfin 分配器. 一个小的 (~1K 未压缩<code>.wasm</code>)分配器实现,特点是代码大小比分配性能更受关注,.</p>
+<a class="header" href="#a解析和生成wasm二进制" id="a解析和生成wasm二进制"><h2>解析和生成<code>.wasm</code>二进制</h2></a>
+<a class="header" href="#parity-wasma-hrefhttpscratesiocratesparity-wasmcratesioaa-hrefhttpsgithubcomparitytechparity-wasmgithuba" id="parity-wasma-hrefhttpscratesiocratesparity-wasmcratesioaa-hrefhttpsgithubcomparitytechparity-wasmgithuba"><h3><code>parity-wasm</code>|<a href="https://crates.io/crates/parity-wasm">crates.io</a>|<a href="https://github.com/paritytech/parity-wasm">github</a></h3></a>
+<p>用于序列化,反序列化和构建的低级 WebAssembly 格式库 - <code>.wasm</code>二进制文件. 对已知的自定义部分具有良好支持,例如”names”部分和”reloc.WHATEVER”部分.</p>
+<a class="header" href="#wasmparsera-hrefhttpscratesiocrateswasmparsercratesioaa-hrefhttpsgithubcomyurydelendikwasmparserrsgithuba" id="wasmparsera-hrefhttpscratesiocrateswasmparsercratesioaa-hrefhttpsgithubcomyurydelendikwasmparserrsgithuba"><h3><code>wasmparser</code>|<a href="https://crates.io/crates/wasmparser">crates.io</a>|<a href="https://github.com/yurydelendik/wasmparser.rs">github</a></h3></a>
+<p>一个简单的事件驱动库,用于解析 WebAssembly 二进制文件. 例如,提供每个解析事物的字节偏移量,这在解释 reloc 时是必需的.</p>
+<a class="header" href="#a解释和编译-webassembly" id="a解释和编译-webassembly"><h2>解释和编译 WebAssembly</h2></a>
+<a class="header" href="#wasmia-hrefhttpscratesiocrateswasmicratesioaa-hrefhttpsgithubcomparitytechwasmigithuba" id="wasmia-hrefhttpscratesiocrateswasmicratesioaa-hrefhttpsgithubcomparitytechwasmigithuba"><h3><code>wasmi</code>|<a href="https://crates.io/crates/wasmi">crates.io</a>|<a href="https://github.com/paritytech/wasmi">github</a></h3></a>
+<p>来自 Parity 的可嵌入 WebAssembly 解释器.</p>
+<a class="header" href="#cranelift-wasma-hrefhttpscratesiocratescranelift-wasmcratesioaa-hrefhttpsgithubcomcranestationcraneliftgithuba" id="cranelift-wasma-hrefhttpscratesiocratescranelift-wasmcratesioaa-hrefhttpsgithubcomcranestationcraneliftgithuba"><h3><code>cranelift-wasm</code>|<a href="https://crates.io/crates/cranelift-wasm">crates.io</a>|<a href="https://github.com/CraneStation/cranelift">github</a></h3></a>
+<p>将 WebAssembly 编译为本机主机的机器代码. Cranelift (néCretonne) 代码生成器项目的一部分.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../reference/index.zh.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../reference/tools.zh.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../reference/index.zh.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../reference/tools.zh.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+        <!-- Google Analytics Tag -->
+        <script type="text/javascript">
+            var localAddrs = ["localhost", "127.0.0.1", ""];
+
+            // make sure we don't activate google analytics if the developer is
+            // inspecting the book locally...
+            if (localAddrs.indexOf(document.location.hostname) === -1) {
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-128555056-1', 'auto');
+                ga('send', 'pageview');
+            }
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
