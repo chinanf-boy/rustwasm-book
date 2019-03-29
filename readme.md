@@ -23,10 +23,9 @@
 <!-- repo = 'rustwasm/book' -->
 <!-- commit = '7cdec718cd95bbeca0164935e74d72a690a552f1' -->
 <!-- time = '2018-12-21' -->
-
-| 翻译的原文 | 与日期        | 最新更新 | 更多                       |
-| ---------- | ------------- | -------- | -------------------------- |
-| [commit]   | ⏰ 2018-12-21 | ![last]  | [中文翻译][translate-list] |
+翻译的原文 | 与日期 | 最新更新 | 更多
+---|---|---|---
+[commit] | ⏰ 2018-12-21 | ![last] | [中文翻译][translate-list]
 
 [last]: https://img.shields.io/github/last-commit/rustwasm/book.svg
 [commit]: https://github.com/rustwasm/book/tree/7cdec718cd95bbeca0164935e74d72a690a552f1
@@ -69,7 +68,7 @@
 
 ## 生活
 
-[help me live , live need money 💰](https://github.com/chinanf-boy/live-need-money)
+[If help, **buy** me coffee —— 营养跟不上了，给我来瓶营养快线吧! 💰](https://github.com/chinanf-boy/live-need-money)
 
 ---
 
