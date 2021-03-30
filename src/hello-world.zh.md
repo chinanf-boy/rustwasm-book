@@ -79,4 +79,4 @@ pub extern fn add_one(a: u32) -> u32 {
 
 使用浏览器打开HTML文件,您应该看到: 
 
-![Wasm Hello World Screenshot](./images/wasm_hello_world_screenshot.png)
+![Wasm Hello World Screenshot](../images/wasm_hello_world_screenshot.png)

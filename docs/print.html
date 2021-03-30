@@ -1,24 +1,42 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="zh-CN" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Rust 和 WebAssembly</title>
+        
+        <meta name="robots" content="noindex" />
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="立即开始学习如何一起使用 Rust 和 WebAssembly.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
         <link rel="shortcut icon" href="favicon.png">
+        
         <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
+        
         <link rel="stylesheet" href="css/print.css" media="print">
+        
 
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="highlight.css">
@@ -30,9 +48,12 @@
 
         
     </head>
-    <body class="light">
+    <body>
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">var path_to_root = "";</script>
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script type="text/javascript">
@@ -53,10 +74,13 @@
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script type="text/javascript">
             var theme;
-            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
-            if (theme === null || theme === undefined) { theme = 'light'; }
-            document.body.className = theme;
-            document.querySelector('html').className = theme + ' js';
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
@@ -72,43 +96,48 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="introduction.zh.html"><strong aria-hidden="true">1.</strong> 介绍</a></li><li><a href="why-rust-and-webassembly.zh.html"><strong aria-hidden="true">2.</strong> 为啥 Rust 要与 WebAssembly 合作?</a></li><li><a href="background-and-concepts.zh.html"><strong aria-hidden="true">3.</strong> 背景和概念</a></li><li><ol class="section"><li><a href="what-is-webassembly.zh.html"><strong aria-hidden="true">3.1.</strong> 什么是 WebAssembly?</a></li><li class="spacer"></li></ol></li><li><a href="game-of-life/introduction.zh.html"><strong aria-hidden="true">4.</strong> 教程</a></li><li><ol class="section"><li><a href="game-of-life/setup.zh.html"><strong aria-hidden="true">4.1.</strong> 安装</a></li><li><a href="game-of-life/hello-world.zh.html"><strong aria-hidden="true">4.2.</strong> Hello, World!</a></li><li><a href="game-of-life/rules.zh.html"><strong aria-hidden="true">4.3.</strong> 规则们</a></li><li><a href="game-of-life/implementing.zh.html"><strong aria-hidden="true">4.4.</strong> 实现康威的生命游戏</a></li><li><a href="game-of-life/testing.zh.html"><strong aria-hidden="true">4.5.</strong> 测试 生命</a></li><li><a href="game-of-life/debugging.zh.html"><strong aria-hidden="true">4.6.</strong> 调试</a></li><li><a href="game-of-life/interactivity.zh.html"><strong aria-hidden="true">4.7.</strong> 添加 交互性</a></li><li><a href="game-of-life/time-profiling.zh.html"><strong aria-hidden="true">4.8.</strong> 时间 分析</a></li><li><a href="game-of-life/code-size.zh.html"><strong aria-hidden="true">4.9.</strong> 收缩 .wasm 尺寸</a></li><li><a href="game-of-life/publishing-to-npm.zh.html"><strong aria-hidden="true">4.10.</strong> 发布到 npm</a></li><li class="spacer"></li></ol></li><li><a href="reference/index.zh.html"><strong aria-hidden="true">5.</strong> 参考</a></li><li><ol class="section"><li><a href="reference/crates.zh.html"><strong aria-hidden="true">5.1.</strong> 你应该知道的 Crates(箱) </a></li><li><a href="reference/tools.zh.html"><strong aria-hidden="true">5.2.</strong> 你应该知道的 工具 </a></li><li><a href="reference/project-templates.zh.html"><strong aria-hidden="true">5.3.</strong> 项目模版 Templates</a></li><li><a href="reference/debugging.zh.html"><strong aria-hidden="true">5.4.</strong> 调试</a></li><li><a href="reference/time-profiling.zh.html"><strong aria-hidden="true">5.5.</strong> 时间 分析</a></li><li><a href="reference/code-size.zh.html"><strong aria-hidden="true">5.6.</strong> 收缩 .wasm 尺寸</a></li><li><a href="reference/js-ffi.zh.html"><strong aria-hidden="true">5.7.</strong> javascript 互操作</a></li><li><a href="reference/which-crates-work-with-wasm.zh.html"><strong aria-hidden="true">5.8.</strong> 哪些 现成的(crates)箱能与 WebAssembly 合作？</a></li><li><a href="reference/add-wasm-support-to-crate.zh.html"><strong aria-hidden="true">5.9.</strong> 如何向通用 箱 添加 WebAssembly 支持</a></li><li><a href="reference/deploying-to-production.zh.html"><strong aria-hidden="true">5.10.</strong> 将 Rust 和 Webassembly 部署到生产中</a></li></ol></li></ol>
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.zh.html"><strong aria-hidden="true">1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="why-rust-and-webassembly.zh.html"><strong aria-hidden="true">2.</strong> 为啥 Rust 要与 WebAssembly 合作?</a></li><li class="chapter-item expanded "><a href="background-and-concepts.zh.html"><strong aria-hidden="true">3.</strong> 背景和概念</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="what-is-webassembly.zh.html"><strong aria-hidden="true">3.1.</strong> 什么是 WebAssembly?</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="game-of-life/introduction.zh.html"><strong aria-hidden="true">4.</strong> 教程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="game-of-life/setup.zh.html"><strong aria-hidden="true">4.1.</strong> 安装</a></li><li class="chapter-item expanded "><a href="game-of-life/hello-world.zh.html"><strong aria-hidden="true">4.2.</strong> Hello, World!</a></li><li class="chapter-item expanded "><a href="game-of-life/rules.zh.html"><strong aria-hidden="true">4.3.</strong> 规则们</a></li><li class="chapter-item expanded "><a href="game-of-life/implementing.zh.html"><strong aria-hidden="true">4.4.</strong> 实现康威的生命游戏</a></li><li class="chapter-item expanded "><a href="game-of-life/testing.zh.html"><strong aria-hidden="true">4.5.</strong> 测试 生命</a></li><li class="chapter-item expanded "><a href="game-of-life/debugging.zh.html"><strong aria-hidden="true">4.6.</strong> 调试</a></li><li class="chapter-item expanded "><a href="game-of-life/interactivity.zh.html"><strong aria-hidden="true">4.7.</strong> 添加 交互性</a></li><li class="chapter-item expanded "><a href="game-of-life/time-profiling.zh.html"><strong aria-hidden="true">4.8.</strong> 时间 分析</a></li><li class="chapter-item expanded "><a href="game-of-life/code-size.zh.html"><strong aria-hidden="true">4.9.</strong> 收缩 .wasm 尺寸</a></li><li class="chapter-item expanded "><a href="game-of-life/publishing-to-npm.zh.html"><strong aria-hidden="true">4.10.</strong> 发布到 npm</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="reference/index.zh.html"><strong aria-hidden="true">5.</strong> 参考</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="reference/crates.zh.html"><strong aria-hidden="true">5.1.</strong> 你应该知道的 Crates(箱) </a></li><li class="chapter-item expanded "><a href="reference/tools.zh.html"><strong aria-hidden="true">5.2.</strong> 你应该知道的 工具 </a></li><li class="chapter-item expanded "><a href="reference/project-templates.zh.html"><strong aria-hidden="true">5.3.</strong> 项目模版 Templates</a></li><li class="chapter-item expanded "><a href="reference/debugging.zh.html"><strong aria-hidden="true">5.4.</strong> 调试</a></li><li class="chapter-item expanded "><a href="reference/time-profiling.zh.html"><strong aria-hidden="true">5.5.</strong> 时间 分析</a></li><li class="chapter-item expanded "><a href="reference/code-size.zh.html"><strong aria-hidden="true">5.6.</strong> 收缩 .wasm 尺寸</a></li><li class="chapter-item expanded "><a href="reference/js-ffi.zh.html"><strong aria-hidden="true">5.7.</strong> javascript 互操作</a></li><li class="chapter-item expanded "><a href="reference/which-crates-work-with-wasm.zh.html"><strong aria-hidden="true">5.8.</strong> 哪些 现成的(crates)箱能与 WebAssembly 合作？</a></li><li class="chapter-item expanded "><a href="reference/add-wasm-support-to-crate.zh.html"><strong aria-hidden="true">5.9.</strong> 如何向通用 箱 添加 WebAssembly 支持</a></li><li class="chapter-item expanded "><a href="reference/deploying-to-production.zh.html"><strong aria-hidden="true">5.10.</strong> 将 Rust 和 Webassembly 部署到生产中</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                 
-                <div id="menu-bar" class="menu-bar">
-                    <div id="menu-bar-sticky-container">
-                        <div class="left-buttons">
-                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                                <i class="fa fa-paint-brush"></i>
-                            </button>
-                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                                <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                            </ul>
-                            
-                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                                <i class="fa fa-search"></i>
-                            </button>
-                            
-                        </div>
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
 
-                        <h1 class="menu-title">Rust 和 WebAssembly</h1> 
+                    <h1 class="menu-title">Rust 和 WebAssembly</h1>
 
-                        <div class="right-buttons">
-                            <a href="print.html" title="Print this book" aria-label="Print this book">
-                                <i id="print-button" class="fa fa-print"></i>
-                            </a>
-                        </div>
+                    <div class="right-buttons">
+                        
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
                     </div>
                 </div>
 
@@ -136,32 +165,32 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#rust--和-webassembly-" id="rust--和-webassembly-"><h1>Rust 🦀 和 WebAssembly 🕸</h1></a>
+                        <h1 id="rust--和-webassembly-"><a class="header" href="#rust--和-webassembly-">Rust 🦀 和 WebAssembly 🕸</a></h1>
 <p>这本小书描述了如何使用<a href="https://www.rust-lang.org">Rust</a>和<a href="https://webassembly.org/">WebAssembly</a>一起.</p>
-<a class="header" href="#a本书的针对人群" id="a本书的针对人群"><h2>本书的针对人群?</h2></a>
+<h2 id="本书的针对人群"><a class="header" href="#本书的针对人群">本书的针对人群?</a></h2>
 <p>本书适合任何有兴趣将 Rust 编译为 WebAssembly 的人，以便在 Web 上获得快速,可靠的代码。您应该了解过一些 Rust，并熟悉 JavaScript，HTML 和 CSS。不需要你是任何专家.</p>
 <p>不知道 Rust 呢?<a href="https://kaisery.github.io/trpl-zh-cn/">先浏览 <em>Rust 编程语言</em> 开始.</a></p>
 <p>不懂 JavaScript，HTML 或 CSS? <a href="https://developer.mozilla.org/en-US/docs/Learn">在 MDN 上了解它们.</a></p>
-<a class="header" href="#a怎么读呢" id="a怎么读呢"><h2>怎么读呢</h2></a>
+<h2 id="怎么读呢"><a class="header" href="#怎么读呢">怎么读呢</a></h2>
 <p>你应该先读<a href="./why-rust-and-webassembly.zh.html">Rust 和 WebAssembly 合作的动机</a>，以及熟悉下<a href="./background-and-concepts.zh.html">背景和概念</a>。</p>
 <p>该<a href="./game-of-life/introduction.zh.html">教程</a>是从头到尾阅读。您应该遵循:自己编写，编译和运行教程代码。如果您之前没有使用 Rust 和 WebAssembly，请执行本教程!</p>
 <p>该<a href="./reference/index.zh.html">参考部分</a>可以按任何顺序阅读。</p>
 <blockquote>
 <p>**💡 提示:**您可以通过单击页面顶部的 🔍 图标，或按下来<code>s</code>键搜索本书。</p>
 </blockquote>
-<a class="header" href="#a帮助此书" id="a帮助此书"><h2>帮助此书</h2></a>
+<h2 id="帮助此书"><a class="header" href="#帮助此书">帮助此书</a></h2>
 <p>这本书是开源的! 找个拼写错误? 我们忽略了什么吗? <a href="https://github.com/rustwasm/book"><strong>向我们发送拉动请求!</strong></a></p>
-<a class="header" href="#a为什么要-rust-和-webassembly-合作" id="a为什么要-rust-和-webassembly-合作"><h1>为什么要 Rust 和 WebAssembly 合作？</h1></a>
-<a class="header" href="#a高级人体工程学的底层控制" id="a高级人体工程学的底层控制"><h2>高级人体工程学的底层控制</h2></a>
+<h1 id="为什么要-rust-和-webassembly-合作"><a class="header" href="#为什么要-rust-和-webassembly-合作">为什么要 Rust 和 WebAssembly 合作？</a></h1>
+<h2 id="高级人体工程学的底层控制"><a class="header" href="#高级人体工程学的底层控制">高级人体工程学的底层控制</a></h2>
 <p>JavaScript Web 应用程序很难获得，并保持可靠的性能。JavaScript 的动态类型系统和垃圾回收暂停没有帮助。如果您不小心徘徊在 JIT 的快乐路径上，看似很小的代码更改可能导致严重的性能退化。</p>
 <p>Rust 为程序员提供了低层控制和可靠的性能。它不受 病态 JavaScript 的非确定性垃圾收集暂停的影响。程序员可以以间接，单态化和内存布局，去控制。</p>
-<a class="header" href="#a小wasm尺寸" id="a小wasm尺寸"><h2>小<code>.wasm</code>尺寸</h2></a>
+<h2 id="小wasm尺寸"><a class="header" href="#小wasm尺寸">小<code>.wasm</code>尺寸</a></h2>
 <p>代码大小非常重要，因为<code>.wasm</code>必须通过网络下载。Rust 缺少运行时，可以实现小的<code>.wasm</code>尺寸，因为没有包含像垃圾收集器的额外膨胀。您只需为实际使用的函数支付对应的代码大小。</p>
-<a class="header" href="#a不要重写一切" id="a不要重写一切"><h2>不要重写一切</h2></a>
+<h2 id="不要重写一切"><a class="header" href="#不要重写一切">不要重写一切</a></h2>
 <p>不需要丢弃现有的代码库。您可以从将性能最好的 JavaScript 函数移植到 Rust 开始，立即获益。如果你愿意，你甚至可以在那里停(调试)下来。</p>
-<a class="header" href="#a与他人相处得很好" id="a与他人相处得很好"><h2>与他人相处得很好</h2></a>
+<h2 id="与他人相处得很好"><a class="header" href="#与他人相处得很好">与他人相处得很好</a></h2>
 <p>Rust 和 WebAssembly 与现有的 JavaScript 工具集成。它支持 ECMAScript 模块，您可以继续使用您喜欢的工具，如 npm，Webpack 和 Greenkeeper.</p>
-<a class="header" href="#a你想要的便利设施" id="a你想要的便利设施"><h2>你想要的便利设施</h2></a>
+<h2 id="你想要的便利设施"><a class="header" href="#你想要的便利设施">你想要的便利设施</a></h2>
 <p>Rust 拥有开发人员所期望的现代化设施，例如:</p>
 <ul>
 <li>
@@ -174,8 +203,8 @@
 <p>和一个热情的社区!😊</p>
 </li>
 </ul>
-<a class="header" href="#a背景和概念" id="a背景和概念"><h1>背景和概念</h1></a>
-<a class="header" href="#webassembly" id="webassembly"><h2>WebAssembly</h2></a>
+<h1 id="背景和概念"><a class="header" href="#背景和概念">背景和概念</a></h1>
+<h2 id="webassembly"><a class="header" href="#webassembly">WebAssembly</a></h2>
 <p><code>WebAssembly</code> 是一个简单的机器模型和可执行格式<a href="https://%60WebAssembly%60.github.io/spec/">extensive
 specification</a>(广泛的定义).</p>
 <p>虽然它目前在 JavaScript 和 Web 社区 中受到关注， 但并没有限制它的运行环境。 因此，认为在不久的将来， <em>wasm</em>将可能成为在各种环境中， 重要的”便携式可执行”格式 (我们将花一些时间仔细研究一下<em>wasm</em>便携性功能，待本书进一步说明)。</p>
@@ -201,7 +230,7 @@ specification</a>(广泛的定义).</p>
 </code></pre>
 <p>如果你对<code>wasm</code>文件好奇，你可以使用<a href="https://cdn.rawgit.com/%60WebAssembly%60/wabt/aae5a4b7/demo/wat2wasm/">wat2wasm demo</a>看上面的代码.</p>
 <p><code>WebAssembly</code>有一个非常简单的<a href="https://%60WebAssembly%60.github.io/spec/core/syntax/modules.html#syntax-mem">内存模型</a>。 目前，一个<code>wasm</code>模块可以访问单个”线性内存”，它本质上是一个固定数字类型的普通数组。 这个<a href="https://%60WebAssembly%60.github.io/spec/core/syntax/instructions.html#syntax-instr-memory">内存成长性</a>是页面大小 (64K) 的倍数，并且不能缩小。</p>
-<a class="header" href="#webassemblys-是什么" id="webassemblys-是什么"><h1>WebAssemblys 是什么?</h1></a>
+<h1 id="webassemblys-是什么"><a class="header" href="#webassemblys-是什么">WebAssemblys 是什么?</a></h1>
 <p>WebAssembly(wasm)是一个简单的机器模型和可执行格式<a href="https://webassembly.github.io/spec/">广泛的规范</a>。设计成便携，紧凑，并以原生速度或接近原始速度执行。</p>
 <p>作为一种编程语言，WebAssembly 由两种表示相同结构的格式组成，尽管方式不同:</p>
 <ul>
@@ -235,20 +264,20 @@ specification</a>(广泛的定义).</p>
   (export &quot;fac&quot; (func $fac)))
 </code></pre>
 <p>如果你对<code>wasm</code>文件好奇，你可以使用<a href="https://cdn.rawgit.com/WebAssembly/wabt/aae5a4b7/demo/wat2wasm/">wat2wasm demo</a>看上面的代码.</p>
-<a class="header" href="#a线性内存" id="a线性内存"><h2>线性内存</h2></a>
+<h2 id="线性内存"><a class="header" href="#线性内存">线性内存</a></h2>
 <p><code>WebAssembly</code>有一个非常简单的<a href="https://%60WebAssembly%60.github.io/spec/core/syntax/modules.html#syntax-mem">内存模型</a>。 目前，一个<code>wasm</code>模块可以访问单个”线性内存”，它本质上是一个固定数字类型的普通数组。 这个<a href="https://%60WebAssembly%60.github.io/spec/core/syntax/instructions.html#syntax-instr-memory">内存成长性</a>是页面大小 (64K) 的倍数，并且不能缩小。</p>
-<a class="header" href="#webassembly-是否仅给到-web" id="webassembly-是否仅给到-web"><h2>WebAssembly 是否仅给到 Web?</h2></a>
+<h2 id="webassembly-是否仅给到-web"><a class="header" href="#webassembly-是否仅给到-web">WebAssembly 是否仅给到 Web?</a></h2>
 <p>虽然它目前在 JavaScript 和 Web 社区 中受到关注， 但并没有限制它的运行环境。 因此，认为在不久的将来， <em>wasm</em>将可能成为在各种环境中， 重要的”便携式可执行”格式 (我们将花一些时间仔细研究一下<em>wasm</em>便携性功能，待本书进一步说明)。</p>
 <p><em>今时今日</em>，总得来说，<em>wasm</em>主要与 JavaScript 有关，它有很多种类 (包括浏览器和 <code>Node.js</code>) 。 由于 JS 广泛且易于访问， 我们将主要关注使用这些平台来运行 Rust 生成的<em>wasm</em>，但 其他语言的编译 可能会在不久的将来发布。</p>
-<a class="header" href="#a教程-康威的生命游戏" id="a教程-康威的生命游戏"><h1>教程: 康威的生命游戏</h1></a>
+<h1 id="教程-康威的生命游戏"><a class="header" href="#教程-康威的生命游戏">教程: 康威的生命游戏</a></h1>
 <p>这是一个用 Rust 和 WebAssembly 实现的教程<a href="https://zh.wikipedia.org/wiki/%E5%BA%B7%E5%A8%81%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F">康威的生命游戏</a>.</p>
 <blockquote>
 <p>谁是 康威-ConWay 我怎么知道 ❓</p>
 </blockquote>
-<a class="header" href="#a本教程适合谁" id="a本教程适合谁"><h2>本教程适合谁?</h2></a>
+<h2 id="本教程适合谁"><a class="header" href="#本教程适合谁">本教程适合谁?</a></h2>
 <p>本教程适用于 已经具有基本 Rust 和 JavaScript 经验 的任何人,并希望学习如何一起使用 Rust,WebAssembly 和 JavaScript.</p>
 <p>阅读和编写基本的 Rust,JavaScript 和 HTML 应该会很舒服. 你绝对不需要成为专家才能懂.</p>
-<a class="header" href="#a我会学到什么" id="a我会学到什么"><h2>我会学到什么?</h2></a>
+<h2 id="我会学到什么"><a class="header" href="#我会学到什么">我会学到什么?</a></h2>
 <ul>
 <li>
 <p>怎样设置 Rust 工具链, 且将其编译为 WebAssembly</p>
@@ -270,36 +299,36 @@ JavaScript, HTML, 和 CSS 开发的多语言程序工作流程</p>
 <p>怎样对 Rust 和 WebAssembly 的程序进行大小分析, 让它变小和网络下载速度更快</p>
 </li>
 </ul>
-<a class="header" href="#a安装" id="a安装"><h1>安装</h1></a>
+<h1 id="安装"><a class="header" href="#安装">安装</a></h1>
 <p>这个章节讲述的是: 怎样设置将 Rust 编译成 WebAssembly 和糅合到 JavaScript 的工具链</p>
-<a class="header" href="#rust-工具链" id="rust-工具链"><h2>Rust 工具链</h2></a>
+<h2 id="rust-工具链"><a class="header" href="#rust-工具链">Rust 工具链</a></h2>
 <p>您将需要标准的 Rust 工具链,包括<code>rustup</code>,<code>rustc</code>,和<code>cargo</code></p>
 <p><a href="https://www.rust-lang.org/tools/install">按照以下说明安装 Rust 工具链. </a></p>
 <p>Rust 和 WebAssembly 的使用在 Rust 发布火车上稳定运行! 这意味着我们不需要任何实验性功能标志。但是,我们确实需要 Rust 1.30 或打上版本。</p>
-<a class="header" href="#wasm-pack" id="wasm-pack"><h2><code>wasm-pack</code></h2></a>
+<h2 id="wasm-pack"><a class="header" href="#wasm-pack"><code>wasm-pack</code></a></h2>
 <p><code>wasm-pack</code>是您构建,测试和发布 Rust 生成的 WebAssembly 的一站式商店.</p>
 <p><a href="https://rustwasm.github.io/wasm-pack/installer/">得到<code>wasm-pack</code>这里!</a></p>
-<a class="header" href="#cargo-generate" id="cargo-generate"><h2><code>cargo-generate</code></h2></a>
+<h2 id="cargo-generate"><a class="header" href="#cargo-generate"><code>cargo-generate</code></a></h2>
 <p><a href="https://github.com/ashleygwilliams/cargo-generate"><code>cargo-generate</code>通过利用预先存在的 git 存储库作为模板，帮助您快速启动并运行新的 Rust 项目。</a></p>
 <p>安装<code>cargo-generate</code>使用此命令:</p>
 <pre><code>cargo install cargo-generate
 </code></pre>
-<a class="header" href="#npm" id="npm"><h2><code>npm</code></h2></a>
+<h2 id="npm"><a class="header" href="#npm"><code>npm</code></a></h2>
 <p><code>npm</code>是 JavaScript 的包管理器. 我们将使用它来安装和运行 JavaScript 捆绑器 和 开发服务器. 在本教程结束时,我们将发布我们编译的<code>.wasm</code>到了<code>npm</code>注册表中.</p>
 <p><a href="https://www.npmjs.com/get-npm">请按照以下说明进行安装<code>npm</code>. </a></p>
 <p>如果你已经拥有<code>npm</code>安装,使用此命令确保它是最新的:</p>
 <pre><code>npm install npm@latest -g
 </code></pre>
-<a class="header" href="#a你好世界" id="a你好世界"><h1>你好,世界!</h1></a>
+<h1 id="你好世界"><a class="header" href="#你好世界">你好,世界!</a></h1>
 <p>本节将向您展示如何构建和运行您的第一个 Rust 和 WebAssembly 程序:一个 alert “Hello,World!”的网页。</p>
-<p>在开始之前，确保你已经遵照了<a href="setup.zh.html">安装说明</a>。</p>
-<a class="header" href="#a克隆项目模板" id="a克隆项目模板"><h2>克隆项目模板</h2></a>
+<p>在开始之前，确保你已经遵照了<a href="game-of-life/setup.zh.html">安装说明</a>。</p>
+<h2 id="克隆项目模板"><a class="header" href="#克隆项目模板">克隆项目模板</a></h2>
 <p>项目模板预先配置了默认值，因此您可以快速构建，集成和打包 Web 代码.</p>
 <p>使用以下命令，克隆项目模板:</p>
 <pre><code class="language-text">cargo generate --git https://github.com/rustwasm/wasm-pack-template
 </code></pre>
-<p>这应该会提示您输入新项目的名称。我们会用**”wasm-game-of-life”**.</p>
-<a class="header" href="#a里面有什么" id="a里面有什么"><h2>里面有什么</h2></a>
+<p>这应该会提示您输入新项目的名称。我们会用**“wasm-game-of-life”**.</p>
+<h2 id="里面有什么"><a class="header" href="#里面有什么">里面有什么</a></h2>
 <p>进入新的<code>wasm-game-of-life</code>项目，让我们来看看它的内容:</p>
 <pre><code class="language-text">wasm-game-of-life/
 ├── Cargo.toml
@@ -311,14 +340,14 @@ JavaScript, HTML, 和 CSS 开发的多语言程序工作流程</p>
     └── utils.rs
 </code></pre>
 <p>我们来详细介绍几个这样的文件.</p>
-<a class="header" href="#wasm-game-of-lifecargotoml" id="wasm-game-of-lifecargotoml"><h3><code>wasm-game-of-life/Cargo.toml</code></h3></a>
+<h3 id="wasm-game-of-lifecargotoml"><a class="header" href="#wasm-game-of-lifecargotoml"><code>wasm-game-of-life/Cargo.toml</code></a></h3>
 <p>该<code>Cargo.toml</code>文件是<code>cargo</code>的 指定依赖项和元数据，Cargo 则是 Rust 的包管理器和构建工具。这个预先配置了一个<code>wasm-bindgen</code>依赖项，我们将在后面深入研究一些可选的依赖项，和正确初始化<code>crate-type</code>以生成<code>.wasm</code>库。</p>
-<a class="header" href="#wasm-game-of-lifesrclibrs" id="wasm-game-of-lifesrclibrs"><h3><code>wasm-game-of-life/src/lib.rs</code></h3></a>
+<h3 id="wasm-game-of-lifesrclibrs"><a class="header" href="#wasm-game-of-lifesrclibrs"><code>wasm-game-of-life/src/lib.rs</code></a></h3>
 <p>该<code>src/lib.rs</code>文件 Rust 包的根，我们要编译成 WebAssembly 的。它用<code>wasm-bindgen</code>与 JavaScript 交互。它导入了<code>window.alert</code>的 JavaScript 函数，并导出为这个名为<code>greet</code>的 Rust 函数，用于警告(alert)一个问候(greet)消息。</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-extern crate cfg_if;
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>extern crate cfg_if;
 extern crate wasm_bindgen;
 
 mod utils;
@@ -344,10 +373,11 @@ extern {
 pub fn greet() {
     alert(&quot;Hello, wasm-game-of-life!&quot;);
 }
-#}</code></pre></pre>
-<a class="header" href="#wasm-game-of-lifesrcutilsrs" id="wasm-game-of-lifesrcutilsrs"><h3><code>wasm-game-of-life/src/utils.rs</code></h3></a>
-<p>该<code>src/utils.rs</code>模块提供了常用的实用函数，让 Rust 编译成 WebAssembly 来得更容易。我们将在本教程后面详细介绍其中一些实用函数，例如我们查看的内容<a href="debugging.zh.html">调试我们的 wasm 代码</a>,但我们现在可以先略过。</p>
-<a class="header" href="#a构建项目" id="a构建项目"><h2>构建项目</h2></a>
+<span class="boring">}
+</span></code></pre></pre>
+<h3 id="wasm-game-of-lifesrcutilsrs"><a class="header" href="#wasm-game-of-lifesrcutilsrs"><code>wasm-game-of-life/src/utils.rs</code></a></h3>
+<p>该<code>src/utils.rs</code>模块提供了常用的实用函数，让 Rust 编译成 WebAssembly 来得更容易。我们将在本教程后面详细介绍其中一些实用函数，例如我们查看的内容<a href="game-of-life/debugging.zh.html">调试我们的 wasm 代码</a>,但我们现在可以先略过。</p>
+<h2 id="构建项目"><a class="header" href="#构建项目">构建项目</a></h2>
 <p>我们用<code>wasm-pack</code>，是根据以下构建步骤:</p>
 <ul>
 <li>确保我们有 Rust 1.30 或打上版本，通过<code>rustup</code>安装<code>wasm32-unknown-unknown</code>目标(target),</li>
@@ -366,9 +396,9 @@ pub fn greet() {
 └── wasm_game_of_life.js
 </code></pre>
 <p>该<code>README.md</code>文件是从主项目复制的，但其他文件是新来的。</p>
-<a class="header" href="#wasm-game-of-lifepkgwasm_game_of_life_bgwasm" id="wasm-game-of-lifepkgwasm_game_of_life_bgwasm"><h3><code>wasm-game-of-life/pkg/wasm_game_of_life_bg.wasm</code></h3></a>
+<h3 id="wasm-game-of-lifepkgwasm_game_of_life_bgwasm"><a class="header" href="#wasm-game-of-lifepkgwasm_game_of_life_bgwasm"><code>wasm-game-of-life/pkg/wasm_game_of_life_bg.wasm</code></a></h3>
 <p>该<code>.wasm</code>文件 是 Rust 编译器从 Rust 源生成的 WebAssembly 二进制文件。其包含 wasm 编译版本(具有所有 Rust 函数和数据)。例如,它具有导出的”greet”函数.</p>
-<a class="header" href="#wasm-game-of-lifepkgwasm_game_of_lifejs" id="wasm-game-of-lifepkgwasm_game_of_lifejs"><h3><code>wasm-game-of-life/pkg/wasm_game_of_life.js</code></h3></a>
+<h3 id="wasm-game-of-lifepkgwasm_game_of_lifejs"><a class="header" href="#wasm-game-of-lifepkgwasm_game_of_lifejs"><code>wasm-game-of-life/pkg/wasm_game_of_life.js</code></a></h3>
 <p>该<code>.js</code>文件是由<code>wasm-bindgen</code>生成的，并包含 JavaScript 胶水，其用于将 DOM 和 JavaScript 函数导入 Rust，并向 WebAssembly 函数公开一个很好的 API 到 JavaScript。例如，有一个 JavaScript 的<code>greet</code>函数，其包裹着从 WebAssembly 模块导出的<code>greet</code>函数。就现在而言，这胶水并没有做太多，但是当我们开始在 wasm 和 JavaScript 之间，来回传递更多有趣的值时，它将有助于将这些值传过边界。</p>
 <pre><code class="language-js">import * as wasm from './wasm_game_of_life_bg';
 
@@ -378,11 +408,11 @@ export function greet() {
   return wasm.greet();
 }
 </code></pre>
-<a class="header" href="#wasm-game-of-lifepkgwasm_game_of_lifedts" id="wasm-game-of-lifepkgwasm_game_of_lifedts"><h3><code>wasm-game-of-life/pkg/wasm_game_of_life.d.ts</code></h3></a>
+<h3 id="wasm-game-of-lifepkgwasm_game_of_lifedts"><a class="header" href="#wasm-game-of-lifepkgwasm_game_of_lifedts"><code>wasm-game-of-life/pkg/wasm_game_of_life.d.ts</code></a></h3>
 <p>该<code>.d.ts</code>文件包含给 JavaScript 胶水的<a href="http://www.typescriptlang.org/">TypeScript</a>类型声明。如果您使用的是 TypeScript，可以检查对 WebAssembly 函数的调用类型，并且您的 IDE 可以提供自动完成和建议!如果您不使用 TypeScript，则可以安全地忽略此文件。</p>
 <pre><code class="language-typescript">export function greet(): void;
 </code></pre>
-<a class="header" href="#wasm-game-of-lifepkgpackagejson" id="wasm-game-of-lifepkgpackagejson"><h3><code>wasm-game-of-life/pkg/package.json</code></h3></a>
+<h3 id="wasm-game-of-lifepkgpackagejson"><a class="header" href="#wasm-game-of-lifepkgpackagejson"><code>wasm-game-of-life/pkg/package.json</code></a></h3>
 <p><a href="https://docs.npmjs.com/files/package.json">该<code>package.json</code>文件 包含有关生成的 JavaScript 和 WebAssembly 包的元数据。</a>npm 和 JavaScript 捆绑包使用它来确定包，包名，版本和一堆其他东西之间的依赖关系。它帮助我们与 JavaScript 工具集成，并允许我们将我们的包发布到 npm。</p>
 <pre><code class="language-json">{
   &quot;name&quot;: &quot;wasm-game-of-life&quot;,
@@ -396,7 +426,7 @@ export function greet() {
   &quot;types&quot;: &quot;wasm_game_of_life.d.ts&quot;
 }
 </code></pre>
-<a class="header" href="#a将其放入网页" id="a将其放入网页"><h2>将其放入网页</h2></a>
+<h2 id="将其放入网页"><a class="header" href="#将其放入网页">将其放入网页</a></h2>
 <p>拿我们的<code>wasm-game-of-life</code>去打包，并在网页中使用它，我们使用<a href="https://github.com/rustwasm/create-wasm-app">该<code>create-wasm-app</code>JavaScript 项目模板</a>.</p>
 <p>在<code>wasm-game-of-life</code>目录中，运行此命令:</p>
 <pre><code>npm init wasm-app www
@@ -414,11 +444,11 @@ export function greet() {
 </code></pre>
 <p>再一次,让我们仔细看看其中的一些文件。</p>
 <!-- here -->
-<a class="header" href="#wasm-game-of-lifewwwpackagejson" id="wasm-game-of-lifewwwpackagejson"><h3><code>wasm-game-of-life/www/package.json</code></h3></a>
+<h3 id="wasm-game-of-lifewwwpackagejson"><a class="header" href="#wasm-game-of-lifewwwpackagejson"><code>wasm-game-of-life/www/package.json</code></a></h3>
 <p>这个<code>package.json</code>预配置了<code>webpack</code>和<code>webpack-dev-server</code>依赖项,以及<code>hello-wasm-pack</code>依赖，这是已发布到 npm 的<code>wasm-pack-template</code>包初始版本。</p>
-<a class="header" href="#wasm-game-of-lifewwwwebpackconfigjs" id="wasm-game-of-lifewwwwebpackconfigjs"><h3><code>wasm-game-of-life/www/webpack.config.js</code></h3></a>
+<h3 id="wasm-game-of-lifewwwwebpackconfigjs"><a class="header" href="#wasm-game-of-lifewwwwebpackconfigjs"><code>wasm-game-of-life/www/webpack.config.js</code></a></h3>
 <p>此文件配置 webpack 及其本地开发服务器。它是预配置的，你根本不需要调整它，就可以使用 webpack 及其本地开发服务器。</p>
-<a class="header" href="#wasm-game-of-lifewwwindexhtml" id="wasm-game-of-lifewwwindexhtml"><h3><code>wasm-game-of-life/www/index.html</code></h3></a>
+<h3 id="wasm-game-of-lifewwwindexhtml"><a class="header" href="#wasm-game-of-lifewwwindexhtml"><code>wasm-game-of-life/www/index.html</code></a></h3>
 <p>这是网页的根 HTML 文件。它除了加载<code>bootstrap.js</code>之外，没有其他作用，就是装着<code>index.js</code>的薄膜。</p>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -431,13 +461,13 @@ export function greet() {
   &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<a class="header" href="#wasm-game-of-lifewwwindexjs" id="wasm-game-of-lifewwwindexjs"><h3><code>wasm-game-of-life/www/index.js</code></h3></a>
+<h3 id="wasm-game-of-lifewwwindexjs"><a class="header" href="#wasm-game-of-lifewwwindexjs"><code>wasm-game-of-life/www/index.js</code></a></h3>
 <p>该<code>index.js</code>是我们网页的 JavaScript 的主要入口点。它导入了<code>hello-wasm-pack</code>npm 包，包含默认<code>wasm-pack-template</code>的 WebAssembly 编译 和 JavaScript 胶水，然后调用<code>hello-wasm-pack</code>的<code>greet</code>函数。</p>
 <pre><code class="language-js">import * as wasm from 'hello-wasm-pack';
 
 wasm.greet();
 </code></pre>
-<a class="header" href="#a安装依赖项" id="a安装依赖项"><h3>安装依赖项</h3></a>
+<h3 id="安装依赖项"><a class="header" href="#安装依赖项">安装依赖项</a></h3>
 <p>首先，通过运行在<code>wasm-game-of-life/www</code>子目录内<code>npm install</code>，确保安装本地开发服务器及其依赖项:</p>
 <pre><code class="language-text">npm install
 </code></pre>
@@ -445,7 +475,7 @@ wasm.greet();
 <blockquote>
 <p>注意<code>webpack</code>，并不是 Rust 和 WebAssembly 的必需品,它只是我们为方便起见，而选择的捆绑器和开发服务器。Parcel 和 Rollup 也可以支持将 WebAssembly 导入为 ECMAScript 模块.</p>
 </blockquote>
-<a class="header" href="#a使用我们www中的本地wasm-game-of-life包" id="a使用我们www中的本地wasm-game-of-life包"><h3>使用我们<code>www</code>中的本地<code>wasm-game-of-life</code>包</h3></a>
+<h3 id="使用我们www中的本地wasm-game-of-life包"><a class="header" href="#使用我们www中的本地wasm-game-of-life包">使用我们<code>www</code>中的本地<code>wasm-game-of-life</code>包</a></h3>
 <p>不是使用来自 npm 的<code>hello-wasm-pack</code>包，而是想使用我们的本地<code>wasm-game-of-life</code>包。这将使我们能够逐步开发我们的生命游戏程序。</p>
 <p>首先，在<code>wasm-game-of-life/pkg</code>目录的里面，运行<code>npm link</code>，以便本地包可以被其他本地包依赖，而不需要将它们发布到 npm:</p>
 <pre><code class="language-bash">npm link
@@ -462,35 +492,36 @@ wasm.greet();
 wasm.greet();
 </code></pre>
 <p>我们的网页，现已准备好在本地供给!</p>
-<a class="header" href="#a本地供给" id="a本地供给"><h2>本地供给</h2></a>
+<h2 id="本地供给"><a class="header" href="#本地供给">本地供给</a></h2>
 <p>接下来，为开发服务器打开一个新终端。在新终端中运行服务器，我们让它在后台运行，并且不会阻止我们在此期间运行其他命令。在新终端中，从<code>wasm-game-of-life/www</code>目录内部运行此命令:</p>
 <pre><code>npm run start
 </code></pre>
 <p>浏览 Web 浏览器<a href="http://localhost:8080/">http://localhost:8080/</a>你应该收到一条警告(alert)信息:</p>
-<p><a href="../images/game-of-life/hello-world.png"><img src="../images/game-of-life/hello-world.png" alt="Screenshot of the “Hello， wasm-game-of-life!” Web page alert" /></a></p>
+<p><a href="game-of-life/../images/game-of-life/hello-world.png"><img src="game-of-life/../images/game-of-life/hello-world.png" alt="Screenshot of the “Hello， wasm-game-of-life!” Web page alert" /></a></p>
 <p>任何时候你做出改变，并希望它们反映在<a href="http://localhost:8080/">http://localhost:8080/</a>,只是在<code>wasm-game-of-life</code>目录内，重新运行<code>wasm-pack build</code>命令。</p>
-<a class="header" href="#a演示" id="a演示"><h2>演示</h2></a>
+<h2 id="演示"><a class="header" href="#演示">演示</a></h2>
 <ul>
 <li>
 <p>修改<code>wasm-game-of-life/src/lib.rs</code>中的<code>greet</code>函数，让其拿一个<code>name: &amp;str</code>，这是可以自定义警报消息的参数，并在<code>wasm-game-of-life/www/index.js</code>内部，将您的名称传递给<code>greet</code>函数，让新版本发挥作用。用<code>wasm-pack build</code>，重建<code>.wasm</code>二进制，然后刷新<a href="http://localhost:8080/">http://localhost:8080/</a>在您的 Web 浏览器中，您应该看到自定义的问候语!</p>
-<p><details>
-<summary>Answer</summary></p>
+<details>
+  <summary>Answer</summary>
 <p>新版本<code>wasm-game-of-life/src/lib.rs</code>的<code>greet</code>函数:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-#[wasm_bindgen]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[wasm_bindgen]
 pub fn greet(name: &amp;str) {
     alert(&amp;format!(&quot;Hello, {}!&quot;, name));
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>在<code>wasm-game-of-life/www/index.js</code>中新的<code>greet</code>调用:</p>
 <pre><code class="language-js">wasm.greet('Your Name');
 </code></pre>
-<p></details></p>
+</details>
 </li>
 </ul>
-<a class="header" href="#a康威生命游戏规则" id="a康威生命游戏规则"><h1>康威生命游戏规则</h1></a>
+<h1 id="康威生命游戏规则"><a class="header" href="#康威生命游戏规则">康威生命游戏规则</a></h1>
 <p><em>注意: 如果您已熟悉康威的生命游戏及其规则,请跳到下一部分!</em></p>
 <p><a href="https://zh.wikipedia.org/wiki/%E5%BA%B7%E5%A8%81%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F">维基百科对 康威的生命游戏规则 进行了很好的描述: </a></p>
 <blockquote>
@@ -506,45 +537,45 @@ pub fn greet(name: &amp;str) {
 <p>可以把最初的细胞结构定义为种子，当所有在种子中的细胞同时被以上规则处理后, 可以得到第一代细胞图。按规则继续处理当前的细胞图，可以得到下一代的细胞图，周而复始。</p>
 </blockquote>
 <p>考虑以下初始 Universe:</p>
-<p><img src='./images/game-of-life/initial-universe.png' alt='Initial Universe' width="80" /></p>
+<img src='../images/game-of-life/initial-universe.png' alt='Initial Universe' width="80" />
 <p>我们可以通过考虑每个单元来计算下一代. 左上角的单元格已经死了. 规则 (4) 是适用于死细胞的唯一转换规则. 但是,因为左上角的单元格没有正好三个活动邻居,所以转换规则不适用,并且它在下一代中仍然不存在. 对于 第一行 中的每个其他单元也是如此.</p>
 <p>当我们考虑第二列,第三列中的活细胞时,事情变得有趣. 对于活细胞,前三个规则中的任何一个都可能适用. 在这个黑单元的情况下,它只有下面一个活的邻居,因此规则 (1) 适用: 这个单元将在下一代中死亡. 同样的命运也对应着最下面的活黑细胞.</p>
 <p>中间活细胞有两个活的邻居: 顶部和底部活细胞. 这意味着规则 (2) 适用,并且它仍然存在于下一代.</p>
 <p>最后有趣的案例是中间活细胞左侧和右侧的死细胞. 这三个活细胞都是这些细胞的邻居,这意味着规则 (4) 适用,并且这些细胞将在下一代中存活.</p>
 <p>把它们放在一起,我们在下一个滴答之后得到这个宇宙:</p>
-<p><img src='./images/game-of-life/next-universe.png' alt='Next Universe' width=80 /></p>
+<img src='../images/game-of-life/next-universe.png' alt='Next Universe' width=80 />
 <p>从这些简单的,确定性的规则出现,奇怪和令人兴奋的行为出现了:</p>
-<table><thead><tr><th> Gosper 的滑翔机枪                                                                                  </th><th> 脉冲星                                                                                 </th><th> 太空飞船                                                                                                     </th></tr></thead><tbody>
-<tr><td> <img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Gospers_glider_gun.gif" alt="Gosper’s glider gun" /> </td><td> <img src="https://upload.wikimedia.org/wikipedia/commons/0/07/Game_of_life_pulsar.gif" alt="Pulsar" /> </td><td> <img src="https://upload.wikimedia.org/wikipedia/commons/3/37/Game_of_life_animated_LWSS.gif" alt="Lighweight space ship" /> </td></tr>
+<table><thead><tr><th>Gosper 的滑翔机枪</th><th>脉冲星</th><th>太空飞船</th></tr></thead><tbody>
+<tr><td><img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Gospers_glider_gun.gif" alt="Gosper’s glider gun" /></td><td><img src="https://upload.wikimedia.org/wikipedia/commons/0/07/Game_of_life_pulsar.gif" alt="Pulsar" /></td><td><img src="https://upload.wikimedia.org/wikipedia/commons/3/37/Game_of_life_animated_LWSS.gif" alt="Lighweight space ship" /></td></tr>
 </tbody></table>
-<p><center></p>
+<center>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/C2vgICfQawE?rel=0&amp;start=65" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </center>
-<a class="header" href="#a练习" id="a练习"><h2>练习</h2></a>
+<h2 id="练习"><a class="header" href="#练习">练习</a></h2>
 <ul>
 <li>手动计算我们的示例 Universe 的下一个滴答. 注意像什么?</li>
 </ul>
-<p><details>
-<summary>答案</summary></p>
+<details>
+<summary>答案</summary>
 <p>它应该是示例宇宙的初始状态:</p>
-<p><img src='../images/game-of-life/initial-universe.png' alt='Initial Universe' width=80 /></p>
+<img src='../images/game-of-life/initial-universe.png' alt='Initial Universe' width=80 />
 <p>这个模式是 <em>周期性的</em>：每两个滴答，它就返回到初始状态。</p>
-<p></details></p>
-<p><br ></p>
+</details>
+<br >
 <ul>
 <li>你能找到一个稳定的初始宇宙吗? 也就是说,每一代人都是一样的宇宙.</li>
 </ul>
-<p><details></p>
-<p><summary>答案</summary></p>
+<details>
+<summary>答案</summary>
 <p>有无数稳定的宇宙！平凡稳定的宇宙是空的宇宙。一个二乘二平方的活细胞也是一个稳定的宇宙。</p>
 <p>There are an infinite number of stable universes! The trivially stable
 universe is the empty universe. A two-by-two square of live cells is also a
 stable universe.</p>
-<p></details></p>
-<a class="header" href="#a实现康威的生命游戏" id="a实现康威的生命游戏"><h1>实现康威的生命游戏</h1></a>
-<a class="header" href="#a设计" id="a设计"><h2>设计</h2></a>
+</details>
+<h1 id="实现康威的生命游戏"><a class="header" href="#实现康威的生命游戏">实现康威的生命游戏</a></h1>
+<h2 id="设计"><a class="header" href="#设计">设计</a></h2>
 <p>在我们深入之前，我们有一些设计选择需要考虑。</p>
-<a class="header" href="#a无限的宇宙" id="a无限的宇宙"><h3>无限的宇宙</h3></a>
+<h3 id="无限的宇宙"><a class="header" href="#无限的宇宙">无限的宇宙</a></h3>
 <p>生命游戏是在无限的宇宙中进行的，但我们没有无限的内存和计算能力。 解决这个相当恼人的限制，通常有以下三种风格:</p>
 <p>1。 跟踪宇宙的哪个子集发生了有趣的事情，并根据需要，扩展此区域。 在最坏的情况下，这种扩展是无限制的，实现将变得越来越慢，最终耗尽内存。</p>
 <p>2。 创建固定大小的 Universe，边缘上的单元格具有较少的邻居
@@ -552,7 +583,7 @@ stable universe.</p>
 像滑翔机一样到达宇宙尽头的模式被扼杀了。</p>
 <p>3。 创建一个固定大小的周期性 Universe，其中边缘上的单元格具有环绕到 Universe 另一侧的邻居。 因为邻居环绕宇宙的边缘，滑翔机可以永远运行。</p>
 <p>我们将实现<code>第三种</code>选择。</p>
-<a class="header" href="#a连接-rust-和-javascript" id="a连接-rust-和-javascript"><h3>连接 Rust 和 JavaScript</h3></a>
+<h3 id="连接-rust-和-javascript"><a class="header" href="#连接-rust-和-javascript">连接 Rust 和 JavaScript</a></h3>
 <blockquote>
 <p>⚡ 这是从本教程中，你要理解和获取的最重要的概念之一!</p>
 </blockquote>
@@ -568,59 +599,62 @@ stable universe.</p>
 </li>
 </ol>
 <p>作为一般的经验法则，一个好的 JavaScript↔WebAssembly 接口设计，通常是将大型，长寿命的数据结构实现，为生活在 WebAssembly 线性内存 中的 Rust 类型，并作为不透明控制暴露给 JavaScript. JavaScript 调用，这些持有不透明控制的导出了的 WebAssembly 函数，转换数据，执行繁重的计算，查询数据，最终返回一个小的可复制结果。 通过仅返回计算的小结果，我们避免在 JavaScript 垃圾收集堆和 WebAssembly 线性存储器 之间，来回复制和序列化所有内容。</p>
-<a class="header" href="#a在我们的生命游戏中连接-rust-和-javascript" id="a在我们的生命游戏中连接-rust-和-javascript"><h3>在我们的生命游戏中连接 Rust 和 JavaScript</h3></a>
+<h3 id="在我们的生命游戏中连接-rust-和-javascript"><a class="header" href="#在我们的生命游戏中连接-rust-和-javascript">在我们的生命游戏中连接 Rust 和 JavaScript</a></h3>
 <p>让我们首先列举一些要避免的危险。 我们不希望在每次<code>tick</code>，都将整个 Universe 复制到 WebAssembly 线性内存。 我们不希望为宇宙中的每个单元分配对象，也不想强加一个跨边界调用来读写每个单元。</p>
 <p>这给我们留下了什么? 我们可以将 Universe 表示为，位于 WebAssembly 线性内存中的平面数组，并且每个单元格都有一个字节。 <code>0</code>是一个死单元格，<code>1</code>是一个活单元格。</p>
 <p>以下是 4 x 4 宇宙在内存中的样子:</p>
-<p><img src="./images/game-of-life/universe.png" alt="Screenshot of a 4 by 4 universe" /></p>
+<p><img src="game-of-life/../images/game-of-life/universe.png" alt="Screenshot of a 4 by 4 universe" /></p>
 <p>要在 Universe 的给定行和列中，查找单元格的数组索引，我们可以使用以下公式:</p>
 <pre><code class="language-text">index(row, column, universe) = row * width(universe) + column
 </code></pre>
 <p>我们有几种方法可以将 Universe 的单元格暴露给 JavaScript。 首先，我们为<code>Universe</code>添加<a href="https://doc.rust-lang.org/1.25.0/std/fmt/trait.Display.html"><code>std::fmt::Display</code></a>实现，可以用来产生 一个单元格的 Rust<code>String</code> ，渲染为文本字符。 然后将此 Rust String 从 WebAssembly 线性内存 复制到 JavaScript 的垃圾回收堆中 的 JavaScript String 中，然后通过设置<code>HTML</code>的<code>textContent</code>显示。 在本章的后面，我们将推演这个实现，以避免在堆之间复制 Universe 的单元格，和渲染到<code>&lt;canvas&gt;</code>。</p>
 <p><em>另一个可行的设计替代方案是， Rust 返回每次 tick 后，更改状态的每个单元格的列表，而不是将整个 Universe 暴露给 JavaScript。 好处在于，JavaScript 在渲染时不需要遍历整个 Universe ，只需要相关的子集。 问题权衡，在于这种 基于 delta 的设计实现起来，稍微困难一些。</em></p>
-<a class="header" href="#rust-实现" id="rust-实现"><h2>Rust 实现</h2></a>
+<h2 id="rust-实现"><a class="header" href="#rust-实现">Rust 实现</a></h2>
 <p>在上一章中，我们克隆了一个初始项目模板. 我们现在将修改该项目模板.</p>
 <p>让我们开始删除 <code>wasm-game-of-life/src/lib.rs</code>的 <code>alert</code>导入 和<code>greet</code> 函数，并用单元格的类型定义替换它们:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-#[wasm_bindgen]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[wasm_bindgen]
 #[repr(u8)]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Cell {
     Dead = 0,
     Alive = 1,
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>重要的是我们拥有<code>#[repr(u8)]</code>，以便每个单元格表示为单个字节。 同样重要的是<code>Dead</code>代表<code>0</code>，那个<code>Alive</code>是<code>1</code>，这样我们就可以轻松地计算一个单元格的活邻居。</p>
 <p>接下来，让我们定义宇宙(Universe)。 宇宙具有宽度和高度，以及长度为<code>width * height</code>的单元格向量。</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-#[wasm_bindgen]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[wasm_bindgen]
 pub struct Universe {
     width: u32,
     height: u32,
     cells: Vec&lt;Cell&gt;,
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>要访问 给定行和列 的单元格，我们将 行和列 转换为 单元格向量 的索引，如前所述:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-impl Universe {
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl Universe {
     fn get_index(&amp;self, row: u32, column: u32) -&gt; usize {
         (row * self.width + column) as usize
     }
 
     // ...
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>为了计算单元格的下一个状态，我们需要计算 其邻居有多少 是活着的。 我们来写一个<code>live_neighbor_count</code>方法，做到这一点!</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-impl Universe {
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl Universe {
     // ...
 
     fn live_neighbor_count(&amp;self, row: u32, column: u32) -&gt; u8 {
@@ -640,14 +674,15 @@ impl Universe {
         count
     }
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p><code>live_neighbor_count</code>方法使用 deltas 和 modulo 来避免宇宙的边缘情况。 当应用<code>-1</code>的增量时，我们<em>添加</em>
 <code>self.height - 1</code>，然后让 modulo 做它的事，而不是试图减去<code>1</code>。 <code>row</code>和<code>column</code>可以为<code>0</code>，如果我们试图减去<code>1</code>， 从他们来看，会有一个 无符号整数 下溢。</p>
 <p>现在我们拥有了当前计算下一代所需的一切! 每个游戏的规则遵循 转换条件用<code>match</code>直接表达。 另外，因为我们希望 JavaScript 控制 tick 时间，我们将把这个方法放在一个<code>#[wasm_bindgen]</code>注释下，以便它暴露给 JavaScript。</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-/// 公有方法, 暴露给 JavaScript.
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>/// 公有方法, 暴露给 JavaScript.
 #[wasm_bindgen]
 impl Universe {
     pub fn tick(&amp;mut self) {
@@ -681,13 +716,14 @@ impl Universe {
 
     // ...
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>到目前为止，宇宙的状态被表示为 单元格 的载体。 为了使这个可读，让我们实现一个基本的文本渲染器。 我们的想法是逐行将 Universe 写成文本，对于每个活着的单元格，打印 Unicode 字符<code>◼️</code> (”黑色方格”) 。 对于死单元格，我们将打印<code>◻️</code> (”白色方格”) 。</p>
 <p>通过实现来自 Rust 标准库 的<a href="https://doc.rust-lang.org/1.25.0/std/fmt/trait.Display.html"><code>Display</code></a>trait ，我们可以添加一种面向用户, 格式化结构的方法。 这也会自动给我们一个<a href="https://doc.rust-lang.org/1.25.0/std/string/trait.ToString.html"><code>to_string</code></a>方法.</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-use std::fmt;
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::fmt;
 
 impl fmt::Display for Universe {
     fn fmt(&amp;self, f: &amp;mut fmt::Formatter) -&gt; fmt::Result {
@@ -702,12 +738,13 @@ impl fmt::Display for Universe {
         Ok(())
     }
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>最后，我们定义一个构造函数，用一个有趣的 活单元格和死单元格 模式来初始化宇宙，以及<code>render</code>方法:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-/// Public methods, exported to JavaScript.
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>/// Public methods, exported to JavaScript.
 #[wasm_bindgen]
 impl Universe {
     // ...
@@ -737,10 +774,11 @@ impl Universe {
         self.to_string()
     }
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>有了这个，我们的生命游戏 Rust 实现的一半就完成了!</p>
 <p>在<code>wasm-game-of-life</code> 目录内，通过运行<code>wasm-pack build</code>重新编译为 WebAssembly。</p>
-<a class="header" href="#a使用-javascript-渲染" id="a使用-javascript-渲染"><h2>使用 JavaScript 渲染</h2></a>
+<h2 id="使用-javascript-渲染"><a class="header" href="#使用-javascript-渲染">使用 JavaScript 渲染</a></h2>
 <p>首先，让我们添加一个用于渲染宇宙的<code>&lt;pre&gt;</code>元素到<code>wasm-game-of-life/www/index.html</code>，就放在 <code>&lt;script&gt;</code> 上好了:</p>
 <pre><code class="language-html">&lt;body&gt;
   &lt;pre id=&quot;game-of-life-canvas&quot;&gt;&lt;/pre&gt;
@@ -782,8 +820,8 @@ const universe = Universe.new();
 </code></pre>
 <p>确保你的开发服务器还在运行 (<code>wasm-game-of-life/www</code>目录中，执行 <code>npm run start</code>
 ) 和这就是<a href="http://localhost:8080/">http://localhost:8080/</a> 现在的样子:</p>
-<p><a href="./images/game-of-life/initial-game-of-life-pre.png"><img src="./images/game-of-life/initial-game-of-life-pre.png" alt="Screenshot of the Game of Life implementation with text rendering" /></a></p>
-<a class="header" href="#a直接从内存渲染到-canvas" id="a直接从内存渲染到-canvas"><h2>直接从内存渲染到 Canvas</h2></a>
+<p><a href="game-of-life/../images/game-of-life/initial-game-of-life-pre.png"><img src="game-of-life/../images/game-of-life/initial-game-of-life-pre.png" alt="Screenshot of the Game of Life implementation with text rendering" /></a></p>
+<h2 id="直接从内存渲染到-canvas"><a class="header" href="#直接从内存渲染到-canvas">直接从内存渲染到 Canvas</a></h2>
 <p>在 Rust 中生成 (和分配) 一个<code>String</code>， 然后有<code>wasm-bindgen</code>将其转换为有效的 JavaScript 字符串 ，来会生成 Universe 单元格 的不必要副本。 其实在 JavaScript 代码 知道 Universe 的宽度和高度，并且可以直接从 JavaScript 中读取 WebAssembly 线性内存 中的单元格字节， 我们就可以修改<code>render</code>方法，用来返回 单元数组的开头指针。</p>
 <p>还有，我们将切换到使用<a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">Canvas API</a>。 而不是渲染 unicode 文本。 我们将在本教程的其余部分中使用此设计。</p>
 <p>首先，让我们把<code>pre</code>，换成了一个<code>&lt;canvas&gt;</code> (它也应该在<code>&lt;body&gt;</code>， <code>&lt;script&gt;</code>加载我们的 JavaScript 之前) :</p>
@@ -794,10 +832,10 @@ const universe = Universe.new();
 &lt;/body&gt;
 </code></pre>
 <p>为了从 Rust 实现 中获取必要的信息，我们需要为 Universe 的宽度，高度和指向 其单元数组 的指针 添加更多的一些 <code>getter</code>函数。 所有这些都暴露在 JavaScript 中。添加这些内容<code>wasm-game-of-life/src/lib.rs</code>:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-/// Public methods， exported to JavaScript.
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>/// Public methods， exported to JavaScript.
 #[wasm_bindgen]
 impl Universe {
     // ...
@@ -814,7 +852,8 @@ impl Universe {
         self.cells.as_ptr()
     }
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>接下来，在<code>wasm-game-of-life/www/index.js</code>，我们也从<code>wasm-game-of-life</code>导入<code>Cell</code>，和让我们定义 JavaScript 在渲染 Canvas 时将使用的一些常量:</p>
 <pre><code class="language-js">import {Universe, Cell} from 'wasm-game-of-life';
 
@@ -906,7 +945,7 @@ const drawCells = () =&gt; {
 <pre><code class="language-js">requestAnimationFrame(renderLoop);
 </code></pre>
 <p>请注意，在执行<code>requestAnimationFrame()</code><em>之前</em>，我们要调用<code>drawGrid()</code>和<code>drawCells()</code>。我们这样做的原因是，在我们进行修改之前，绘制宇宙的<em>初始</em>状态。如果我们改为简单地调用<code>requestAnimationFrame(renderLoop)</code>，我们最终得到的第一帧实际的绘制情况是，在第一次调用<code>universe.tick()</code><em>后</em>，也就是这些单元格生命状态的<strong>第二次</strong>“tick”。</p>
-<a class="header" href="#a它工作了" id="a它工作了"><h2>它工作了!</h2></a>
+<h2 id="它工作了"><a class="header" href="#它工作了">它工作了!</a></h2>
 <p>通过在根<code>wasm-game-of-life</code>目录中运行此命令，来重构建 WebAssembly 和绑定粘合剂:</p>
 <pre><code>wasm-pack build
 </code></pre>
@@ -914,10 +953,10 @@ const drawCells = () =&gt; {
 <pre><code>npm run start
 </code></pre>
 <p>如果你刷新<a href="http://localhost:8080/">http://localhost:8080/</a>，你应该受到令人兴奋的展示!</p>
-<p><a href="./images/game-of-life/initial-game-of-life.png"><img src="./images/game-of-life/initial-game-of-life.png" alt="Screenshot of the Game of Life implementation" /></a></p>
+<p><a href="game-of-life/../images/game-of-life/initial-game-of-life.png"><img src="game-of-life/../images/game-of-life/initial-game-of-life.png" alt="Screenshot of the Game of Life implementation" /></a></p>
 <p>您可以 checkout <code>chapter-one</code> 分支 找到完整代码.</p>
 <p>还有一个非常巧妙的算法，来实现生命游戏，叫做<a href="https://en.wikipedia.org/wiki/Hashlife">hashlife</a>。 它使用积极的内存，实际上计算后代的时间越长，获得的<em>指数级更快</em>! 鉴于此，您可能想知道为什么我们在本教程中没有实现<code>hashlife</code>。 因为它超出了本文的范围，我们专注于 Rust 和 WebAssembly 集成，但我们强烈建议您自己去了解<code>hashlife</code>!</p>
-<a class="header" href="#a练习-1" id="a练习-1"><h2>练习</h2></a>
+<h2 id="练习-1"><a class="header" href="#练习-1">练习</a></h2>
 <ul>
 <li>
 <p>使用单个太空飞船，初始化宇宙.</p>
@@ -925,19 +964,19 @@ const drawCells = () =&gt; {
 <li>
 <p>不是硬编码最初的宇宙，而是生成一个随机的，有五十五个单元格活着或死亡的机会.</p>
 <p><em>提示:使用<a href="https://crates.io/crates/js-sys"><code>js-sys</code>箱</a>导入<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random"><code>Math.random</code>JavaScript 函数</a>.</em></p>
-<p><details>
-<summary>答案</summary>
-<em>首先，在 <code>wasm-game-of-life/Cargo.toml</code>添加依赖:</em></p>
+<details>
+  <summary>答案</summary>
+  *首先，在 `wasm-game-of-life/Cargo.toml`添加依赖:*
 <pre><code class="language-toml"># ...
 [dependencies]
 js-sys = &quot;0.3&quot;
 # ...
 </code></pre>
 <p><em>然后，使用<code>js_sys::Math::random</code>翻转硬币的函数:</em></p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-extern crate js_sys;
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>extern crate js_sys;
 
 // ...
 
@@ -946,20 +985,21 @@ if js_sys::Math::random() &lt; 0.5 {
 } else {
     // Dead...
 }
-#}</code></pre></pre>
-<p></details></p>
+<span class="boring">}
+</span></code></pre></pre>
+</details>
 </li>
 <li>
 <p>用 一个字节 表示 每个单元格 可以很容易地迭代单元格，但这是以浪费内存为代价的. 每个字节是 8 位，但我们只需要 一个位 来表示每个单元 是活还是死. 重构数据表示，以便每个单元，仅使用一个空格位.</p>
 </li>
 </ul>
-<p><details>
-<summary>答案</summary></p>
+<details>
+    <summary>答案</summary>
 <p>在 Rust 中，您可以使用<a href="https://crates.io/crates/fixedbitset"><code>fixedbitset</code>箱子和它的<code>FixedBitSet</code>类型</a>，来表示单元格，代替<code>Vec&lt;Cell&gt;</code>:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-// 确保你添加此依赖到了 Cargo.toml!
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// 确保你添加此依赖到了 Cargo.toml!
 extern crate fixedbitset;
 use fixedbitset::FixedBitSet;
 
@@ -971,12 +1011,13 @@ pub struct Universe {
     height: u32,
     cells: FixedBitSet,
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>可以通过以下方式调整 Universe 构造函数:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-pub fn new() -&gt; Universe {
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn new() -&gt; Universe {
     let width = 64;
     let height = 64;
 
@@ -993,24 +1034,26 @@ pub fn new() -&gt; Universe {
         cells,
     }
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>要更新宇宙的下一个 tick 中的单元格，我们使用<code>FixedBitSet</code>的<code>set</code>方法:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-next.set(idx, match (cell, live_neighbors) {
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>next.set(idx, match (cell, live_neighbors) {
     (true, x) if x &lt; 2 =&gt; false,
     (true, 2) | (true, 3) =&gt; true,
     (true, x) if x &gt; 3 =&gt; false,
     (false, 3) =&gt; true,
     (otherwise, _) =&gt; otherwise
 });
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>要将指向开头位的指针传递给 JavaScript，您可以转换<code>FixedBitSet</code>到切片，然后将切片转换为指针:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-#[wasm_bindgen]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[wasm_bindgen]
 impl Universe {
     // ...
 
@@ -1018,7 +1061,8 @@ impl Universe {
         self.cells.as_slice().as_ptr()
     }
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>在 JavaScript 中，构建 Wasm 的内存成一个<code>Uint8Array</code>，与之前相同，只是数组的长度不再是<code>width * height</code>，而是<code>width * height / 8</code>，因为我们一个 位 有一个单元，而不是字节(8 位):</p>
 <pre><code class="language-js">const cells = new Uint8Array(memory.buffer, cellsPtr, (width * height) / 8);
 </code></pre>
@@ -1057,15 +1101,15 @@ impl Universe {
   ctx.stroke();
 };
 </code></pre>
-<p></details></p>
-<a class="header" href="#a测试-conways-生命游戏" id="a测试-conways-生命游戏"><h1>测试 Conway’s 生命游戏</h1></a>
+</details>
+<h1 id="测试-conways-生命游戏"><a class="header" href="#测试-conways-生命游戏">测试 Conway’s 生命游戏</a></h1>
 <p>现在我们在浏览器中使用 JavaScript 运用 Rust(编译出 wasm) 实现了生命游戏渲染，接下来让我们来谈谈测试 Rust 生成的 WebAssembly 函数。</p>
 <p>我们要测试一下<code>tick</code>函数，以确保它为我们提供预期的输出。</p>
 <p>下一步,我们将要在<code>wasm_game_of_life/src/lib.rs</code>文件的<code>impl Universe</code>代码区块内部，创建一些 setter 和 getter 函数。我们准备创建一个<code>set_width</code>和 一个<code>set_height</code>函数，所以我们可以创建不同大小的<code>Universe</code>(宇宙)。</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-#[wasm_bindgen]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[wasm_bindgen]
 impl Universe {
     // ...
 
@@ -1086,13 +1130,14 @@ impl Universe {
     }
 
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>我们打算创造另一个，一样是<code>wasm_game_of_life/src/lib.rs</code>文件中<code>impl Universe</code>代码区块内部，但没有<code>#[wasm_bindgen]</code>属性。我们需要一些测试所需的函数，但不希望这些函数给到我们的 JavaScript。Rust 生成的 WebAssembly 函数无法返回 <strong>借用的</strong> 引用。尝试下使用属性编译 Rust 生成的 WebAssembly，并查看您获得的错误。</p>
 <p>我们将编写实现<code>get_cells</code>，主要用来得到一个<code>Universe</code>中的<code>cells</code>的内容。我们还会写一个<code>set_cells</code>函数，这样我们才可以设置一个<code>Universe</code>中，特定行列的<code>cells</code>为<code>Alive.</code>(活的)</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-impl Universe {
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl Universe {
     /// 给出 全部宇宙 死和活的值
     pub fn get_cells(&amp;self) -&gt; &amp;[Cell] {
         &amp;self.cells
@@ -1107,22 +1152,24 @@ impl Universe {
     }
 
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>现在我们要在<code>wasm_game_of_life/tests/web.rs</code>文件中创建我们的测试。</p>
 <p>在我们这样做之前,文件中已经有一个工作测试。您可以通过在<code>wasm-game-of-life</code>目录里面，运行<code>wasm-pack test --chrome --headless</code>确认 Rust 生成的 WebAssembly 测试是否正常工作。你也可以使用<code>--firefox</code>,<code>--safari</code>,和<code>--node</code>在这些浏览器中测试代码的选项.</p>
 <p>在<code>wasm_game_of_life/tests/web.rs</code>文件里面，我们需要导出我们的<code>wasm_game_of_life</code>箱子和<code>Universe</code>类型.</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-extern crate wasm_game_of_life;
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>extern crate wasm_game_of_life;
 use wasm_game_of_life::Universe;
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>在<code>wasm_game_of_life/tests/web.rs</code>文件里面，我们要创建一些太空船(spaceship)构建器函数。</p>
 <p>先要一个 input_spaceship(输入的宇宙飞船) ，这样我们会让<code>tick</code>函数开启调用，还有我们在一次 tick 后，要获取 expected_spaceship(预期的宇宙飞船) 。我们选择了想要初始化为<code>Alive</code>的单元格，在<code>input_spaceship</code>函数中创造我们的宇宙飞船。在手动的<code>input_spaceship</code>过了一次 tick 后， 宇宙飞船的位置就在<code>expected_spaceship</code>函数。您可以自己确认下，在一次 tick 后，输入飞船的单元与预期的相同.</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-#[cfg(test)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[cfg(test)]
 pub fn input_spaceship() -&gt; Universe {
     let mut universe = Universe::new();
     universe.set_width(6);
@@ -1139,12 +1186,13 @@ pub fn expected_spaceship() -&gt; Universe {
     universe.set_cells(&amp;[(2,1), (2,3), (3,2), (3,3), (4,2)]);
     universe
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>现在我们实现<code>test_tick</code>函数。首先,我们创建<code>input_spaceship()</code>和<code>expected_spaceship()</code>，各一个实例。然后,我们在<code>input_universe</code>上调用<code>tick</code>。最后,我们使用了<code>assert_eq!</code>宏来调用<code>get_cells()</code>，确保<code>input_universe</code>和<code>expected_universe</code>有同样的<code>Cell</code>数组值。我们加上了<code>#[wasm_bindgen_test]</code>属性到我们的代码块，所以我们可以测试 Rust 生成的 WebAssembly 代码，并使用<code>wasm-build test</code>测试 WebAssembly 代码。</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-#[wasm_bindgen_test]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[wasm_bindgen_test]
 pub fn test_tick() {
     // 让我们创建一个小点 的宇宙，带着我们微飞船测试吧!
     let mut input_universe = input_spaceship();
@@ -1156,24 +1204,26 @@ pub fn test_tick() {
     input_universe.tick();
     assert_eq!(&amp;input_universe.get_cells(), &amp;expected_universe.get_cells());
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>在<code>wasm-game-of-life</code>目录中，通过运行<code>wasm-pack test --firefox --headless</code>运行测试。</p>
-<a class="header" href="#a调试" id="a调试"><h1>调试</h1></a>
-<p>在我们编写更多代码之前，我们需要一些，在出现问题时使用的调试工具。花一点时间回顾下<a href="../reference/debugging.zh.html">参考页面：可用于调试 Rust 生成的 WebAssembly 的工具和方法</a>。</p>
-<a class="header" href="#a为恐慌panic启用日志记录" id="a为恐慌panic启用日志记录"><h2>为恐慌(panic)，启用日志记录，</h2></a>
-<p><a href="../reference/debugging.zh.html#logging-panics">如果我们的代码发生恐慌，我们希望在开发者控制台中，显示信息性错误消息。</a></p>
+<h1 id="调试"><a class="header" href="#调试">调试</a></h1>
+<p>在我们编写更多代码之前，我们需要一些，在出现问题时使用的调试工具。花一点时间回顾下<a href="game-of-life/../reference/debugging.zh.html">参考页面：可用于调试 Rust 生成的 WebAssembly 的工具和方法</a>。</p>
+<h2 id="为恐慌panic启用日志记录"><a class="header" href="#为恐慌panic启用日志记录">为恐慌(panic)，启用日志记录，</a></h2>
+<p><a href="game-of-life/../reference/debugging.zh.html#logging-panics">如果我们的代码发生恐慌，我们希望在开发者控制台中，显示信息性错误消息。</a></p>
 <p>我们的<code>wasm-pack-template</code>附带一个<a href="https://github.com/rustwasm/console_error_panic_hook"><code>console_error_panic_hook</code>箱</a>，其有个可选的，默认启用的依赖项，你可在<code>wasm-game-of-life/src/utils.rs</code>看到已配置了。我们需要做的就是在初始化函数或常用代码路径中安装钩子。我们可以在<code>wasm-game-of-life/src/lib.rs</code>中的，<code>Universe::new</code>构造函数里面调用它：</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-pub fn new() -&gt; Universe {
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn new() -&gt; Universe {
     utils::set_panic_hook();
 
     // ...
 }
-#}</code></pre></pre>
-<a class="header" href="#a记录功能添加到我们的生命游戏中" id="a记录功能添加到我们的生命游戏中"><h2>记录功能，添加到我们的生命游戏中</h2></a>
-<p><a href="../reference/debugging.zh.html#logging-with-the-console-apis">运用<code>console.log</code>函数的方式，是由<code>web-sys</code>添加一些记录日志</a>，记录我们<code>Universe::tick</code>函数的每个细胞。</p>
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="记录功能添加到我们的生命游戏中"><a class="header" href="#记录功能添加到我们的生命游戏中">记录功能，添加到我们的生命游戏中</a></h2>
+<p><a href="game-of-life/../reference/debugging.zh.html#logging-with-the-console-apis">运用<code>console.log</code>函数的方式，是由<code>web-sys</code>添加一些记录日志</a>，记录我们<code>Universe::tick</code>函数的每个细胞。</p>
 <p>首先，在<code>wasm-game-of-life/Cargo.toml</code>添加<code>web-sys</code>依赖项，并启用它的<code>&quot;console&quot;</code>功能(特性)：</p>
 <pre><code class="language-toml">[dependencies.web-sys]
 version = &quot;0.3&quot;
@@ -1182,10 +1232,10 @@ features = [
 ]
 </code></pre>
 <p>为了更符合偷懒，我们将包装<code>console.log</code>到类<code>println!</code>形式的宏中：</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-extern crate web_sys;
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>extern crate web_sys;
 
 // 一个 macro(宏) 提供 `println!(..)`-形式 语法，给到 `console.log` 日志功能.
 macro_rules! log {
@@ -1193,7 +1243,8 @@ macro_rules! log {
         web_sys::console::log_1(&amp;format!( $( $t )* ).into());
     }
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>现在，我们可以在 Rust 代码中，插入<code>log</code>调用，开始 console 的信息记录。例如，要记录每个单元(cell)的状态，实时邻居计数，以及下一个状态，我们可以修改<code>wasm-game-of-life/src/lib.rs</code>像这样：</p>
 <pre><code class="language-diff">diff --git a/src/lib.rs b/src/lib.rs
 index f757641..a30e107 100755
@@ -1224,8 +1275,8 @@ index f757641..a30e107 100755
              }
          }
 </code></pre>
-<a class="header" href="#a在每个-tick-之间能用调试器暂停下" id="a在每个-tick-之间能用调试器暂停下"><h2>在每个 Tick 之间，能用调试器暂停下</h2></a>
-<p><a href="../reference/debugging.zh.html#using-a-debugger">浏览器的步进调试器，对检查 Rust 生成的 WebAssembly 与 JavaScript 的交互 非常有用。</a></p>
+<h2 id="在每个-tick-之间能用调试器暂停下"><a class="header" href="#在每个-tick-之间能用调试器暂停下">在每个 Tick 之间，能用调试器暂停下</a></h2>
+<p><a href="game-of-life/../reference/debugging.zh.html#using-a-debugger">浏览器的步进调试器，对检查 Rust 生成的 WebAssembly 与 JavaScript 的交互 非常有用。</a></p>
 <p>例如，我们可用调试器，在我们的<code>renderLoop</code>函数每次迭代时，暂停。只需要放置<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/debugger">一个 JavaScript 的 <code>debugger;</code>声明</a>，位于我们的<code>universe.tick()</code>之上。</p>
 <pre><code class="language-js">const renderLoop = () =&gt; {
   debugger;
@@ -1238,8 +1289,8 @@ index f757641..a30e107 100755
 };
 </code></pre>
 <p>这为我们提供了一个方便的检查点，用于检查记录的消息，并将当前渲染的’帧’与前一’帧’进行比较。</p>
-<p><a href="../images/game-of-life/debugging.png"><img src="../images/game-of-life/debugging.png" alt="Screenshot of debugging the Game of Life" /></a></p>
-<a class="header" href="#a练习-2" id="a练习-2"><h2>练习</h2></a>
+<p><a href="game-of-life/../images/game-of-life/debugging.png"><img src="game-of-life/../images/game-of-life/debugging.png" alt="Screenshot of debugging the Game of Life" /></a></p>
+<h2 id="练习-2"><a class="header" href="#练习-2">练习</a></h2>
 <ul>
 <li>
 <p>添加日志记录到<code>tick</code>函数，这样就可以记录每个单元格的行和列，知道其状态是从活转换为死，或是相反。</p>
@@ -1248,9 +1299,9 @@ index f757641..a30e107 100755
 <p>声明一个<code>panic!()</code>到<code>Universe::new</code>方法里面。在 Web 浏览器的 JavaScript 调试器中，检查恐慌的回溯。要做到禁用调试符号，只用不带<code>console_error_panic_hook</code>可选依赖项，重新构建就好了，并再次检查堆栈跟踪。可以吧！？</p>
 </li>
 </ul>
-<a class="header" href="#a增加交互性" id="a增加交互性"><h1>增加交互性</h1></a>
+<h1 id="增加交互性"><a class="header" href="#增加交互性">增加交互性</a></h1>
 <p>我们将通过在 Game of Life 实现中, 添加一些交互功能来继续探索 JavaScript 和 WebAssembly 接口。 我们想让用户通过单击，来切换单元格是活的还是死亡，并允许暂停游戏，这使得绘制单元格模式更加容易。</p>
-<a class="header" href="#a暂停和恢复游戏" id="a暂停和恢复游戏"><h2>暂停和恢复游戏</h2></a>
+<h2 id="暂停和恢复游戏"><a class="header" href="#暂停和恢复游戏">暂停和恢复游戏</a></h2>
 <p>让我们添加一个按钮，来切换游戏是正在播放还是暂停。 <code>index.html</code>的<code>&lt;canvas&gt;</code>上方添加按钮:</p>
 <pre><code class="language-html">&lt;button id=&quot;play-pause&quot;&gt;&lt;/button&gt;
 </code></pre>
@@ -1313,13 +1364,13 @@ playPauseButton.addEventListener('click', event =&gt; {
 play();
 </code></pre>
 <p>刷新<a href="http://localhost:8080/">http://localhost:8080/</a>，现在你应该可以通过点击按钮来暂停和恢复游戏!</p>
-<a class="header" href="#a切换一个-cell-的状态click活动" id="a切换一个-cell-的状态click活动"><h2>切换一个 Cell 的状态<code>&quot;click&quot;</code>活动</h2></a>
+<h2 id="切换一个-cell-的状态click活动"><a class="header" href="#切换一个-cell-的状态click活动">切换一个 Cell 的状态<code>&quot;click&quot;</code>活动</a></h2>
 <p>现在我们可以暂停游戏了，现在是时候添加通过点击它们来改变细胞的能力了。</p>
 <p>切换单元格是将其状态从活动状态转换为死亡状态，或从死亡状态转换为活动状态:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-impl Cell {
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl Cell {
     fn toggle(&amp;mut self) {
         *self = match *self {
             Cell::Dead =&gt; Cell::Alive,
@@ -1327,12 +1378,13 @@ impl Cell {
         };
     }
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>要切换给定行和列的单元格状态，我们将行和列对转换为单元格向量的索引，并在该索引处的单元格上调用<code>toggle</code>方法:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-/// 公有方法 methods， 导出到 JavaScript.
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>/// 公有方法 methods， 导出到 JavaScript.
 #[wasm_bindgen]
 impl Universe {
     // ...
@@ -1342,7 +1394,8 @@ impl Universe {
         self.cells[idx].toggle();
     }
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>这个方法是在<code>impl</code>带有<code>#[wasm_bindgen]</code>注释的区块内，这样它就可以被 JavaScript 调用。</p>
 <p>在 JavaScript 中，我们会监听 点击事件<code>&lt;canvas&gt;</code>元素，将 <code>click事件</code>的页面 相对坐标转换为画布相对坐标，
 然后转换为行和列，调用<code>toggle_cell</code>方法，最后重绘场景。</p>
@@ -1366,7 +1419,7 @@ impl Universe {
 </code></pre>
 <p>再次刷新<a href="http://localhost:8080/">http://localhost:8080/</a>,您现在可以通过单击单元格，并切换其状态来绘制自己的模式.</p>
 <p>您可以在 checkout <code>chapter-two</code> 分支 , 找到此实现的完整源代码.</p>
-<a class="header" href="#a练习-3" id="a练习-3"><h2>练习</h2></a>
+<h2 id="练习-3"><a class="header" href="#练习-3">练习</a></h2>
 <ul>
 <li>
 <p>添加一个<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range"><code>&lt;input type=&quot;range&quot;&gt;</code></a>用于控制每个动画帧出现多少<code>tick</code>的小部件。</p>
@@ -1378,10 +1431,10 @@ impl Universe {
 <p><code>Ctrl + Click</code>，在目标细胞的中心插入一个<a href="https://en.wikipedia.org/wiki/Glider_(Conway%27s_Life)">滑翔机(glider)</a>。 <code>Shift + Click</code>，插入一个脉冲星(pulsar)。</p>
 </li>
 </ul>
-<a class="header" href="#a时间分析" id="a时间分析"><h1>时间分析</h1></a>
+<h1 id="时间分析"><a class="header" href="#时间分析">时间分析</a></h1>
 <p>在本章中，我们将改进 Game of Life 实现的性能。我们将使用时间分析来指导我们的工作。</p>
-<p>继续之前，自己熟悉下<a href="../reference/time-profiling.zh.html">时间分析 Rust 和 WebAssembly 代码的可用工具</a>。</p>
-<a class="header" href="#a使用windowperformancenow函数创建秒数时间器" id="a使用windowperformancenow函数创建秒数时间器"><h2>使用<code>window.performance.now</code>函数，创建秒数时间器</h2></a>
+<p>继续之前，自己熟悉下<a href="game-of-life/../reference/time-profiling.zh.html">时间分析 Rust 和 WebAssembly 代码的可用工具</a>。</p>
+<h2 id="使用windowperformancenow函数创建秒数时间器"><a class="header" href="#使用windowperformancenow函数创建秒数时间器">使用<code>window.performance.now</code>函数，创建秒数时间器</a></h2>
 <p>当我们研究如何加速我们的生命游戏渲染时，这个 FPS 计时器将非常有用。</p>
 <p>我们首先添加一个<code>fps</code>对象到<code>wasm-game-of-life/www/index.js</code>：</p>
 <pre><code class="language-js">const fps = new class {
@@ -1448,7 +1501,7 @@ max of last 100 = ${Math.round(max)}
 }
 </code></pre>
 <p>瞧！刷新<a href="http://localhost:8080">http://localhost:8080</a>，现在我们有一个 FPS 计数器！</p>
-<a class="header" href="#a用consoletime和consoletimeend计时每个universetick" id="a用consoletime和consoletimeend计时每个universetick"><h3>用<code>console.time</code>和<code>console.timeEnd</code>计时每个<code>Universe::tick</code></h3></a>
+<h3 id="用consoletime和consoletimeend计时每个universetick"><a class="header" href="#用consoletime和consoletimeend计时每个universetick">用<code>console.time</code>和<code>console.timeEnd</code>计时每个<code>Universe::tick</code></a></h3>
 <p>需要测量每次<code>Universe::tick</code>调用的时间，我们可以使用<code>console.time</code>和<code>console.timeEnd</code>，通过<code>web-sys</code>箱。</p>
 <p>首先，在<code>wasm-game-of-life/Cargo.toml</code>添加<code>web-sys</code>作为依赖：</p>
 <pre><code class="language-toml">[dependencies.web-sys]
@@ -1458,10 +1511,10 @@ features = [
 ]
 </code></pre>
 <p>因为每个<code>console.time</code>调用都应该有一个对应的<code>console.timeEnd</code>调用，方便将它们包装为一个<a href="https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization">RAII</a>类型：</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-extern crate web_sys;
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>extern crate web_sys;
 use web_sys::console;
 
 pub struct Timer&lt;'a&gt; {
@@ -1480,31 +1533,33 @@ impl&lt;'a&gt; Drop for Timer&lt;'a&gt; {
         console::time_end_with_label(self.name);
     }
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>然后，将此代码段添加到方法的顶部，我们就可以计算每个<code>Universe::tick</code>时间：</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-let _timer = Timer::new(&quot;Universe::tick&quot;);
-#}</code></pre></pre>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let _timer = Timer::new(&quot;Universe::tick&quot;);
+<span class="boring">}
+</span></code></pre></pre>
 <p>每次<code>Universe::tick</code>调用的时间，现在会在控制台上记录了：</p>
-<p><a href="../images/game-of-life/console-time.png"><img src="../images/game-of-life/console-time.png" alt="Screenshot of console.time logs" /></a></p>
-<p>另外，一对<code>console.time</code>和<code>console.timeEnd</code>将显示在浏览器分析器的“时间轴”或“瀑布”视图中：pp<a href="../images/game-of-life/console-time-in-profiler.png"><img src="../images/game-of-life/console-time-in-profiler.png" alt="Screenshot of console.time logs" /></a></p>
-<a class="header" href="#a壮大我们的生命游戏宇宙" id="a壮大我们的生命游戏宇宙"><h2>壮大我们的生命游戏宇宙</h2></a>
+<p><a href="game-of-life/../images/game-of-life/console-time.png"><img src="game-of-life/../images/game-of-life/console-time.png" alt="Screenshot of console.time logs" /></a></p>
+<p>另外，一对<code>console.time</code>和<code>console.timeEnd</code>将显示在浏览器分析器的“时间轴”或“瀑布”视图中：pp<a href="game-of-life/../images/game-of-life/console-time-in-profiler.png"><img src="game-of-life/../images/game-of-life/console-time-in-profiler.png" alt="Screenshot of console.time logs" /></a></p>
+<h2 id="壮大我们的生命游戏宇宙"><a class="header" href="#壮大我们的生命游戏宇宙">壮大我们的生命游戏宇宙</a></h2>
 <blockquote>
 <p>⚠️ 本节使用 Firefox 的示例屏幕截图。虽然所有现代浏览器都有类似的工具，但使用不同的开发人员工具可能会有轻微的细微差别。您提取的配置信息基本相同，但在您使用途中，可能会因您看到的视图和不同工具的命名而有所不同。</p>
 </blockquote>
 <p>如果我们让我们的生命游戏世界更大，会发生什么？用 128 x 128 宇宙替换 64 x 64 宇宙（通过修改<code>Universe::new</code>在<code>wasm-game-of-life/src/lib.rs</code>）导致 FPS 在我的机器上从平滑的 60 下降到波动的 40-ish。</p>
 <p>如果我们记录一个配置文件(profile)并查看瀑布视图，我们会看到每个动画帧花费超过 20 毫秒。回想一下，每秒 60 帧的意思是，渲染帧的整个过程最多 16 毫秒。其中不仅仅是我们的 JavaScript 和 WebAssembly，还有浏览器正在做的其他事情，比如绘画。</p>
-<p><a href="../images/game-of-life/drawCells-before-waterfall.png"><img src="../images/game-of-life/drawCells-before-waterfall.png" alt="Screenshot of a waterfall view of rendering a frame" /></a></p>
+<p><a href="game-of-life/../images/game-of-life/drawCells-before-waterfall.png"><img src="game-of-life/../images/game-of-life/drawCells-before-waterfall.png" alt="Screenshot of a waterfall view of rendering a frame" /></a></p>
 <p>如果我们看一下单个动画帧中发生的事情，我们就会看到<code>CanvasRenderingContext2D.fillStyle</code>setter 很贵！</p>
 <blockquote>
 <p>⚠️ 在 Firefox 中，如果你看到一行简单地说“DOM”而不是上诉的<code>CanvasRenderingContext2D.fillStyle</code>，您可能需要在性能开发人员工具选项中打开“显示 Gecko 平台数据”选项：</p>
-<p><a href="../images/game-of-life/profiler-firefox-show-gecko-platform.png"><img src="../images/game-of-life/profiler-firefox-show-gecko-platform.png" alt="Turning on Show Gecko Platform Data" /></a></p>
+<p><a href="game-of-life/../images/game-of-life/profiler-firefox-show-gecko-platform.png"><img src="game-of-life/../images/game-of-life/profiler-firefox-show-gecko-platform.png" alt="Turning on Show Gecko Platform Data" /></a></p>
 </blockquote>
-<p><a href="../images/game-of-life/drawCells-before-flamegraph.png"><img src="../images/game-of-life/drawCells-before-flamegraph.png" alt="Screenshot of a flamegraph view of rendering a frame" /></a></p>
+<p><a href="game-of-life/../images/game-of-life/drawCells-before-flamegraph.png"><img src="game-of-life/../images/game-of-life/drawCells-before-flamegraph.png" alt="Screenshot of a flamegraph view of rendering a frame" /></a></p>
 <p>我们可以通过查看调用树的多个帧的聚合，来确认这不是异常：</p>
-<p><a href="../images/game-of-life/drawCells-before-calltree.png"><img src="../images/game-of-life/drawCells-before-calltree.png" alt="Screenshot of a flamegraph view of rendering a frame" /></a></p>
+<p><a href="game-of-life/../images/game-of-life/drawCells-before-calltree.png"><img src="game-of-life/../images/game-of-life/drawCells-before-calltree.png" alt="Screenshot of a flamegraph view of rendering a frame" /></a></p>
 <p>我们将近 40％的时间花在了这个 setter 上！</p>
 <blockquote>
 <p>⚡ 我们可能会想这个<code>tick</code>方法是性能瓶颈，但事实并非如此。要让分析引导您的注意力，不然时间可能花在您不期望的地方。</p>
@@ -1564,10 +1619,10 @@ for (let row = 0; row &lt; height; row++) {
 </code></pre>
 <p>保存这些更改，并刷新<a href="http://localhost:8080/">http://localhost:8080 /</a>后，渲染恢复到每秒平滑 60 帧。</p>
 <p>如果我们采用另一个配置文件，我们可以看到现在每个动画帧只花费大约 10 毫秒。</p>
-<p><a href="../images/game-of-life/drawCells-after-waterfall.png"><img src="../images/game-of-life/drawCells-after-waterfall.png" alt="Screenshot of a waterfall view of rendering a frame after the drawCells changes" /></a></p>
+<p><a href="game-of-life/../images/game-of-life/drawCells-after-waterfall.png"><img src="game-of-life/../images/game-of-life/drawCells-after-waterfall.png" alt="Screenshot of a waterfall view of rendering a frame after the drawCells changes" /></a></p>
 <p>击败罪魁祸首，我们看到了<code>fillStyle</code>成本已经消失，我们的大部分时间花在了内部的<code>fillRect</code>，其是绘制每个单元格的矩形。</p>
-<p><a href="../images/game-of-life/drawCells-after-flamegraph.png"><img src="../images/game-of-life/drawCells-after-flamegraph.png" alt="Screenshot of a flamegraph view of rendering a frame after the drawCells changes" /></a></p>
-<a class="header" href="#a让时间更快" id="a让时间更快"><h2>让时间更快</h2></a>
+<p><a href="game-of-life/../images/game-of-life/drawCells-after-flamegraph.png"><img src="game-of-life/../images/game-of-life/drawCells-after-flamegraph.png" alt="Screenshot of a flamegraph view of rendering a frame after the drawCells changes" /></a></p>
+<h2 id="让时间更快"><a class="header" href="#让时间更快">让时间更快</a></h2>
 <p>有些人不喜欢等待，并且，如果每个动画帧不是发生仅一次宇宙嘀嗒(tick)，而是更喜欢九次。我们可以修改<code>wasm-game-of-life/www/index.js</code>的<code>renderLoop</code>函数，这很容易做到这一点：</p>
 <pre><code class="language-js">for (let i = 0; i &lt; 9; i++) {
   universe.tick();
@@ -1575,10 +1630,10 @@ for (let row = 0; row &lt; height; row++) {
 </code></pre>
 <p>在我的机器上，这使我们恢复到每秒 35 帧。不好。我们想要那个大大滴 60！</p>
 <p>现在我们知道时间花在了<code>Universe::tick</code>，所以让我们添加一些<code>Timer</code>，用<code>console.time</code>和<code>console.timeEnd</code>调用来包装它的各个部分，然后，看看它引导我们的地方。我假设啊，是分配一个新的单元格向量(vector)，后在每次 tick，就要释放旧向量是昂贵的，占用了我们时间预算的很大一部分。</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-pub fn tick(&amp;mut self) {
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn tick(&amp;mut self) {
     let _timer = Timer::new(&quot;Universe::tick&quot;);
 
     let mut next = {
@@ -1619,17 +1674,18 @@ pub fn tick(&amp;mut self) {
     let _timer = Timer::new(&quot;free old cells&quot;);
     self.cells = next;
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>看看时间，很明显我的假设是不正确的：绝大部分时间，实际花在计算下一代单元格上。令人惊讶的是，在每次 tick 上分配和释放向量，似乎具有可忽略的成本。分析记录是始终指导我们工作的提醒！</p>
-<p><a href="../images/game-of-life/console-time-in-universe-tick.png"><img src="../images/game-of-life/console-time-in-universe-tick.png" alt="Screenshot of a Universe::tick timer results" /></a></p>
+<p><a href="game-of-life/../images/game-of-life/console-time-in-universe-tick.png"><img src="game-of-life/../images/game-of-life/console-time-in-universe-tick.png" alt="Screenshot of a Universe::tick timer results" /></a></p>
 <p>下一节需要<code>nightly</code>编译器。它是必需的，因为<a href="https://doc.rust-lang.org/unstable-book/library-features/test.html">测试 feature(特性) </a>我们准备用于基准测试。我们将安装的另一个工具是<a href="https://github.com/BurntSushi/cargo-benchcmp">Cargo benchcmp</a>。它是一个小实用程序，用于比较<code>cargo bench</code>生成的微基准测试。</p>
 <p>一个<code>#[bench]</code>原生代码，就做了我们 WebAssembly 正在做的事情，但我们可以使用更成熟的分析工具。这是新的<code>wasm-game-of-life/benches/bench.rs</code>：</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#![feature(test)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span>#![feature(test)]
 
-#fn main() {
-extern crate test;
+<span class="boring">fn main() {
+</span>extern crate test;
 extern crate wasm_game_of_life;
 
 #[bench]
@@ -1640,7 +1696,8 @@ fn universe_ticks(b: &amp;mut test::Bencher) {
         universe.tick();
     });
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>我们还要注释所有的<code>#[wasm_bindgen]</code>标示，和来自<code>Cargo.toml</code>的<code>&quot;cdylib&quot;</code>，不然，构建本机代码将失败并出现链接错误。</p>
 <p>有了这一切，我们就可以运行了<code>cargo bench | tee before.txt</code>编译并运行我们的基准测试！<code>| tee before.txt</code>部分将从<code>cargo bench</code>中获取输出，并放入一个名为<code>before.txt</code>的文件。</p>
 <pre><code>$ cargo bench | tee before.txt
@@ -1669,15 +1726,15 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 1 measured; 0 filtered out
 [ perf record: Captured and wrote 0.178 MB perf.data (2349 samples) ]
 </code></pre>
 <p>用<code>perf report</code>加载配置文件，表明我们所有的时间都花在了<code>Universe::tick</code>，如预期的那样：</p>
-<p><a href="../images/game-of-life/bench-perf-report.png"><img src="../images/game-of-life/bench-perf-report.png" alt="Screenshot of perf report" /></a></p>
+<p><a href="game-of-life/../images/game-of-life/bench-perf-report.png"><img src="game-of-life/../images/game-of-life/bench-perf-report.png" alt="Screenshot of perf report" /></a></p>
 <p>如果你按<code>a</code>，工具<code>perf</code>将注释一个函数时间中的哪些命令的花费：</p>
-<p><a href="../images/game-of-life/bench-perf-annotate.png"><img src="../images/game-of-life/bench-perf-annotate.png" alt="Screenshot of perf’s instruction annotation" /></a></p>
+<p><a href="game-of-life/../images/game-of-life/bench-perf-annotate.png"><img src="game-of-life/../images/game-of-life/bench-perf-annotate.png" alt="Screenshot of perf’s instruction annotation" /></a></p>
 <p>这告诉我们 26.67％的时间用于求和相邻单元格的值，23.41％的时间用于获取邻居的列索引，另外 15.42％的时间用于获取邻居的行索引。在这三大最昂贵的命令中，第二和第三命令都让<code>div</code>很昂贵。这些<code>div</code>在<code>Universe::live_neighbor_count</code>实现 modulo 索引逻辑。</p>
 <p>回想一下<code>wasm-game-of-life/src/lib.rs</code>里面的<code>live_neighbor_count</code>定义：</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-fn live_neighbor_count(&amp;self, row: u32, column: u32) -&gt; u8 {
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn live_neighbor_count(&amp;self, row: u32, column: u32) -&gt; u8 {
     let mut count = 0;
     for delta_row in [self.height - 1, 0, 1].iter().cloned() {
         for delta_col in [self.width - 1, 0, 1].iter().cloned() {
@@ -1693,13 +1750,14 @@ fn live_neighbor_count(&amp;self, row: u32, column: u32) -&gt; u8 {
     }
     count
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>我们使用 modulo 的原因是为了避免使代码混乱，<code>if</code>出第一行或最后一行/列的边缘情况分支。但，当我们不在宇宙的边缘<code>row</code>或<code>column</code>的时候，不需要 modulo 包裹处理，会为此最常见情况的<code>div</code>命令付出代价。相反，如果我们使用<code>if</code>出边缘情况，并展开此循环，CPU 的分支预测器<em>应该</em>可以很好地预测它。</p>
 <p>我们改写<code>live_neighbor_count</code>，像这样：</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-fn live_neighbor_count(&amp;self, row: u32, column: u32) -&gt; u8 {
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn live_neighbor_count(&amp;self, row: u32, column: u32) -&gt; u8 {
     let mut count = 0;
 
     let north = if row == 0 {
@@ -1752,7 +1810,8 @@ fn live_neighbor_count(&amp;self, row: u32, column: u32) -&gt; u8 {
 
     count
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>现在让我们再次运行基准测试！这次输出到<code>after.txt</code>。</p>
 <pre><code>$ cargo bench | tee after.txt
    Compiling wasm_game_of_life v0.1.0 (file:///home/fitzgen/wasm_game_of_life)
@@ -1779,8 +1838,8 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 1 measured; 0 filtered out
 <p>WebAssembly 有意映射到常见的硬件架构，但我们确实需要确保这个本机代码加速转换为 WebAssembly ，而 WebAssembly 当然也加快了速度。</p>
 <p>让我们<code>wasm-pack build</code>，重建一下<code>.wasm</code>同并刷新<a href="http://localhost:8080/">http://localhost:8080 /</a>。在我的机器上，页面再次以每秒 60 帧的速度运行，并且使用浏览器的分析器记录另一个配置文件，显示每个动画帧大约需要 10 毫秒。</p>
 <p>成功！</p>
-<p><a href="../images/game-of-life/waterfall-after-branches-and-unrolling.png"><img src="../images/game-of-life/waterfall-after-branches-and-unrolling.png" alt="Screenshot of a waterfall view of rendering a frame after replacing modulos with branches" /></a></p>
-<a class="header" href="#a演习" id="a演习"><h2>演习</h2></a>
+<p><a href="game-of-life/../images/game-of-life/waterfall-after-branches-and-unrolling.png"><img src="game-of-life/../images/game-of-life/waterfall-after-branches-and-unrolling.png" alt="Screenshot of a waterfall view of rendering a frame after replacing modulos with branches" /></a></p>
+<h2 id="演习"><a class="header" href="#演习">演习</a></h2>
 <ul>
 <li>
 <p>在这一点上，下一个最低的强化是，<code>Universe::tick</code>删除分配和释放。实现单元格的双缓冲，其中<code>Universe</code>维护两个向量，从不释放它们中的任何一个，并且<code>tick</code>永远不会分配新的缓冲区。</p>
@@ -1792,10 +1851,10 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 1 measured; 0 filtered out
 <p>正如我们的分析向我们展示的那样，2D<code>&lt;canvas&gt;</code>渲染速度不是特别快。用 一个<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API">WebGL 的</a>渲染器 替换 2D 画布渲染器。WebGL 版本的速度有多快？在 WebGL 渲染成为瓶颈之前，你能在多大程度上建立宇宙？</p>
 </li>
 </ul>
-<a class="header" href="#a收缩wasm尺寸" id="a收缩wasm尺寸"><h1>收缩<code>.wasm</code>尺寸</h1></a>
+<h1 id="收缩wasm尺寸"><a class="header" href="#收缩wasm尺寸">收缩<code>.wasm</code>尺寸</a></h1>
 <p>对于<code>.wasm</code>，是通过网络向客户端发送的二进制文件，如，我们的 生命游戏的 Web 应用程序，我们希望密切关注代码大小。我们的<code>.wasm</code>若是越小，我们的页面加载速度越快，用户就越快乐。</p>
-<a class="header" href="#a我们怎么通过构建配置缩小生命游戏的wasm二进制文件" id="a我们怎么通过构建配置缩小生命游戏的wasm二进制文件"><h2>我们怎么通过构建配置，缩小生命游戏的<code>.wasm</code>二进制文件？</h2></a>
-<p><a href="../reference/code-size.zh.html#optimizing-builds-for-code-size">花一点时间，来看看减小<code>.wasm</code>代码大小的构建配置选项。</a></p>
+<h2 id="我们怎么通过构建配置缩小生命游戏的wasm二进制文件"><a class="header" href="#我们怎么通过构建配置缩小生命游戏的wasm二进制文件">我们怎么通过构建配置，缩小生命游戏的<code>.wasm</code>二进制文件？</a></h2>
+<p><a href="game-of-life/../reference/code-size.zh.html#optimizing-builds-for-code-size">花一点时间，来看看减小<code>.wasm</code>代码大小的构建配置选项。</a></p>
 <p>使用默认版本的构建配置（没有调试符号），我们的 WebAssembly 二进制文件是 29,410 字节：</p>
 <pre><code>$ wc -c pkg/wasm_game_of_life_bg.wasm
 29410 pkg/wasm_game_of_life_bg.wasm
@@ -1808,10 +1867,10 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 1 measured; 0 filtered out
 <pre><code>$ gzip -9 &lt; pkg/wasm_game_of_life_bg.wasm | wc -c
 9045
 </code></pre>
-<a class="header" href="#a演习-1" id="a演习-1"><h2>演习</h2></a>
+<h2 id="演习-1"><a class="header" href="#演习-1">演习</a></h2>
 <ul>
 <li>
-<p>使用<a href="../reference/code-size.zh.html#use-the-wasm-snip-tool">该<code>wasm-snip</code>工具</a>从我们的生命游戏中的<code>.wasm</code>二进制文件，删除恐慌基础设施函数。它节省了多少字节？</p>
+<p>使用<a href="game-of-life/../reference/code-size.zh.html#use-the-wasm-snip-tool">该<code>wasm-snip</code>工具</a>从我们的生命游戏中的<code>.wasm</code>二进制文件，删除恐慌基础设施函数。它节省了多少字节？</p>
 </li>
 <li>
 <p>建立我们的生命游戏箱，有没有<a href="https://github.com/rustwasm/wee_alloc"><code>wee_alloc</code>作为其全局分配器</a>。我们克隆的<code>rustwasm/wasm-pack-template</code>模板，有个“wee_alloc”Cargo 特性，您可以在<code>wasm-game-of-life/Cargo.toml</code>中的<code>[features]</code>部分添加，<code>default</code>字段，启动该特性：</p>
@@ -1824,14 +1883,14 @@ default = [&quot;wee_alloc&quot;]
 <p>我们只实例化了一个<code>Universe</code>，因此，相较于提供一个构造函数，导出控制一个<code>static mut</code>全局实例的操作会更好。如果这个全局实例也使用前面章节中讨论的双缓冲技术，我们也可以让这些缓冲区成为全局<code>static mut</code>。这将从我们的生命游戏实现中，删除所有的动态分配，还有我们做一个不包含分配器的<code>#![no_std]</code>箱子。我们完全删除分配器依赖后，又移除了<code>.wasm</code>的多少尺寸？</p>
 </li>
 </ul>
-<a class="header" href="#a发布到-npm" id="a发布到-npm"><h1>发布到 npm</h1></a>
+<h1 id="发布到-npm"><a class="header" href="#发布到-npm">发布到 npm</a></h1>
 <p>现在我们有一个运行中的，快速，<em>和</em>小尺寸的<code>wasm-game-of-life</code>包，我们可以将它发布到 npm，以便其他 JavaScript 开发人员可以重用它，若是他们需要现成的 Game of Life 实现。</p>
-<a class="header" href="#a准备" id="a准备"><h2>准备</h2></a>
+<h2 id="准备"><a class="header" href="#准备">准备</a></h2>
 <p>第一，<a href="https://www.npmjs.com/signup">确保你拥有一个 npm 账号</a>。</p>
 <p>其次，通过运行此命令，确保您在本地登录到您的帐户:</p>
 <pre><code>wasm-pack login
 </code></pre>
-<a class="header" href="#a发布吧" id="a发布吧"><h2>发布吧</h2></a>
+<h2 id="发布吧"><a class="header" href="#发布吧">发布吧</a></h2>
 <p>确保<code>wasm-game-of-life/pkg</code>为最新版本，通过在<code>wasm-game-of-life</code>目录运行<code>wasm-pack</code>构建:</p>
 <pre><code>wasm-pack build
 </code></pre>
@@ -1850,77 +1909,77 @@ name = &quot;wasm-game-of-life-my-username&quot;
 wasm-pack publish
 </code></pre>
 <p>这次,它应该工作啦!</p>
-<a class="header" href="#a参考" id="a参考"><h1>参考</h1></a>
+<h1 id="参考"><a class="header" href="#参考">参考</a></h1>
 <p>本节包含 Rust 和 WebAssembly 开发的参考资料。它不是从头到尾阅读地提供叙述的。相反,每个小节都独立存在，随意搭配。</p>
-<a class="header" href="#a您应该知道的箱子" id="a您应该知道的箱子"><h1>您应该知道的箱子</h1></a>
+<h1 id="您应该知道的箱子"><a class="header" href="#您应该知道的箱子">您应该知道的箱子</a></h1>
 <p>这是一个精选的箱子列表,关于 Rust 和 WebAssembly 开发.</p>
 <p><a href="https://crates.io/categories/wasm">您还可以浏览 WebAssembly 类别中,发布到 crates.io 的所有包. </a></p>
-<a class="header" href="#a与-javascript-和-dom-交互" id="a与-javascript-和-dom-交互"><h2>与 JavaScript 和 DOM 交互</h2></a>
-<a class="header" href="#wasm-bindgena-hrefhttpscratesiocrateswasm-bindgencratesioaa-hrefhttpsgithubcomrustwasmwasm-bindgengithuba" id="wasm-bindgena-hrefhttpscratesiocrateswasm-bindgencratesioaa-hrefhttpsgithubcomrustwasmwasm-bindgengithuba"><h3><code>wasm-bindgen</code>|<a href="https://crates.io/crates/wasm-bindgen">crates.io</a>|<a href="https://github.com/rustwasm/wasm-bindgen">github</a></h3></a>
+<h2 id="与-javascript-和-dom-交互"><a class="header" href="#与-javascript-和-dom-交互">与 JavaScript 和 DOM 交互</a></h2>
+<h3 id="wasm-bindgena-hrefhttpscratesiocrateswasm-bindgencratesioaa-hrefhttpsgithubcomrustwasmwasm-bindgengithuba"><a class="header" href="#wasm-bindgena-hrefhttpscratesiocrateswasm-bindgencratesioaa-hrefhttpsgithubcomrustwasmwasm-bindgengithuba"><code>wasm-bindgen</code>|<a href="https://crates.io/crates/wasm-bindgen">crates.io</a>|<a href="https://github.com/rustwasm/wasm-bindgen">github</a></a></h3>
 <p><code>wasm-bindgen</code>促进 Rust 和 JavaScript 之间的高级交互. 它允许人们将 JavaScript 内容导入 Rust 和 Rust 内容导出到 JavaScript.</p>
-<a class="header" href="#js-sysa-hrefhttpscratesiocratesjs-syscratesioaa-hrefhttpsgithubcomrustwasmwasm-bindgentreemastercratesjs-sysgithuba" id="js-sysa-hrefhttpscratesiocratesjs-syscratesioaa-hrefhttpsgithubcomrustwasmwasm-bindgentreemastercratesjs-sysgithuba"><h3><code>js-sys</code>|<a href="https://crates.io/crates/js-sys">crates.io</a>|<a href="https://github.com/rustwasm/wasm-bindgen/tree/master/crates/js-sys">github</a></h3></a>
+<h3 id="js-sysa-hrefhttpscratesiocratesjs-syscratesioaa-hrefhttpsgithubcomrustwasmwasm-bindgentreemastercratesjs-sysgithuba"><a class="header" href="#js-sysa-hrefhttpscratesiocratesjs-syscratesioaa-hrefhttpsgithubcomrustwasmwasm-bindgentreemastercratesjs-sysgithuba"><code>js-sys</code>|<a href="https://crates.io/crates/js-sys">crates.io</a>|<a href="https://github.com/rustwasm/wasm-bindgen/tree/master/crates/js-sys">github</a></a></h3>
 <p>原生<code>wasm-bindgen</code>导入所有 JavaScript 全局类型和方法,例如<code>Object</code>,<code>Function</code>,<code>eval</code>等. 这些 API 可以在所有标准 ECMAScript 环境 中移植,而不仅仅是 Web,例如 Node.js.</p>
-<a class="header" href="#a错误报告" id="a错误报告"><h2>错误报告</h2></a>
-<a class="header" href="#console_error_panic_hooka-hrefhttpscratesiocratesconsole_error_panic_hookcratesioaa-hrefhttpsgithubcomrustwasmconsole_error_panic_hookgithuba" id="console_error_panic_hooka-hrefhttpscratesiocratesconsole_error_panic_hookcratesioaa-hrefhttpsgithubcomrustwasmconsole_error_panic_hookgithuba"><h3><code>console_error_panic_hook</code>|<a href="https://crates.io/crates/console_error_panic_hook">crates.io</a>|<a href="https://github.com/rustwasm/console_error_panic_hook">github</a></h3></a>
+<h2 id="错误报告"><a class="header" href="#错误报告">错误报告</a></h2>
+<h3 id="console_error_panic_hooka-hrefhttpscratesiocratesconsole_error_panic_hookcratesioaa-hrefhttpsgithubcomrustwasmconsole_error_panic_hookgithuba"><a class="header" href="#console_error_panic_hooka-hrefhttpscratesiocratesconsole_error_panic_hookcratesioaa-hrefhttpsgithubcomrustwasmconsole_error_panic_hookgithuba"><code>console_error_panic_hook</code>|<a href="https://crates.io/crates/console_error_panic_hook">crates.io</a>|<a href="https://github.com/rustwasm/console_error_panic_hook">github</a></a></h3>
 <p>这个箱子让你调试<code>wasm32-unknown-unknown</code>的 panics,通过提供一个恐慌钩子, 来将恐慌消息转发到<code>console.error</code>.</p>
-<a class="header" href="#a动态分配" id="a动态分配"><h2>动态分配</h2></a>
-<a class="header" href="#wee_alloca-hrefhttpscratesiocrateswee_alloccratesioaa-hrefhttpsgithubcomrustwasmwee_allocgithuba" id="wee_alloca-hrefhttpscratesiocrateswee_alloccratesioaa-hrefhttpsgithubcomrustwasmwee_allocgithuba"><h3><code>wee_alloc</code>|<a href="https://crates.io/crates/wee_alloc">crates.io</a>|<a href="https://github.com/rustwasm/wee_alloc">github</a></h3></a>
+<h2 id="动态分配"><a class="header" href="#动态分配">动态分配</a></h2>
+<h3 id="wee_alloca-hrefhttpscratesiocrateswee_alloccratesioaa-hrefhttpsgithubcomrustwasmwee_allocgithuba"><a class="header" href="#wee_alloca-hrefhttpscratesiocrateswee_alloccratesioaa-hrefhttpsgithubcomrustwasmwee_allocgithuba"><code>wee_alloc</code>|<a href="https://crates.io/crates/wee_alloc">crates.io</a>|<a href="https://github.com/rustwasm/wee_alloc">github</a></a></h3>
 <p>该 <strong>W</strong>asm-<strong>E</strong>nabled, <strong>E</strong>lfin 分配器. 一个小的 (~1K 未压缩<code>.wasm</code>)分配器实现,特点是代码大小比分配性能更受关注,.</p>
-<a class="header" href="#a解析和生成wasm二进制" id="a解析和生成wasm二进制"><h2>解析和生成<code>.wasm</code>二进制</h2></a>
-<a class="header" href="#parity-wasma-hrefhttpscratesiocratesparity-wasmcratesioaa-hrefhttpsgithubcomparitytechparity-wasmgithuba" id="parity-wasma-hrefhttpscratesiocratesparity-wasmcratesioaa-hrefhttpsgithubcomparitytechparity-wasmgithuba"><h3><code>parity-wasm</code>|<a href="https://crates.io/crates/parity-wasm">crates.io</a>|<a href="https://github.com/paritytech/parity-wasm">github</a></h3></a>
+<h2 id="解析和生成wasm二进制"><a class="header" href="#解析和生成wasm二进制">解析和生成<code>.wasm</code>二进制</a></h2>
+<h3 id="parity-wasma-hrefhttpscratesiocratesparity-wasmcratesioaa-hrefhttpsgithubcomparitytechparity-wasmgithuba"><a class="header" href="#parity-wasma-hrefhttpscratesiocratesparity-wasmcratesioaa-hrefhttpsgithubcomparitytechparity-wasmgithuba"><code>parity-wasm</code>|<a href="https://crates.io/crates/parity-wasm">crates.io</a>|<a href="https://github.com/paritytech/parity-wasm">github</a></a></h3>
 <p>用于序列化,反序列化和构建的低级 WebAssembly 格式库 - <code>.wasm</code>二进制文件. 对已知的自定义部分具有良好支持,例如”names”部分和”reloc.WHATEVER”部分.</p>
-<a class="header" href="#wasmparsera-hrefhttpscratesiocrateswasmparsercratesioaa-hrefhttpsgithubcomyurydelendikwasmparserrsgithuba" id="wasmparsera-hrefhttpscratesiocrateswasmparsercratesioaa-hrefhttpsgithubcomyurydelendikwasmparserrsgithuba"><h3><code>wasmparser</code>|<a href="https://crates.io/crates/wasmparser">crates.io</a>|<a href="https://github.com/yurydelendik/wasmparser.rs">github</a></h3></a>
+<h3 id="wasmparsera-hrefhttpscratesiocrateswasmparsercratesioaa-hrefhttpsgithubcomyurydelendikwasmparserrsgithuba"><a class="header" href="#wasmparsera-hrefhttpscratesiocrateswasmparsercratesioaa-hrefhttpsgithubcomyurydelendikwasmparserrsgithuba"><code>wasmparser</code>|<a href="https://crates.io/crates/wasmparser">crates.io</a>|<a href="https://github.com/yurydelendik/wasmparser.rs">github</a></a></h3>
 <p>一个简单的事件驱动库,用于解析 WebAssembly 二进制文件. 例如,提供每个解析事物的字节偏移量,这在解释 reloc 时是必需的.</p>
-<a class="header" href="#a解释和编译-webassembly" id="a解释和编译-webassembly"><h2>解释和编译 WebAssembly</h2></a>
-<a class="header" href="#wasmia-hrefhttpscratesiocrateswasmicratesioaa-hrefhttpsgithubcomparitytechwasmigithuba" id="wasmia-hrefhttpscratesiocrateswasmicratesioaa-hrefhttpsgithubcomparitytechwasmigithuba"><h3><code>wasmi</code>|<a href="https://crates.io/crates/wasmi">crates.io</a>|<a href="https://github.com/paritytech/wasmi">github</a></h3></a>
+<h2 id="解释和编译-webassembly"><a class="header" href="#解释和编译-webassembly">解释和编译 WebAssembly</a></h2>
+<h3 id="wasmia-hrefhttpscratesiocrateswasmicratesioaa-hrefhttpsgithubcomparitytechwasmigithuba"><a class="header" href="#wasmia-hrefhttpscratesiocrateswasmicratesioaa-hrefhttpsgithubcomparitytechwasmigithuba"><code>wasmi</code>|<a href="https://crates.io/crates/wasmi">crates.io</a>|<a href="https://github.com/paritytech/wasmi">github</a></a></h3>
 <p>来自 Parity 的可嵌入 WebAssembly 解释器.</p>
-<a class="header" href="#cranelift-wasma-hrefhttpscratesiocratescranelift-wasmcratesioaa-hrefhttpsgithubcomcranestationcraneliftgithuba" id="cranelift-wasma-hrefhttpscratesiocratescranelift-wasmcratesioaa-hrefhttpsgithubcomcranestationcraneliftgithuba"><h3><code>cranelift-wasm</code>|<a href="https://crates.io/crates/cranelift-wasm">crates.io</a>|<a href="https://github.com/CraneStation/cranelift">github</a></h3></a>
+<h3 id="cranelift-wasma-hrefhttpscratesiocratescranelift-wasmcratesioaa-hrefhttpsgithubcomcranestationcraneliftgithuba"><a class="header" href="#cranelift-wasma-hrefhttpscratesiocratescranelift-wasmcratesioaa-hrefhttpsgithubcomcranestationcraneliftgithuba"><code>cranelift-wasm</code>|<a href="https://crates.io/crates/cranelift-wasm">crates.io</a>|<a href="https://github.com/CraneStation/cranelift">github</a></a></h3>
 <p>将 WebAssembly 编译为本机主机的机器代码. Cranelift (néCretonne) 代码生成器项目的一部分.</p>
-<a class="header" href="#a你应该知道的工具" id="a你应该知道的工具"><h1>你应该知道的工具</h1></a>
+<h1 id="你应该知道的工具"><a class="header" href="#你应该知道的工具">你应该知道的工具</a></h1>
 <p>这是在执行 Rust 和 WebAssembly 开发时,应该了解的精选工具列表.</p>
-<a class="header" href="#a开发构建和工作流程编排" id="a开发构建和工作流程编排"><h2>开发,构建和工作流程编排</h2></a>
-<a class="header" href="#wasm-packa-hrefhttpsgithubcomrustwasmwasm-packgithuba" id="wasm-packa-hrefhttpsgithubcomrustwasmwasm-packgithuba"><h3><code>wasm-pack</code>|<a href="https://github.com/rustwasm/wasm-pack">github</a></h3></a>
+<h2 id="开发构建和工作流程编排"><a class="header" href="#开发构建和工作流程编排">开发,构建和工作流程编排</a></h2>
+<h3 id="wasm-packa-hrefhttpsgithubcomrustwasmwasm-packgithuba"><a class="header" href="#wasm-packa-hrefhttpsgithubcomrustwasmwasm-packgithuba"><code>wasm-pack</code>|<a href="https://github.com/rustwasm/wasm-pack">github</a></a></h3>
 <p><code>wasm-pack</code>欲成为构建和使用 Rust 生成的 WebAssembly 的一站式商店,这样你可以通过 Web 或 Node.js 与 JavaScript 进行相互操作. <code>wasm-pack</code>帮助您构建和发布 Rust 生成的 WebAssembly 到 npm 注册表,以便与您在工作流中已经使用的其他 JavaScript 包一起使用.</p>
-<a class="header" href="#a优化和操作wasm二进制" id="a优化和操作wasm二进制"><h2>优化和操作<code>.wasm</code>二进制</h2></a>
-<a class="header" href="#wasm-opta-hrefhttpsgithubcomwebassemblybinaryengithuba" id="wasm-opta-hrefhttpsgithubcomwebassemblybinaryengithuba"><h3><code>wasm-opt</code>|<a href="https://github.com/WebAssembly/binaryen">github</a></h3></a>
+<h2 id="优化和操作wasm二进制"><a class="header" href="#优化和操作wasm二进制">优化和操作<code>.wasm</code>二进制</a></h2>
+<h3 id="wasm-opta-hrefhttpsgithubcomwebassemblybinaryengithuba"><a class="header" href="#wasm-opta-hrefhttpsgithubcomwebassemblybinaryengithuba"><code>wasm-opt</code>|<a href="https://github.com/WebAssembly/binaryen">github</a></a></h3>
 <p>该<code>wasm-opt</code>工具将 WebAssembly 作为输入读取,在其上运行 转换,优化 和/或 检测,然后将转换后的 WebAssembly 作为输出发出. <code>rustc</code>会让它,与<code>.wasm</code>LLVM 合作生成二进制文件,通常这使得创造的<code>.wasm</code>二进制文件既小又执行得更快. 这个工具是<code>binaryen</code>项目的其中一部分.</p>
-<a class="header" href="#wasm2asma-hrefhttpsgithubcomwebassemblybinaryengithuba" id="wasm2asma-hrefhttpsgithubcomwebassemblybinaryengithuba"><h3><code>wasm2asm</code>|<a href="https://github.com/WebAssembly/binaryen">github</a></h3></a>
+<h3 id="wasm2asma-hrefhttpsgithubcomwebassemblybinaryengithuba"><a class="header" href="#wasm2asma-hrefhttpsgithubcomwebassemblybinaryengithuba"><code>wasm2asm</code>|<a href="https://github.com/WebAssembly/binaryen">github</a></a></h3>
 <p>该<code>wasm2asm</code>工具将 WebAssembly 编译为”大多数 asm.js”. 这非常适合支持没有 WebAssembly 实现的浏览器,例如 Internet Explorer 11.此工具是<code>binaryen</code>项目的其中一部分.</p>
 <blockquote>
 <p>注意: 计划将此工具重命名为<code>wasm2js</code>但是,在撰写本文时,重命名仍未发生.</p>
 </blockquote>
-<a class="header" href="#wasm-gca-hrefhttpsgithubcomalexcrichtonwasm-gcgithuba" id="wasm-gca-hrefhttpsgithubcomalexcrichtonwasm-gcgithuba"><h3><code>wasm-gc</code>|<a href="https://github.com/alexcrichton/wasm-gc">github</a></h3></a>
+<h3 id="wasm-gca-hrefhttpsgithubcomalexcrichtonwasm-gcgithuba"><a class="header" href="#wasm-gca-hrefhttpsgithubcomalexcrichtonwasm-gcgithuba"><code>wasm-gc</code>|<a href="https://github.com/alexcrichton/wasm-gc">github</a></a></h3>
 <p>垃圾收集 WebAssembly 模块并删除所有不需要的导出,导入,函数等的小工具. 这实际上是一个 WebAssembly 的链接器标志<code>--gc-sections</code>.</p>
 <p>您通常不需要自己使用此工具,原因有两个:</p>
 <ol>
 <li><code>rustc</code>现在有一个<code>lld</code>足够新的版本,它支持<code>--gc-sections</code>WebAssembly 的标志. LTO 构建会自动启用此功能.</li>
 <li>该<code>wasm-bindgen</code>CLI 工具为你自动运行<code>wasm-gc</code>.</li>
 </ol>
-<a class="header" href="#wasm-snipa-hrefhttpsgithubcomrustwasmwasm-snipgithuba" id="wasm-snipa-hrefhttpsgithubcomrustwasmwasm-snipgithuba"><h3><code>wasm-snip</code>|<a href="https://github.com/rustwasm/wasm-snip">github</a></h3></a>
+<h3 id="wasm-snipa-hrefhttpsgithubcomrustwasmwasm-snipgithuba"><a class="header" href="#wasm-snipa-hrefhttpsgithubcomrustwasmwasm-snipgithuba"><code>wasm-snip</code>|<a href="https://github.com/rustwasm/wasm-snip">github</a></a></h3>
 <p><code>wasm-snip</code>替换 WebAssembly 函数的主体,通过用一个<code>unreachable</code>指令.</p>
 <p>也许您知道某些函数永远不会在运行时调用,但编译器无法在编译时证明这一点? 剪断它!然后再次运行<code>wasm-gc</code>,它传递调用的所有函数 (也可能永远不会在运行时调用) 也将被删除.</p>
 <p>这对于在非调试的生产版本中,强制删除 Rust 的恐慌基础结构非常有用.</p>
-<a class="header" href="#a检查wasm二进制" id="a检查wasm二进制"><h2>检查<code>.wasm</code>二进制</h2></a>
-<a class="header" href="#twiggya-hrefhttpsgithubcomrustwasmtwiggygithuba" id="twiggya-hrefhttpsgithubcomrustwasmtwiggygithuba"><h3><code>twiggy</code>|<a href="https://github.com/rustwasm/twiggy">github</a></h3></a>
+<h2 id="检查wasm二进制"><a class="header" href="#检查wasm二进制">检查<code>.wasm</code>二进制</a></h2>
+<h3 id="twiggya-hrefhttpsgithubcomrustwasmtwiggygithuba"><a class="header" href="#twiggya-hrefhttpsgithubcomrustwasmtwiggygithuba"><code>twiggy</code>|<a href="https://github.com/rustwasm/twiggy">github</a></a></h3>
 <p><code>twiggy</code>是一个对<code>.wasm</code>二进制文件代码大小分析器. 它分析二进制的调用图来回答如下问题:</p>
 <ul>
 <li>为什么这个函数首先包含在二进制文件中? 即哪些导出的函数是可传递的呢?</li>
 <li>这个函数的保留大小是多少? 即如果删除它以及删除后成为死代码的所有函数,将节省多少空间.</li>
 </ul>
 <p>使用<code>twiggy</code>让你的二进制文件变得苗条!</p>
-<a class="header" href="#wasm-objdumpa-hrefhttpsgithubcomwebassemblywabtgithuba" id="wasm-objdumpa-hrefhttpsgithubcomwebassemblywabtgithuba"><h3><code>wasm-objdump</code>|<a href="https://github.com/WebAssembly/wabt">github</a></h3></a>
+<h3 id="wasm-objdumpa-hrefhttpsgithubcomwebassemblywabtgithuba"><a class="header" href="#wasm-objdumpa-hrefhttpsgithubcomwebassemblywabtgithuba"><code>wasm-objdump</code>|<a href="https://github.com/WebAssembly/wabt">github</a></a></h3>
 <p>打印关于<code>.wasm</code>二进制及其每个部分的基本详细信息. 还支持反汇编成 WAT 文本格式. 就像是<code>objdump</code>,不同的是为 WebAssembly 服务的. 这是 WABT 项目的一部分.</p>
-<a class="header" href="#wasm-nma-hrefhttpsgithubcomfitzgenwasm-nmgithuba" id="wasm-nma-hrefhttpsgithubcomfitzgenwasm-nmgithuba"><h3><code>wasm-nm</code>|<a href="https://github.com/fitzgen/wasm-nm">github</a></h3></a>
+<h3 id="wasm-nma-hrefhttpsgithubcomfitzgenwasm-nmgithuba"><a class="header" href="#wasm-nma-hrefhttpsgithubcomfitzgenwasm-nmgithuba"><code>wasm-nm</code>|<a href="https://github.com/fitzgen/wasm-nm">github</a></a></h3>
 <p>列出<code>.wasm</code>二进制文件中定义的导入,导出和私有函数符号. 就像是<code>nm</code>,不同的是为 WebAssembly 服务的.</p>
-<a class="header" href="#a项目模版" id="a项目模版"><h1>项目模版</h1></a>
+<h1 id="项目模版"><a class="header" href="#项目模版">项目模版</a></h1>
 <p>Rust 和 WebAssembly 工作组负责管理和维护各种项目模板，以帮助您启动新项目并开始运行。</p>
-<a class="header" href="#wasm-pack-template" id="wasm-pack-template"><h2><code>wasm-pack-template</code></h2></a>
+<h2 id="wasm-pack-template"><a class="header" href="#wasm-pack-template"><code>wasm-pack-template</code></a></h2>
 <p><a href="https://github.com/rustwasm/wasm-pack-template">这个模板</a>是与<a href="https://github.com/rustwasm/wasm-pack"><code>wasm-pack</code></a>合作启动的， Rust 和 WebAssembly 项目.</p>
 <p>使用<code>cargo generate</code>克隆此项目模板:</p>
 <pre><code>cargo install cargo-generate
 cargo generate --git https://github.com/rustwasm/wasm-pack-template.git
 </code></pre>
-<a class="header" href="#create-wasm-app" id="create-wasm-app"><h2><code>create-wasm-app</code></h2></a>
+<h2 id="create-wasm-app"><a class="header" href="#create-wasm-app"><code>create-wasm-app</code></a></h2>
 <p><a href="https://github.com/rustwasm/create-wasm-app">这个模板</a>是 Rust 与<a href="https://github.com/rustwasm/wasm-pack"><code>wasm-pack</code></a>孵化的， (npm 包) JavaScript 项目.</p>
 <p>使用<code>npm init</code>:</p>
 <pre><code>mkdir my-project
@@ -1928,16 +1987,16 @@ cd my-project/
 npm init wasm-app
 </code></pre>
 <p>此模板通常与<code>wasm-pack-template</code>一起使用，这里的<code>wasm-pack-template</code>项目是由<code>npm link</code>在本地安装，并作为一个依赖拉进一个<code>create-wasm-app</code>项目。</p>
-<a class="header" href="#rust-webpack-template" id="rust-webpack-template"><h2><code>rust-webpack-template</code></h2></a>
+<h2 id="rust-webpack-template"><a class="header" href="#rust-webpack-template"><code>rust-webpack-template</code></a></h2>
 <p><a href="https://github.com/rustwasm/rust-webpack-template">这个模板</a>预先配置了所有样板文件，用于将 Rust 编译为 WebAssembly ，并将其直接挂钩到 Webpack 的 <a href="https://github.com/wasm-tool/rust-loader/"><code>rust-loader</code></a>构建管道流程。</p>
 <p>使用<code>npm init</code>:</p>
 <pre><code>mkdir my-project
 cd my-project/
 npm init rust-webpack
 </code></pre>
-<a class="header" href="#a调试-rust-生成的-webassembly" id="a调试-rust-生成的-webassembly"><h1>调试 Rust-生成的 WebAssembly</h1></a>
+<h1 id="调试-rust-生成的-webassembly"><a class="header" href="#调试-rust-生成的-webassembly">调试 Rust-生成的 WebAssembly</a></h1>
 <p>本节包含，调试 Rust 生成的 WebAssembly 的提示.</p>
-<a class="header" href="#a带调试符号的构建" id="a带调试符号的构建"><h2>带调试符号的构建</h2></a>
+<h2 id="带调试符号的构建"><a class="header" href="#带调试符号的构建">带调试符号的构建</a></h2>
 <blockquote>
 <p>⚡ 调试时，请务必确保，是使用调试符号构建的!</p>
 </blockquote>
@@ -1947,20 +2006,21 @@ npm init rust-webpack
 <pre><code class="language-toml">[profile.release]
 debug = true
 </code></pre>
-<a class="header" href="#a使用-console-apis-记录" id="a使用-console-apis-记录"><h2>使用 <code>console</code> APIs 记录</h2></a>
+<h2 id="使用-console-apis-记录"><a class="header" href="#使用-console-apis-记录">使用 <code>console</code> APIs 记录</a></h2>
 <p>记录是我们用来证明和反驳我们的程序错误原因的最有效工具之一。在网上，<a href="https://developer.mozilla.org/en-US/docs/Web/API/Console/log"><code>console.log</code>
 函数</a>是将消息记录到，浏览器的开发人员工具控制台的方法。</p>
 <p>我们可以用<a href="https://rustwasm.github.io/wasm-bindgen/web-sys/index.html"><code>web-sys</code>箱</a>可获得<code>console</code>记录函数的访问权限:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-extern crate web_sys;
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>extern crate web_sys;
 
 web_sys::console::log_1(&amp;&quot;Hello， world!&quot;.into());
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>或者，<a href="https://developer.mozilla.org/en-US/docs/Web/API/Console/error"><code>console.error</code>
 函数</a>与<code>console.log</code>具有相同的函数签名，不同的是，<code>console.error</code>开发人员工具更倾向于在记录消息的同时，捕获并显示堆栈跟踪。</p>
-<a class="header" href="#a参考-1" id="a参考-1"><h3>参考</h3></a>
+<h3 id="参考-1"><a class="header" href="#参考-1">参考</a></h3>
 <ul>
 <li>运用<code>console.log</code>随着<code>web-sys</code>箱:
 <ul>
@@ -1983,50 +2043,51 @@ web_sys::console::log_1(&amp;&quot;Hello， world!&quot;.into());
 <li><a href="https://docs.microsoft.com/en-us/microsoft-edge/devtools-guide/console">Microsoft Edge 开发工具 — Console</a></li>
 <li><a href="https://developers.google.com/web/tools/chrome-devtools/console/get-started">入门 Chrome DevTools Console</a></li>
 </ul>
-<a class="header" href="#a记录-panics" id="a记录-panics"><h2>记录 Panics</h2></a>
+<h2 id="记录-panics"><a class="header" href="#记录-panics">记录 Panics</a></h2>
 <p><a href="https://github.com/rustwasm/console_error_panic_hook">该<code>console_error_panic_hook</code>crate 将意外的恐慌，记录到开发者控制台<code>console.error</code>。</a>，不再是神秘，难以调试<code>RuntimeError: unreachable executed</code>错误消息，给你 Rust 的格式化恐慌消息。</p>
 <p>您需要做的就是，在初始化函数或公共代码路径中，通过调用<code>console_error_panic_hook::set_once()</code>来安装钩子:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-#[wasm_bindgen]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[wasm_bindgen]
 pub fn init() {
     console_error_panic_hook::set_once();
 }
-#}</code></pre></pre>
-<a class="header" href="#a使用一个-调试器" id="a使用一个-调试器"><h2>使用一个 调试器</h2></a>
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="使用一个-调试器"><a class="header" href="#使用一个-调试器">使用一个 调试器</a></h2>
 <p>不幸的是，WebAssembly 的调试’故事’仍然不成熟。在大多数 Unix 系统上，<a href="http://dwarfstd.org/">DWARF</a>是用来编码信息的，信息是调试器提供正运行程序的源级检查的。在 Windows 上有一种替代格式，具有类似的编码信息。目前，没有属于 WebAssembly 的等价物。因此，调试器目前提供有限的实用程序，我们最终逐步执行编译器发出的原始 WebAssembly 指令，而不是我们编写的 Rust 源文本。</p>
 <blockquote>
 <p>有一个<a href="https://github.com/WebAssembly/debugging">用于调试的 W3C WebAssembly 组的子章节</a>，所以期待这个’故事’在未来有所改善!</p>
 </blockquote>
 <p>尽管如此，调试器仍然可用于检查与 WebAssembly 交互的 JavaScript，以及检查原始状态.</p>
-<a class="header" href="#a参考-2" id="a参考-2"><h3>参考</h3></a>
+<h3 id="参考-2"><a class="header" href="#参考-2">参考</a></h3>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Tools/Debugger">Firefox 开发工具 — Debugger</a></li>
 <li><a href="https://docs.microsoft.com/en-us/microsoft-edge/devtools-guide/debugger">Microsoft Edge 开发工具 — Debugger</a></li>
 <li><a href="https://developers.google.com/web/tools/chrome-devtools/javascript/">入门：调试 JavaScript in Chrome DevTools</a></li>
 </ul>
-<a class="header" href="#a首先避免调试-webassembly" id="a首先避免调试-webassembly"><h2>首先避免调试 Webassembly</h2></a>
+<h2 id="首先避免调试-webassembly"><a class="header" href="#首先避免调试-webassembly">首先避免调试 Webassembly</a></h2>
 <p>如果该错误来自与 JavaScript 或 Web API 的交互，那么先<a href="https://rustwasm.github.io/wasm-bindgen/wasm-bindgen-test/index.html">用<code>wasm-bindgen-test</code>写测试吧。</a></p>
 <p>如果bug ，<em>不</em>涉及与 JavaScript 或 Web API 的交互，那尝试将其重现为正常的 Rust<code>#[test]</code>函数，您可以在调试时，利用操作系统的成熟本机工具。使用测试箱<a href="https://crates.io/crates/quickcheck"><code>quickcheck</code></a>和它的测试案例 shrinkers 呆板地减少测试用例。最终，如果您可以在不需要与 JavaScript 交互的较小测试用例中隔离它们，您将更容易找到，并修复错误。</p>
 <p>请注意，为了没有编译器和链接器错误情况下，良好运行本机<code>#[test]</code>，您需要确保这<code>&quot;rlib&quot;</code>在<code>[lib.crate-type]</code>数组内，<code>Cargo.toml</code>文件如下：</p>
 <pre><code class="language-toml">[lib]
 crate-type [&quot;cdylib&quot;， &quot;rlib&quot;]
 </code></pre>
-<a class="header" href="#a时间-分析" id="a时间-分析"><h1>时间 分析</h1></a>
+<h1 id="时间-分析"><a class="header" href="#时间-分析">时间 分析</a></h1>
 <p>本节介绍如何分析，在使用 Rust 和 WebAssembly 的 Web 页面，目标是提高吞吐量或延迟质量。</p>
 <blockquote>
 <p>⚡ 始终确保在分析时，使用的是已优化的构建版本! <code>wasm-pack build</code>默认情况下将使用优化构建.</p>
 </blockquote>
-<a class="header" href="#a可用的工具" id="a可用的工具"><h2>可用的工具</h2></a>
-<a class="header" href="#windowperformancenow-计时器" id="windowperformancenow-计时器"><h3><code>window.performance.now()</code> 计时器</h3></a>
+<h2 id="可用的工具"><a class="header" href="#可用的工具">可用的工具</a></h2>
+<h3 id="windowperformancenow-计时器"><a class="header" href="#windowperformancenow-计时器"><code>window.performance.now()</code> 计时器</a></h3>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance/now"><code>performance.now()</code>函数</a>返回自加载网页以来，以毫秒为单位测量的单调时间戳。</p>
 <p>调用<code>performance.now</code>的开销很小，因此我们可以从中创建简单的粒度测量，而不会扭曲系统其他部分的性能，并对测量造成偏差。</p>
 <p>我们可以使用它来计时各种操作，我们可以通过<a href="https://rustwasm.github.io/wasm-bindgen/web-sys/index.html"><code>web-sys</code>箱</a>访问<code>window.performance.now()</code>:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-extern crate web_sys;
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>extern crate web_sys;
 
 fn now() -&gt; f64 {
     web_sys::window()
@@ -2035,24 +2096,25 @@ fn now() -&gt; f64 {
         .expect(&quot;should have a Performance&quot;)
         .now()
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <ul>
 <li><a href="https://rustwasm.github.io/wasm-bindgen/api/web_sys/fn.window.html"><code>web_sys::window</code> 函数</a></li>
 <li><a href="https://rustwasm.github.io/wasm-bindgen/api/web_sys/struct.Window.html#method.performance"><code>web_sys::Window::performance</code> 方法</a></li>
 <li><a href="https://rustwasm.github.io/wasm-bindgen/api/web_sys/struct.Performance.html#method.now"><code>web_sys::Performance::now</code> 方法</a></li>
 </ul>
-<a class="header" href="#a开发工具-分析器" id="a开发工具-分析器"><h3>开发工具 分析器</h3></a>
+<h3 id="开发工具-分析器"><a class="header" href="#开发工具-分析器">开发工具 分析器</a></h3>
 <p>所有 Web 浏览器的内置开发人员工具都包含一个分析器。这些分析器显示哪些函数花费最多时间，表现形式为可视化类型，如调用树和火焰图。</p>
-<p>如果你<a href="./debugging.zh.html#building-with-debug-symbols">用调试符号构建</a>，在 wasm 二进制文件中会包含自定义部分”name”，那这些分析器应该显示 Rust 函数名称，而不是像<code>wasm-function[123]</code>这种不透明。</p>
+<p>如果你<a href="reference/./debugging.zh.html#building-with-debug-symbols">用调试符号构建</a>，在 wasm 二进制文件中会包含自定义部分”name”，那这些分析器应该显示 Rust 函数名称，而不是像<code>wasm-function[123]</code>这种不透明。</p>
 <p>请注意这些分析器<em>并不会</em>显示内联函数，且由于 Rust 和 LLVM 依赖于如此大量的内联，结果可能仍然有点令人困惑。</p>
-<p><a href="../images/game-of-life/profiler-with-rust-names.png"><img src="../images/game-of-life/profiler-with-rust-names.png" alt="Screenshot of profiler with Rust symbols" /></a></p>
-<a class="header" href="#a资源" id="a资源"><h4>资源</h4></a>
+<p><a href="reference/../images/game-of-life/profiler-with-rust-names.png"><img src="reference/../images/game-of-life/profiler-with-rust-names.png" alt="Screenshot of profiler with Rust symbols" /></a></p>
+<h4 id="资源"><a class="header" href="#资源">资源</a></h4>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Tools/Performance">Firefox 开发工具 — 性能</a></li>
 <li><a href="https://docs.microsoft.com/en-us/microsoft-edge/devtools-guide/performance">Microsoft Edge 开发工具 — 性能</a></li>
 <li><a href="https://developers.google.com/web/tools/chrome-devtools/rendering-tools/js-execution">Chrome DevTools JavaScript 分析器</a></li>
 </ul>
-<a class="header" href="#consoletime-和-consoletimeend-函数" id="consoletime-和-consoletimeend-函数"><h3><code>console.time</code> 和 <code>console.timeEnd</code> 函数</h3></a>
+<h3 id="consoletime-和-consoletimeend-函数"><a class="header" href="#consoletime-和-consoletimeend-函数"><code>console.time</code> 和 <code>console.timeEnd</code> 函数</a></h3>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Console/time"><code>console.time</code>和<code>console.timeEnd</code>函数</a>允许您将命名操作的时间，记录到浏览器的控制台。开始时，你先调用<code>console.time(&quot;some operation&quot;)</code>，再之后调用<code>console.timeEnd(&quot;some operation&quot;)</code>，就会结束，注意命名操作的字符串标签是可选的。</p>
 <p>您可以通过<a href="https://rustwasm.github.io/wasm-bindgen/web-sys/index.html"><code>web-sys</code>箱</a>直接使用这些函数:</p>
 <ul>
@@ -2060,37 +2122,37 @@ fn now() -&gt; f64 {
 <li><a href="https://rustwasm.github.io/wasm-bindgen/api/web_sys/console/fn.time_end_with_label.html"><code>web_sys::console::time_end_with_label(&quot;some operation&quot;)</code></a></li>
 </ul>
 <p>这是截图：<code>console.time</code>在浏览器的控制台:</p>
-<p><a href="../images/game-of-life/console-time.png"><img src="../images/game-of-life/console-time.png" alt="Screenshot of console.time logs" /></a></p>
+<p><a href="reference/../images/game-of-life/console-time.png"><img src="reference/../images/game-of-life/console-time.png" alt="Screenshot of console.time logs" /></a></p>
 <p>另外，<code>console.time</code>和<code>console.timeEnd</code>日志将显示在浏览器的分析器的”时间轴(timeline)”或”瀑布(waterfall)”视图中:</p>
-<p><a href="../images/game-of-life/console-time-in-profiler.png"><img src="../images/game-of-life/console-time-in-profiler.png" alt="Screenshot of console.time logs" /></a></p>
-<a class="header" href="#a使用-原生代码-bench" id="a使用-原生代码-bench"><h3>使用 原生代码 <code>#[bench]</code></h3></a>
+<p><a href="reference/../images/game-of-life/console-time-in-profiler.png"><img src="reference/../images/game-of-life/console-time-in-profiler.png" alt="Screenshot of console.time logs" /></a></p>
+<h3 id="使用-原生代码-bench"><a class="header" href="#使用-原生代码-bench">使用 原生代码 <code>#[bench]</code></a></h3>
 <p>我们也可以常编写<code>#[test]</code>，来影响我们操作系统的本机代码调试工具而不是在 Web 上调试，我们可以通过编写<code>#[bench]</code>函数来影响我们操作系统的本机代码分析工具.</p>
 <p>在子目录<code>benches</code>中，写下您的基准。确保你的<code>crate-type</code>包括<code>&quot;rlib&quot;</code>，否则基准二进制文件将无法链接您的主 lib.</p>
 <p>然而! 在为本机代码分析投入大量精力之前，请确保，您知道瓶颈是在 WebAssembly 中! 使用浏览器的分析器确认这一点，否则您可能会浪费时间优化，那些并不准确的代码。</p>
-<a class="header" href="#a资源-1" id="a资源-1"><h4>资源</h4></a>
+<h4 id="资源-1"><a class="header" href="#资源-1">资源</a></h4>
 <ul>
 <li><a href="http://www.brendangregg.com/perf.html">使用 <code>perf</code> 分析器 on Linux</a></li>
 <li><a href="https://help.apple.com/instruments/mac/current/">使用 the Instruments.app 分析器 on macOS</a></li>
 <li><a href="https://software.intel.com/en-us/vtune">VTune 分析器 支持 Windows 和 Linux</a></li>
 </ul>
-<a class="header" href="#a收缩-wasm-尺寸" id="a收缩-wasm-尺寸"><h1>收缩 <code>.wasm</code> 尺寸</h1></a>
+<h1 id="收缩-wasm-尺寸"><a class="header" href="#收缩-wasm-尺寸">收缩 <code>.wasm</code> 尺寸</a></h1>
 <p>本节将教您如何优化您的<code>.wasm</code>构建，变为小型代码占用空间，以及如何识别更改 Rust 源的机会，正是缩小<code>.wasm</code>代码。</p>
-<a class="header" href="#a为啥要如此关心代码尺寸" id="a为啥要如此关心代码尺寸"><h2>为啥要如此关心代码尺寸?</h2></a>
+<h2 id="为啥要如此关心代码尺寸"><a class="header" href="#为啥要如此关心代码尺寸">为啥要如此关心代码尺寸?</a></h2>
 <p>要知道<code>.wasm</code>文件终会在网络环境中传输，它越小，客户端下载它的速度就越快。<code>.wasm</code>下载快，就是更快的页面加载时间，也就是更快乐的用户。</p>
 <p>然而，重要的是要记住，虽然代码大小可能不是你最终感兴趣的指标，但更像是一些更模糊和难以衡量的东西，比如”第一次互动的时间”。虽然代码大小在这个测量中起着很大的作用(如果你还没有所有的代码，也无法做任何事情!)，但它不是唯一的因素.</p>
 <p>WebAssembly 通常为用户提供 gzip，因此您会想与 gzip’d 大小比较的网络传输时间差异。还要记住，WebAssembly 二进制格式非常适合 gzip 压缩，通常可以减少 50%以上的大小。</p>
 <p>此外，WebAssembly 的二进制格式经过优化，可以进行非常快速的解析和处理。浏览器现在拥有”baseline 编译器”，它解析 网络上 WebAssembly 并以尽可能快的速度启用编译代码。这意味着<a href="https://hacks.mozilla.org/2018/01/making-webassembly-even-faster-firefoxs-new-streaming-and-tiering-compiler/">如果你正在使用<code>instantiateStreaming</code></a>，那么第二个 Web 请求完成后，WebAssembly 模块可能已准备就绪。另一方面，JavaScript 通常就需要更长时间才能解析，但也可以通过 JIT 编译等方式加快速度。</p>
 <p>最后，请记住，WebAssembly 也比 JavaScript 执行速度更优化。您需要确保 JavaScript 和 WebAssembly 之间的运行时比较的测量，以考虑代码大小的重要性。</p>
 <p>如果你的<code>.wasm</code>文件大于预期，对此，基本上不用立刻沮丧! 代码大小最终可能只是端到端故事中的众多因素之一。不能仅查看 JavaScript 和 WebAssembly 之间的代码大小比较，因为这只是冰山一角。</p>
-<a class="header" href="#a为代码尺寸优化构建" id="a为代码尺寸优化构建"><h2>为代码尺寸，优化构建</h2></a>
+<h2 id="为代码尺寸优化构建"><a class="header" href="#为代码尺寸优化构建">为代码尺寸，优化构建</a></h2>
 <p>我们可以使用很多配置选项来，让<code>rustc</code>缩小<code>.wasm</code>二进制文件。在某些情况下，我们的编译时间较长，<code>.wasm</code>就越小。另一方面说，我们以较小的代码大小交换 WebAssembly 的运行时速度。我们应该权衡每个选项，并且在我们用运行时速度交换代码大小时，应分析和度量，以便做出关于此次交易是否值得的明智决策。</p>
-<a class="header" href="#a使用链接时间优化-lto-进行编译" id="a使用链接时间优化-lto-进行编译"><h3>使用链接时间优化 (LTO) 进行编译</h3></a>
+<h3 id="使用链接时间优化-lto-进行编译"><a class="header" href="#使用链接时间优化-lto-进行编译">使用链接时间优化 (LTO) 进行编译</a></h3>
 <p>在<code>Cargo.toml</code>，添加<code>lto = true</code>在<code>[profile.release]</code>部分:</p>
 <pre><code class="language-toml">[profile.release]
 lto = true
 </code></pre>
 <p>这为 LLVM 提供了更多内联和修剪功能的机会. 它不仅会成功<code>.wasm</code>更小，但它也会在运行时更快! 缺点是编译需要更长时间.</p>
-<a class="header" href="#a告诉-llvm-优化大小而不是速度" id="a告诉-llvm-优化大小而不是速度"><h3>告诉 LLVM 优化大小而不是速度</h3></a>
+<h3 id="告诉-llvm-优化大小而不是速度"><a class="header" href="#告诉-llvm-优化大小而不是速度">告诉 LLVM 优化大小而不是速度</a></h3>
 <p>默认情况下，调整 LLVM 的优化过程是提高速度，而不是大小。 我们可以通过修改目标， 来将目标更改为代码大小</p>
 <p><code>[profile.release]</code>部分:</p>
 <pre><code class="language-toml">[profile.release]
@@ -2101,7 +2163,7 @@ opt-level = 's'
 opt-level = 'z'
 </code></pre>
 <p>请注意，令人惊讶的是,<code>opt-level = &quot;s&quot;</code>，有时会导致 比 <code>opt-level = &quot;z&quot;</code> 更小。 总是要对比看看!</p>
-<a class="header" href="#a使用wasm-opt工具" id="a使用wasm-opt工具"><h3>使用<code>wasm-opt</code>工具</h3></a>
+<h3 id="使用wasm-opt工具"><a class="header" href="#使用wasm-opt工具">使用<code>wasm-opt</code>工具</a></h3>
 <p>该<a href="https://github.com/WebAssembly/binaryen">Binaryen</a>工具套件 是特定于 WebAssembly 的编译器工具的集合。 它比 LLVM 的 WebAssembly 后端 更进一步.</p>
 <p>使用<code>wasm-opt</code>后，处理 LLVM 生成的<code>.wasm</code>二进制文件通常可以节省 15-20%的代码大小. 它通常还能帮运行时加速!</p>
 <pre><code class="language-bash"># 优化尺寸。
@@ -2116,15 +2178,15 @@ wasm-opt -O -o output.wasm input.wasm
 # 快速优化。
 wasm-opt -O3 -o output.wasm input.wasm
 </code></pre>
-<a class="header" href="#a调试信息-的-记录" id="a调试信息-的-记录"><h3>调试信息 的 记录</h3></a>
+<h3 id="调试信息-的-记录"><a class="header" href="#调试信息-的-记录">调试信息 的 记录</a></h3>
 <p>wasm 二进制大小的最大贡献之一，是调试信息和<code>wasm 二进制文件的</code>names 部分。但是，<code>wasm-pack</code>工具默认删除 调试信息。另外，默认情况下<code>wasm-opt</code>也会删除<code>names</code>部分，除非<code>-g</code>有使用到。</p>
 <p>这意味着，如果您按照上述步骤操作，则默认情况下不能使用 调试信息 或 wasm 二进制文件中的 names 部分。但是，您可以手动保留在 wasm 二进制文件中的调试信息，请务必注意这一点!</p>
-<a class="header" href="#a大小分析" id="a大小分析"><h2>大小分析</h2></a>
+<h2 id="大小分析"><a class="header" href="#大小分析">大小分析</a></h2>
 <p>如果调整构建配置以优化代码大小后,不会导致足够小<code>.wasm</code>二进制,是时候进行一些分析,以查看剩余代码大小的来源.</p>
 <blockquote>
 <p>⚡ 就像我们如何让时间分析指导我们的加速工作一样,我们希望让大小分析指导我们的代码大小缩小工作量. 不这样做,你可能会浪费自己的时间!</p>
 </blockquote>
-<a class="header" href="#a该twiggy代码大小分析器" id="a该twiggy代码大小分析器"><h3>该<code>twiggy</code>代码大小分析器</h3></a>
+<h3 id="该twiggy代码大小分析器"><a class="header" href="#该twiggy代码大小分析器">该<code>twiggy</code>代码大小分析器</a></h3>
 <p><a href="https://github.com/rustwasm/twiggy"><code>twiggy</code>是一个代码大小分析器</a>支持 WebAssembly 作为输入. 它分析二进制的调用图来回答如下问题:</p>
 <ul>
 <li>
@@ -2164,7 +2226,7 @@ pre, code {
            514 ┊     1.10% ┊ std::panicking::default_hook::{{closure}}::hfae0c204085471d5
            503 ┊     1.08% ┊ &lt;&amp;'a T as core::fmt::Debug&gt;::fmt::hba207e4f7abaece6
 </code></pre>
-<a class="header" href="#a手动检查-llvm-ir" id="a手动检查-llvm-ir"><h3>手动检查 LLVM-IR</h3></a>
+<h3 id="手动检查-llvm-ir"><a class="header" href="#手动检查-llvm-ir">手动检查 LLVM-IR</a></h3>
 <p>LLVM-IR 是 LLVM 生成 WebAssembly 之前编译器工具链中的最终中间表示。 因此,它与最终发出的 WebAssembly 非常相似。 更多 LLVM-IR 通常意味着更多<code>.wasm</code>大小,如果一个函数占 LLVM-IR 的 25%,那么它通常会占 25%<code>.wasm</code>。 虽然这些数字一般只保留。 LLVM-IR 具有关键信息，而这些信息并不存在<code>.wasm</code>中 (因为 WebAssembly 缺少像 DWARF 这样的调试格式) : 哪些子程序被内联到 给定的函数中。</p>
 <p>您可以使用此方法生成 LLVM-IR:</p>
 <pre><code>cargo rustc --release -- --emit llvm-ir
@@ -2172,15 +2234,15 @@ pre, code {
 <p>然后,你可以使用<code>find</code>找到<code>.ll</code>包含 LLVM-IR 的文件:</p>
 <pre><code>find target/release -type f -name '*.ll'
 </code></pre>
-<a class="header" href="#a参考-3" id="a参考-3"><h4>参考</h4></a>
+<h4 id="参考-3"><a class="header" href="#参考-3">参考</a></h4>
 <ul>
 <li><a href="https://llvm.org/docs/LangRef.html">LLVM 语言参考手册</a></li>
 </ul>
-<a class="header" href="#a更具侵入性的工具和技术" id="a更具侵入性的工具和技术"><h2>更具侵入性的工具和技术</h2></a>
+<h2 id="更具侵入性的工具和技术"><a class="header" href="#更具侵入性的工具和技术">更具侵入性的工具和技术</a></h2>
 <p>调整构建配置，以缩小<code>.wasm</code>二进制文件非常适合。 但是，当您需要加倍努力时，您准备使用更具侵入性的技术，例如重写源代码以避免膨胀。 接下来是，一系列可以应用于获取较小代码的自适应技巧。</p>
-<a class="header" href="#a避免使用字符串格式" id="a避免使用字符串格式"><h3>避免使用字符串格式</h3></a>
+<h3 id="避免使用字符串格式"><a class="header" href="#避免使用字符串格式">避免使用字符串格式</a></h3>
 <p><code>format!</code>，<code>to_string</code>等等...可以带来很多代码臃肿。 如果可能，仅在调试模式下进行字符串格式化，在发布模式下使用静态字符串。</p>
-<a class="header" href="#a避免恐慌" id="a避免恐慌"><h3>避免恐慌</h3></a>
+<h3 id="避免恐慌"><a class="header" href="#避免恐慌">避免恐慌</a></h3>
 <p>这说起来容易做起来难，但工具就像<code>twiggy</code>，手动检查 LLVM-IR 可以帮助您找出哪些函数令人恐慌。</p>
 <p>恐慌并不总是表现为<code>panic!()</code>宏调用. 它们隐含地来自许多结构，例如:</p>
 <ul>
@@ -2197,10 +2259,10 @@ pre, code {
 <p>前两个可以体现为第三个。 索引可以用<code>my_slice.get(i)</code>操作。 分得数 可以<code>checked_div</code>调用。 现在我们只有一个案例可以应对。</p>
 <p>打开一个<code>Option</code>或者<code>Result</code>没有恐慌有两种风格: 安全和不安全。</p>
 <p>安全的方法是<code>abort</code>代替恐慌，当得出一个<code>None</code>或一个<code>Error</code>:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-#[inline]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[inline]
 pub fn unwrap_abort&lt;T&gt;(o: Option&lt;T&gt;) -&gt; T {
     use std::process;
     match o {
@@ -2208,59 +2270,63 @@ pub fn unwrap_abort&lt;T&gt;(o: Option&lt;T&gt;) -&gt; T {
         None =&gt; process::abort(),
     }
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>最终，无论如何在<code>wasm32-unknown-unknown</code>的恐慌都会转化为 <code>abort</code>，所以这给你相同的行为，并没有代码膨胀。</p>
 <p>或者，<a href="https://crates.io/crates/unreachable"><code>unreachable</code>箱</a>提供不安全的<a href="https://docs.rs/unreachable/1.0.0/unreachable/trait.UncheckedOptionExt.html#tymethod.unchecked_unwrap"><code>unchecked_unwrap</code>扩展方法</a>，给到<code>Option</code>和<code>Result</code>， 它告诉 Rust 编译器<em>假定</em>，那个<code>Option</code>是<code>Some</code>或者<code>Result</code>是<code>Ok</code>。 若它是未定义，则该假设不成立，会发生什么。只有真的 110%确定时，才去使用这种不安全的方法，而且编译器只是不够聪明看到它。 即使你沿着这条路走下去，你也应该有一个仍然进行检查的调试构建配置，并且只在发布版本中使用未经检查的操作。</p>
-<a class="header" href="#a避免分配或切换到wee_alloc" id="a避免分配或切换到wee_alloc"><h3>避免分配或切换到<code>wee_alloc</code></h3></a>
+<h3 id="避免分配或切换到wee_alloc"><a class="header" href="#避免分配或切换到wee_alloc">避免分配或切换到<code>wee_alloc</code></a></h3>
 <p>Rust 对 WebAssembly 的默认分配器，是<code>dlmalloc</code>的一部分。 它的重量大约在 10 千字节左右。 如果你可以完全避免动态分配，那么你应该能够减少这十个千字节。</p>
 <p>完全避免动态分配可能非常困难。 但是从热代码路径中删除分配通常要容易得多 (并且通常也有助于使这些热代码路径更快) 。 在这些情况下，<a href="https://github.com/rustwasm/wee_alloc">用，替换默认的全局分配器<code>wee_alloc</code></a>应该节省你最多 (但不是全部) 的十千字节。 <code>wee_alloc</code>是一个设计为<em>某些</em>您需要类型的情况，但不需要特别快的分配器，并将愉快地用速度换大小的分配器。</p>
-<a class="header" href="#a使用-trait特征-对象而不是通用类型参数" id="a使用-trait特征-对象而不是通用类型参数"><h3>使用 Trait(特征) 对象，而不是通用类型参数</h3></a>
+<h3 id="使用-trait特征-对象而不是通用类型参数"><a class="header" href="#使用-trait特征-对象而不是通用类型参数">使用 Trait(特征) 对象，而不是通用类型参数</a></h3>
 <p>当您创建使用类型参数的泛型函数时，如下所示:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-fn whatever&lt;T: MyTrait&gt;(t: T) { ... }
-#}</code></pre></pre>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn whatever&lt;T: MyTrait&gt;(t: T) { ... }
+<span class="boring">}
+</span></code></pre></pre>
 <p>然后<code>rustc</code>和 LLVM 将为每个创建一个新的函数副本 - <code>T</code>类型函数。 这为基于特定的<code>T</code>每个副本都在使用的编译器的优化提供了许多机会，但这些副本在代码大小方面快速增加。</p>
 <p>如果您使用特征对象而不是类型参数,如下所示:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-fn whatever(t: Box&lt;MyTrait&gt;) { ... }
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn whatever(t: Box&lt;MyTrait&gt;) { ... }
 // or
 fn whatever(t: &amp;MyTrait) { ... }
 // etc...
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>然后使用通过虚拟调用的动态调度，并且仅在该函数中发出单个版本的函数<code>.wasm</code>. 缺点是失去了编译器优化机会，以及间接动态调度函数调用的额外成本.</p>
-<a class="header" href="#a使用wasm-snip工具" id="a使用wasm-snip工具"><h3>使用<code>wasm-snip</code>工具</h3></a>
+<h3 id="使用wasm-snip工具"><a class="header" href="#使用wasm-snip工具">使用<code>wasm-snip</code>工具</a></h3>
 <p><a href="https://github.com/fitzgen/wasm-snip"><code>wasm-snip</code>用一个替换 WebAssembly 函数的主体的<code>unreachable</code>指令. </a>这是一个相当沉重，钝的锤子，如果你足够敏锐，你会看到那些能作为’螺丝’的函数。</p>
 <p>也许您知道某些函数永远不会在运行时调用，但编译器无法在编译时证明这一点? 剪断它! 然后，运行<code>wasm-opt</code>带着<code>--dce</code>，以及’剪’函数传递调用的所有函数 (也可能永远不会在运行时调用) 也将被删除。</p>
 <p>这个工具对于消除恐慌特别有用，不要等恐慌最终会转化为陷阱.</p>
-<a class="header" href="#javascript-的互操作" id="javascript-的互操作"><h1>JavaScript 的互操作</h1></a>
-<a class="header" href="#a导入和导出-js-函数" id="a导入和导出-js-函数"><h3>导入和导出 JS 函数</h3></a>
-<a class="header" href="#a从-rust-方面来看" id="a从-rust-方面来看"><h4>从 Rust 方面来看</h4></a>
+<h1 id="javascript-的互操作"><a class="header" href="#javascript-的互操作">JavaScript 的互操作</a></h1>
+<h3 id="导入和导出-js-函数"><a class="header" href="#导入和导出-js-函数">导入和导出 JS 函数</a></h3>
+<h4 id="从-rust-方面来看"><a class="header" href="#从-rust-方面来看">从 Rust 方面来看</a></h4>
 <p>在 JS 环境 中使用 wasm 时，从 Rust 导入和导出函数很简单: 它的工作方式与 C 完全相同</p>
 <p>WebAssembly 模块定义了导入的一个系列，每个导入带有一个 <em>模块名</em> 和 一个<em>导入名称</em>。 但我们可以使用一个<code>extern { ... }</code>区块和 <a href="https://github.com/rust-lang/rust/issues/52090"><code>#[link(wasm_import_module)]</code></a>来声明模块名， 目前
 它默认为”env”。</p>
 <p>导出只需要一个名称。 除了其他<code>extern</code>函数之外，WebAssembly 实例的线性内存默认导出为”memory”</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-// 从 `mod`模块导入一个函数 `foo`
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// 从 `mod`模块导入一个函数 `foo`
 #[link(wasm_import_module = &quot;mod&quot;)]
 extern { fn foo(); }
 
 // 导出 一个 Rust 函数 `bar`
 #[no_mangle]
 pub extern fn bar() { /* ... */ }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>由于 wasm 的有限值类型，这些函数必须仅在 原始数字类型上运行。</p>
-<a class="header" href="#a从-js-方面来看" id="a从-js-方面来看"><h4>从 JS 方面来看</h4></a>
+<h4 id="从-js-方面来看"><a class="header" href="#从-js-方面来看">从 JS 方面来看</a></h4>
 <p>在 JS 中，wasm 二进制文件变成了 ES6 模块。</p>
 <p>其中，线性内存的<em>实例化</em>和一组 JS 函数，一定是预期导入吻合的。 有关实例化的详细信息，请访问<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/instantiate">MDN</a>。</p>
 <p>生成的 ES6 模块将包含从 Rust 导出的所有函数，现在可用作 JS 函数。</p>
 <p><a href="https://www.hellorust.com/demos/add/index.html">这里</a>是整个设置的一个非常简单的例子。</p>
-<a class="header" href="#a超越数字" id="a超越数字"><h3>超越数字</h3></a>
+<h3 id="超越数字"><a class="header" href="#超越数字">超越数字</a></h3>
 <p>在 JS 中使用<code>wasm</code>时，<code>wasm</code>模块的内存与 JS 内存之间存在明显的分歧:</p>
 <ul>
 <li>
@@ -2280,82 +2346,85 @@ pub extern fn bar() { /* ... */ }
 </li>
 </ul>
 <p>幸运的是，这个互操作故事非常适合通过通用的”bindgen”式框架进行处理: <a href="https://github.com/alexcrichton/wasm-bindgen">wasm-bindgen</a>。 该框架可以自动编写 惯用 Rust 函数签名 映射 惯用 JS 函数 的</p>
-<a class="header" href="#a有哪些-crates-现在就能为-webassembly-工作" id="a有哪些-crates-现在就能为-webassembly-工作"><h1>有哪些 Crates 现在就能为 WebAssembly 工作?</h1></a>
+<h1 id="有哪些-crates-现在就能为-webassembly-工作"><a class="header" href="#有哪些-crates-现在就能为-webassembly-工作">有哪些 Crates 现在就能为 WebAssembly 工作?</a></h1>
 <p>最容易列出的事情，正是目前<em>不</em>使用 WebAssembly 的箱; 避免这些东西的箱，是可以移植到 WebAssembly 的 ，但通常<em>只能到及格线</em>。一个好的经验法则是，如果一个箱支持嵌入式和<code>#![no_std]</code>用法，它极可能也支持 WebAssembly。</p>
-<a class="header" href="#a一个-crate-最可能会的事情就是不能与-webassembly-一起工作" id="a一个-crate-最可能会的事情就是不能与-webassembly-一起工作"><h2>一个 Crate 最可能会的事情，就是不能与 WebAssembly 一起工作</h2></a>
-<a class="header" href="#c-和-系统-库-依赖项" id="c-和-系统-库-依赖项"><h3>C 和 系统 库 依赖项</h3></a>
+<h2 id="一个-crate-最可能会的事情就是不能与-webassembly-一起工作"><a class="header" href="#一个-crate-最可能会的事情就是不能与-webassembly-一起工作">一个 Crate 最可能会的事情，就是不能与 WebAssembly 一起工作</a></h2>
+<h3 id="c-和-系统-库-依赖项"><a class="header" href="#c-和-系统-库-依赖项">C 和 系统 库 依赖项</a></h3>
 <p>wasm 中没有系统库，因此 任何 crate 尝试到系统库的绑定，都不起作用。</p>
 <p>使用 C 库也可能无法工作，因为 wasm 没有用于跨语言通信的稳定 ABI，并且 wasm 的跨语言链接非常挑剔。每个人都希望这些地基，最终能够建成，尤其是<code>clang</code>，也正在运送他们的<code>wasm32</code>目标，现在开始为默认设置，但’故事’还没有完成罢了。</p>
-<a class="header" href="#file-io" id="file-io"><h3>File I/O</h3></a>
+<h3 id="file-io"><a class="header" href="#file-io">File I/O</a></h3>
 <p>WebAssembly 无权访问文件系统，因此假设存在文件系统 — 并且没有 wasm 特定的解决方法 — 不管用。</p>
-<a class="header" href="#a派生线程" id="a派生线程"><h3>派生线程</h3></a>
+<h3 id="派生线程"><a class="header" href="#派生线程">派生线程</a></h3>
 <p>有<a href="https://rustwasm.github.io/2018/10/24/multithreading-rust-and-wasm.html">计划向 WebAssembly 添加线程</a>，但尚未发货。若试图在<code>wasm32-unknown-unknown</code>目标的一个线程上派生会引起恐慌，这会触发一个 wasm 陷阱。</p>
-<a class="header" href="#a所以要-crates-现在就能为-webassembly-工作有那些常用方式" id="a所以要-crates-现在就能为-webassembly-工作有那些常用方式"><h2>所以，要 Crates 现在就能为 WebAssembly 工作，有那些常用方式?</h2></a>
-<a class="header" href="#a算法和数据结构" id="a算法和数据结构"><h3>算法和数据结构</h3></a>
+<h2 id="所以要-crates-现在就能为-webassembly-工作有那些常用方式"><a class="header" href="#所以要-crates-现在就能为-webassembly-工作有那些常用方式">所以，要 Crates 现在就能为 WebAssembly 工作，有那些常用方式?</a></h2>
+<h3 id="算法和数据结构"><a class="header" href="#算法和数据结构">算法和数据结构</a></h3>
 <p>提供一个特定<a href="https://crates.io/categories/algorithms">算法</a>实现或<a href="https://crates.io/categories/data-structures">数据 结构</a>的 crates 例如, A* 图搜索或 splay 树，往往也适用于 WebAssembly。</p>
-<a class="header" href="#no_std" id="no_std"><h3><code>#![no_std]</code></h3></a>
+<h3 id="no_std"><a class="header" href="#no_std"><code>#![no_std]</code></a></h3>
 <p><a href="https://crates.io/categories/no-std">不依靠标准库的 Crates </a>，往往也适用于 WebAssembly。</p>
-<a class="header" href="#parsers解析器" id="parsers解析器"><h3>Parsers(解析器)</h3></a>
+<h3 id="parsers解析器"><a class="header" href="#parsers解析器">Parsers(解析器)</a></h3>
 <p><a href="https://crates.io/categories/parser-implementations">Parsers</a> -只要他们只是接受输入，并且不执行他们自己的 I/O。往往也适用于 WebAssembly。</p>
-<a class="header" href="#text-processing文本处理中" id="text-processing文本处理中"><h3>Text Processing(文本处理中)</h3></a>
+<h3 id="text-processing文本处理中"><a class="header" href="#text-processing文本处理中">Text Processing(文本处理中)</a></h3>
 <p><a href="https://crates.io/categories/text-processing">当 要文本形态的明确性，处理人类语言的复杂方面的 Crates </a>，往往也适用于 WebAssembly。</p>
-<a class="header" href="#rust-patternsrust-模式" id="rust-patternsrust-模式"><h3>Rust Patterns(Rust 模式)</h3></a>
+<h3 id="rust-patternsrust-模式"><a class="header" href="#rust-patternsrust-模式">Rust Patterns(Rust 模式)</a></h3>
 <p><a href="https://crates.io/categories/rust-patterns">分享 在 Rust 编程环境下，特定情况的解决方案</a>，往往也适用于 WebAssembly。</p>
-<a class="header" href="#a怎么为-一个-通用箱-添加-webassembly-支持" id="a怎么为-一个-通用箱-添加-webassembly-支持"><h1>怎么为 一个 通用箱 添加 WebAssembly 支持</h1></a>
+<h1 id="怎么为-一个-通用箱-添加-webassembly-支持"><a class="header" href="#怎么为-一个-通用箱-添加-webassembly-支持">怎么为 一个 通用箱 添加 WebAssembly 支持</a></h1>
 <p>本节适用于，希望支持 WebAssembly 的通用箱作者。</p>
-<a class="header" href="#a也许你的-箱子-以及-支持-webassembly" id="a也许你的-箱子-以及-支持-webassembly"><h2>也许，你的 箱子 以及 支持 WebAssembly!</h2></a>
-<p>查看有关<a href="./which-crates-work-with-wasm.zh.html">什么样的事情能让一个通用箱 <em>不能</em> 移植到 WebAssembly</a>的信息。如果您的箱子没有任何这些东西，它可能已经支持 WebAssembly!</p>
+<h2 id="也许你的-箱子-以及-支持-webassembly"><a class="header" href="#也许你的-箱子-以及-支持-webassembly">也许，你的 箱子 以及 支持 WebAssembly!</a></h2>
+<p>查看有关<a href="reference/./which-crates-work-with-wasm.zh.html">什么样的事情能让一个通用箱 <em>不能</em> 移植到 WebAssembly</a>的信息。如果您的箱子没有任何这些东西，它可能已经支持 WebAssembly!</p>
 <p>您可以随时通过运行<code>cargo build</code>，检查 WebAssembly 目标:</p>
 <pre><code>cargo build --target wasm32-unknown-unknown
 </code></pre>
-<p>如果该命令失败，那么您的 crate 现在不支持 WebAssembly。如果它没有失败，那么你的箱子<em>不一定</em>支持 WebAssembly。但你可以 100% 确定它(继续跟着做!)<a href="#maintaining-ongoing-support-for-webassembly">为 wasm 添加测试 ，还有在 CI 上运行这些测试。</a></p>
-<a class="header" href="#a添加-webassembly-支持" id="a添加-webassembly-支持"><h2>添加 WebAssembly 支持</h2></a>
-<a class="header" href="#a避免-直接执行-io" id="a避免-直接执行-io"><h3>避免 直接执行 I/O</h3></a>
+<p>如果该命令失败，那么您的 crate 现在不支持 WebAssembly。如果它没有失败，那么你的箱子<em>不一定</em>支持 WebAssembly。但你可以 100% 确定它(继续跟着做!)<a href="reference/add-wasm-support-to-crate.zh.html#maintaining-ongoing-support-for-webassembly">为 wasm 添加测试 ，还有在 CI 上运行这些测试。</a></p>
+<h2 id="添加-webassembly-支持"><a class="header" href="#添加-webassembly-支持">添加 WebAssembly 支持</a></h2>
+<h3 id="避免-直接执行-io"><a class="header" href="#避免-直接执行-io">避免 直接执行 I/O</a></h3>
 <p>在 Web 上，I/O 始终是异步的，且时没有文件系统。从库中分出 I/O 因素吧，让用户以为自己在执行 I/O，但其实将输入 slice 传递到库中。</p>
 <p>例如,重构这个:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-use std::fs;
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::fs;
 use std::path::Path;
 
 pub fn parse_thing(path: &amp;Path) -&gt; Result&lt;MyThing, MyError&gt; {
     let contents = fs::read(path)?;
     // ...
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>进入这个:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-pub fn parse_thing(contents: &amp;[u8]) -&gt; Result&lt;MyThing, MyError&gt; {
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn parse_thing(contents: &amp;[u8]) -&gt; Result&lt;MyThing, MyError&gt; {
     // ...
 }
-#}</code></pre></pre>
-<a class="header" href="#a添加-wasm-bindgen-作为依赖" id="a添加-wasm-bindgen-作为依赖"><h3>添加 <code>wasm-bindgen</code> 作为依赖</h3></a>
+<span class="boring">}
+</span></code></pre></pre>
+<h3 id="添加-wasm-bindgen-作为依赖"><a class="header" href="#添加-wasm-bindgen-作为依赖">添加 <code>wasm-bindgen</code> 作为依赖</a></h3>
 <p>如果您需要与外界进行互动(即，您不能让 库 的使用者为您推动这种互动)，那么您需要添加<code>wasm-bindgen</code>(还有<code>js-sys</code>和<code>web-sys</code>，若你需要它们)作为编译 WebAssembly 目标的依赖项:</p>
 <pre><code class="language-toml">[target.'cfg(target_arch = &quot;wasm32&quot;)'.dependencies]
 wasm-bindgen = &quot;0.2&quot;
 js-sys = &quot;0.3&quot;
 web-sys = &quot;0.3&quot;
 </code></pre>
-<a class="header" href="#a避免-同步-io" id="a避免-同步-io"><h3>避免 同步 I/O</h3></a>
+<h3 id="避免-同步-io"><a class="header" href="#避免-同步-io">避免 同步 I/O</a></h3>
 <p>如果你必须在库中执行 I/O，那它不能同步。Web 上只有异步 I/O。使用<a href="https://crates.io/crates/futures"><code>futures</code>箱</a>和<a href="https://rustwasm.github.io/wasm-bindgen/api/wasm_bindgen_futures/"><code>wasm-bindgen-futures</code>箱</a>管理异步 I/O。如果您的库函数为某些 future 类型<code>F</code>的通用函数，那么 future 是可以实现的，可能是通过在 Web 上<code>fetch</code>，或是通过操作系统提供的非阻塞 I/O。</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-pub fn do_stuff&lt;F&gt;(future: F) -&gt; impl Future&lt;Item = MyOtherThing&gt;
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn do_stuff&lt;F&gt;(future: F) -&gt; impl Future&lt;Item = MyOtherThing&gt;
 where
     F: Future&lt;Item = MyThing&gt;,
 {
     // ...
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>您还可以为 WebAssembly 和 Web 以及本机目标，定义一个 trait 并实现它:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-trait ReadMyThing {
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>trait ReadMyThing {
     type F: Future&lt;Item = MyThing&gt;;
     fn read(&amp;self) -&gt; Self::F;
 }
@@ -2379,15 +2448,16 @@ struct NativeReadMyThing {
 impl ReadMyThing for NativeReadMyThing {
     // ...
 }
-#}</code></pre></pre>
-<a class="header" href="#a避免-派生线程" id="a避免-派生线程"><h3>避免 派生线程</h3></a>
+<span class="boring">}
+</span></code></pre></pre>
+<h3 id="避免-派生线程"><a class="header" href="#避免-派生线程">避免 派生线程</a></h3>
 <p>Wasm 还不支持线程(但是<a href="https://rustwasm.github.io/2018/10/24/multithreading-rust-and-wasm.html">实验型工作还是在继续</a>)，所以试图在 wasm 中产生线程会引起恐慌。</p>
 <p>您可以使用<code>#[cfg(..)]</code>启用代码路径，是不是线程和非线程，具体取决于目标是否为 WebAssembly:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#![cfg(target_arch = &quot;wasm32&quot;)]
-#fn main() {
-fn do_work() {
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span>#![cfg(target_arch = &quot;wasm32&quot;)]
+<span class="boring">fn main() {
+</span>fn do_work() {
     // 只使用这个线程…
 }
 
@@ -2400,13 +2470,14 @@ fn do_work() {
         // ...
     });
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>另一种选择是将从库中生成的线程分离出来，并允许用户带上“自己的线程”，类似于将文件 I/O 分离出来，并允许用户带上自己的 I/O。这有一个副作用，就是对想要拥有自己自定义线程池的应用程序要进行友好处理。</p>
-<a class="header" href="#maintaining-ongoing-support-for-webassembly" id="maintaining-ongoing-support-for-webassembly"><h2>Maintaining Ongoing Support for WebAssembly</h2></a>
+<h2 id="maintaining-ongoing-support-for-webassembly"><a class="header" href="#maintaining-ongoing-support-for-webassembly">Maintaining Ongoing Support for WebAssembly</a></h2>
 <blockquote>
 <p>维护对 WebAssembly 的持续支持</p>
 </blockquote>
-<a class="header" href="#a在-ci-上构建成-wasm32-unknown-unknown" id="a在-ci-上构建成-wasm32-unknown-unknown"><h3>在 CI 上，构建成 <code>wasm32-unknown-unknown</code></h3></a>
+<h3 id="在-ci-上构建成-wasm32-unknown-unknown"><a class="header" href="#在-ci-上构建成-wasm32-unknown-unknown">在 CI 上，构建成 <code>wasm32-unknown-unknown</code></a></h3>
 <p>通过让 CI 脚本运行以下命令，确保为 WebAssembly 目标时编译不会失败:</p>
 <pre><code>rustup target add wasm32-unknown-unknown
 cargo check --target wasm32-unknown-unknown
@@ -2420,21 +2491,21 @@ cargo check --target wasm32-unknown-unknown
       install: rustup target add wasm32-unknown-unknown
       script: cargo check --target wasm32-unknown-unknown
 </code></pre>
-<a class="header" href="#a在-nodejs-和-headless-浏览器-上测试" id="a在-nodejs-和-headless-浏览器-上测试"><h3>在 Node.js 和 Headless 浏览器 上测试</h3></a>
+<h3 id="在-nodejs-和-headless-浏览器-上测试"><a class="header" href="#在-nodejs-和-headless-浏览器-上测试">在 Node.js 和 Headless 浏览器 上测试</a></h3>
 <p>您可以在 Node.js 或无头浏览器中，使用<code>wasm-bindgen-test</code>和<code>wasm-pack test</code>子命令，运行 wasm 测试。您甚至可以将这些测试集成到 CI 中。</p>
 <p><a href="https://rustwasm.github.io/wasm-bindgen/wasm-bindgen-test/index.html">学习 ，更多 测试 wasm 的资源</a></p>
-<a class="header" href="#a发布-rust-和-webassembly-到-生产环境" id="a发布-rust-和-webassembly-到-生产环境"><h1>发布 Rust 和 WebAssembly 到 生产环境</h1></a>
+<h1 id="发布-rust-和-webassembly-到-生产环境"><a class="header" href="#发布-rust-和-webassembly-到-生产环境">发布 Rust 和 WebAssembly 到 生产环境</a></h1>
 <blockquote>
 <p><strong>⚡ 部署使用 Rust 和 WebAssembly 构建的 Web 应用程序几乎与部署任何其他 Web 应用程序完全相同!</strong></p>
 </blockquote>
 <p>要在客户端上，使用 Rust 生成的 WebAssembly 部署的 Web 应用程序，请将构建的 Web 应用程序的文件复制到生产服务器的文件系统，并配置 HTTP 服务器以使其可访问。</p>
-<a class="header" href="#a确定好-你的-http-服务器-使用applicationwasm-mime-type" id="a确定好-你的-http-服务器-使用applicationwasm-mime-type"><h2>确定好 你的 HTTP 服务器 使用<code>application/wasm</code> MIME Type</h2></a>
+<h2 id="确定好-你的-http-服务器-使用applicationwasm-mime-type"><a class="header" href="#确定好-你的-http-服务器-使用applicationwasm-mime-type">确定好 你的 HTTP 服务器 使用<code>application/wasm</code> MIME Type</a></h2>
 <p>为了最快的页面加载，您将要使用<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/instantiateStreaming"><code>WebAssembly.instantiateStreaming</code>函数</a>，其通过网络传输管理 wasm 编译和实例化(或确保您的 捆绑器 能够使用该函数)。然而,<code>instantiateStreaming</code>要求 HTTP 响应具有<code>application/wasm</code> 的 [MIME 类型][]设置，否则会抛出错误。</p>
 <ul>
 <li><a href="https://httpd.apache.org/docs/2.4/mod/mod_mime.html#addtype">如何为 Apache HTTP 服务器配置 MIME 类型</a></li>
 <li><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#types">如何为 NGINX HTTP 服务器配置 MIME 类型</a></li>
 </ul>
-<a class="header" href="#a更多资源" id="a更多资源"><h2>更多资源</h2></a>
+<h2 id="更多资源"><a class="header" href="#更多资源">更多资源</a></h2>
 <ul>
 <li><a href="https://webpack.js.org/guides/production/">Webpack 在生产环境中的最佳实践。</a>：许多 Rust 和 WebAssembly 项目使用 Webpack ，去捆绑 Rust 生成的 WebAssembly，JavaScript，CSS 和 HTML。本指南提供了，部署到生产环境时，尽用 Webpack 的技巧。</li>
 <li><a href="https://httpd.apache.org/docs/">Apache 文档.</a>Apache 是 ​​ 一种流行的 HTTP 服务器,可用于生产.</li>
@@ -2480,6 +2551,14 @@ cargo check --target wasm32-unknown-unknown
                 ga('create', 'UA-128555056-1', 'auto');
                 ga('send', 'pageview');
             }
+        </script>
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
         </script>
         
 

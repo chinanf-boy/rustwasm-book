@@ -1,24 +1,40 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="zh-CN" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>实现康威的生命游戏 - Rust 和 WebAssembly</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="立即开始学习如何一起使用 Rust 和 WebAssembly.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
         <link rel="shortcut icon" href="../favicon.png">
+        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
+        
         <link rel="stylesheet" href="../css/print.css" media="print">
+        
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -30,9 +46,12 @@
 
         
     </head>
-    <body class="light">
+    <body>
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">var path_to_root = "../";</script>
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script type="text/javascript">
@@ -53,10 +72,13 @@
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script type="text/javascript">
             var theme;
-            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
-            if (theme === null || theme === undefined) { theme = 'light'; }
-            document.body.className = theme;
-            document.querySelector('html').className = theme + ' js';
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
@@ -72,43 +94,48 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="../introduction.zh.html"><strong aria-hidden="true">1.</strong> 介绍</a></li><li><a href="../why-rust-and-webassembly.zh.html"><strong aria-hidden="true">2.</strong> 为啥 Rust 要与 WebAssembly 合作?</a></li><li><a href="../background-and-concepts.zh.html"><strong aria-hidden="true">3.</strong> 背景和概念</a></li><li><ol class="section"><li><a href="../what-is-webassembly.zh.html"><strong aria-hidden="true">3.1.</strong> 什么是 WebAssembly?</a></li><li class="spacer"></li></ol></li><li><a href="../game-of-life/introduction.zh.html"><strong aria-hidden="true">4.</strong> 教程</a></li><li><ol class="section"><li><a href="../game-of-life/setup.zh.html"><strong aria-hidden="true">4.1.</strong> 安装</a></li><li><a href="../game-of-life/hello-world.zh.html"><strong aria-hidden="true">4.2.</strong> Hello, World!</a></li><li><a href="../game-of-life/rules.zh.html"><strong aria-hidden="true">4.3.</strong> 规则们</a></li><li><a href="../game-of-life/implementing.zh.html" class="active"><strong aria-hidden="true">4.4.</strong> 实现康威的生命游戏</a></li><li><a href="../game-of-life/testing.zh.html"><strong aria-hidden="true">4.5.</strong> 测试 生命</a></li><li><a href="../game-of-life/debugging.zh.html"><strong aria-hidden="true">4.6.</strong> 调试</a></li><li><a href="../game-of-life/interactivity.zh.html"><strong aria-hidden="true">4.7.</strong> 添加 交互性</a></li><li><a href="../game-of-life/time-profiling.zh.html"><strong aria-hidden="true">4.8.</strong> 时间 分析</a></li><li><a href="../game-of-life/code-size.zh.html"><strong aria-hidden="true">4.9.</strong> 收缩 .wasm 尺寸</a></li><li><a href="../game-of-life/publishing-to-npm.zh.html"><strong aria-hidden="true">4.10.</strong> 发布到 npm</a></li><li class="spacer"></li></ol></li><li><a href="../reference/index.zh.html"><strong aria-hidden="true">5.</strong> 参考</a></li><li><ol class="section"><li><a href="../reference/crates.zh.html"><strong aria-hidden="true">5.1.</strong> 你应该知道的 Crates(箱) </a></li><li><a href="../reference/tools.zh.html"><strong aria-hidden="true">5.2.</strong> 你应该知道的 工具 </a></li><li><a href="../reference/project-templates.zh.html"><strong aria-hidden="true">5.3.</strong> 项目模版 Templates</a></li><li><a href="../reference/debugging.zh.html"><strong aria-hidden="true">5.4.</strong> 调试</a></li><li><a href="../reference/time-profiling.zh.html"><strong aria-hidden="true">5.5.</strong> 时间 分析</a></li><li><a href="../reference/code-size.zh.html"><strong aria-hidden="true">5.6.</strong> 收缩 .wasm 尺寸</a></li><li><a href="../reference/js-ffi.zh.html"><strong aria-hidden="true">5.7.</strong> javascript 互操作</a></li><li><a href="../reference/which-crates-work-with-wasm.zh.html"><strong aria-hidden="true">5.8.</strong> 哪些 现成的(crates)箱能与 WebAssembly 合作？</a></li><li><a href="../reference/add-wasm-support-to-crate.zh.html"><strong aria-hidden="true">5.9.</strong> 如何向通用 箱 添加 WebAssembly 支持</a></li><li><a href="../reference/deploying-to-production.zh.html"><strong aria-hidden="true">5.10.</strong> 将 Rust 和 Webassembly 部署到生产中</a></li></ol></li></ol>
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduction.zh.html"><strong aria-hidden="true">1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="../why-rust-and-webassembly.zh.html"><strong aria-hidden="true">2.</strong> 为啥 Rust 要与 WebAssembly 合作?</a></li><li class="chapter-item expanded "><a href="../background-and-concepts.zh.html"><strong aria-hidden="true">3.</strong> 背景和概念</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../what-is-webassembly.zh.html"><strong aria-hidden="true">3.1.</strong> 什么是 WebAssembly?</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../game-of-life/introduction.zh.html"><strong aria-hidden="true">4.</strong> 教程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../game-of-life/setup.zh.html"><strong aria-hidden="true">4.1.</strong> 安装</a></li><li class="chapter-item expanded "><a href="../game-of-life/hello-world.zh.html"><strong aria-hidden="true">4.2.</strong> Hello, World!</a></li><li class="chapter-item expanded "><a href="../game-of-life/rules.zh.html"><strong aria-hidden="true">4.3.</strong> 规则们</a></li><li class="chapter-item expanded "><a href="../game-of-life/implementing.zh.html" class="active"><strong aria-hidden="true">4.4.</strong> 实现康威的生命游戏</a></li><li class="chapter-item expanded "><a href="../game-of-life/testing.zh.html"><strong aria-hidden="true">4.5.</strong> 测试 生命</a></li><li class="chapter-item expanded "><a href="../game-of-life/debugging.zh.html"><strong aria-hidden="true">4.6.</strong> 调试</a></li><li class="chapter-item expanded "><a href="../game-of-life/interactivity.zh.html"><strong aria-hidden="true">4.7.</strong> 添加 交互性</a></li><li class="chapter-item expanded "><a href="../game-of-life/time-profiling.zh.html"><strong aria-hidden="true">4.8.</strong> 时间 分析</a></li><li class="chapter-item expanded "><a href="../game-of-life/code-size.zh.html"><strong aria-hidden="true">4.9.</strong> 收缩 .wasm 尺寸</a></li><li class="chapter-item expanded "><a href="../game-of-life/publishing-to-npm.zh.html"><strong aria-hidden="true">4.10.</strong> 发布到 npm</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../reference/index.zh.html"><strong aria-hidden="true">5.</strong> 参考</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../reference/crates.zh.html"><strong aria-hidden="true">5.1.</strong> 你应该知道的 Crates(箱) </a></li><li class="chapter-item expanded "><a href="../reference/tools.zh.html"><strong aria-hidden="true">5.2.</strong> 你应该知道的 工具 </a></li><li class="chapter-item expanded "><a href="../reference/project-templates.zh.html"><strong aria-hidden="true">5.3.</strong> 项目模版 Templates</a></li><li class="chapter-item expanded "><a href="../reference/debugging.zh.html"><strong aria-hidden="true">5.4.</strong> 调试</a></li><li class="chapter-item expanded "><a href="../reference/time-profiling.zh.html"><strong aria-hidden="true">5.5.</strong> 时间 分析</a></li><li class="chapter-item expanded "><a href="../reference/code-size.zh.html"><strong aria-hidden="true">5.6.</strong> 收缩 .wasm 尺寸</a></li><li class="chapter-item expanded "><a href="../reference/js-ffi.zh.html"><strong aria-hidden="true">5.7.</strong> javascript 互操作</a></li><li class="chapter-item expanded "><a href="../reference/which-crates-work-with-wasm.zh.html"><strong aria-hidden="true">5.8.</strong> 哪些 现成的(crates)箱能与 WebAssembly 合作？</a></li><li class="chapter-item expanded "><a href="../reference/add-wasm-support-to-crate.zh.html"><strong aria-hidden="true">5.9.</strong> 如何向通用 箱 添加 WebAssembly 支持</a></li><li class="chapter-item expanded "><a href="../reference/deploying-to-production.zh.html"><strong aria-hidden="true">5.10.</strong> 将 Rust 和 Webassembly 部署到生产中</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                 
-                <div id="menu-bar" class="menu-bar">
-                    <div id="menu-bar-sticky-container">
-                        <div class="left-buttons">
-                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                                <i class="fa fa-paint-brush"></i>
-                            </button>
-                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                                <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                            </ul>
-                            
-                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                                <i class="fa fa-search"></i>
-                            </button>
-                            
-                        </div>
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
 
-                        <h1 class="menu-title">Rust 和 WebAssembly</h1> 
+                    <h1 class="menu-title">Rust 和 WebAssembly</h1>
 
-                        <div class="right-buttons">
-                            <a href="../print.html" title="Print this book" aria-label="Print this book">
-                                <i id="print-button" class="fa fa-print"></i>
-                            </a>
-                        </div>
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
                     </div>
                 </div>
 
@@ -136,10 +163,10 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#a实现康威的生命游戏" id="a实现康威的生命游戏"><h1>实现康威的生命游戏</h1></a>
-<a class="header" href="#a设计" id="a设计"><h2>设计</h2></a>
+                        <h1 id="实现康威的生命游戏"><a class="header" href="#实现康威的生命游戏">实现康威的生命游戏</a></h1>
+<h2 id="设计"><a class="header" href="#设计">设计</a></h2>
 <p>在我们深入之前，我们有一些设计选择需要考虑。</p>
-<a class="header" href="#a无限的宇宙" id="a无限的宇宙"><h3>无限的宇宙</h3></a>
+<h3 id="无限的宇宙"><a class="header" href="#无限的宇宙">无限的宇宙</a></h3>
 <p>生命游戏是在无限的宇宙中进行的，但我们没有无限的内存和计算能力。 解决这个相当恼人的限制，通常有以下三种风格:</p>
 <p>1。 跟踪宇宙的哪个子集发生了有趣的事情，并根据需要，扩展此区域。 在最坏的情况下，这种扩展是无限制的，实现将变得越来越慢，最终耗尽内存。</p>
 <p>2。 创建固定大小的 Universe，边缘上的单元格具有较少的邻居
@@ -147,7 +174,7 @@
 像滑翔机一样到达宇宙尽头的模式被扼杀了。</p>
 <p>3。 创建一个固定大小的周期性 Universe，其中边缘上的单元格具有环绕到 Universe 另一侧的邻居。 因为邻居环绕宇宙的边缘，滑翔机可以永远运行。</p>
 <p>我们将实现<code>第三种</code>选择。</p>
-<a class="header" href="#a连接-rust-和-javascript" id="a连接-rust-和-javascript"><h3>连接 Rust 和 JavaScript</h3></a>
+<h3 id="连接-rust-和-javascript"><a class="header" href="#连接-rust-和-javascript">连接 Rust 和 JavaScript</a></h3>
 <blockquote>
 <p>⚡ 这是从本教程中，你要理解和获取的最重要的概念之一!</p>
 </blockquote>
@@ -163,59 +190,62 @@
 </li>
 </ol>
 <p>作为一般的经验法则，一个好的 JavaScript↔WebAssembly 接口设计，通常是将大型，长寿命的数据结构实现，为生活在 WebAssembly 线性内存 中的 Rust 类型，并作为不透明控制暴露给 JavaScript. JavaScript 调用，这些持有不透明控制的导出了的 WebAssembly 函数，转换数据，执行繁重的计算，查询数据，最终返回一个小的可复制结果。 通过仅返回计算的小结果，我们避免在 JavaScript 垃圾收集堆和 WebAssembly 线性存储器 之间，来回复制和序列化所有内容。</p>
-<a class="header" href="#a在我们的生命游戏中连接-rust-和-javascript" id="a在我们的生命游戏中连接-rust-和-javascript"><h3>在我们的生命游戏中连接 Rust 和 JavaScript</h3></a>
+<h3 id="在我们的生命游戏中连接-rust-和-javascript"><a class="header" href="#在我们的生命游戏中连接-rust-和-javascript">在我们的生命游戏中连接 Rust 和 JavaScript</a></h3>
 <p>让我们首先列举一些要避免的危险。 我们不希望在每次<code>tick</code>，都将整个 Universe 复制到 WebAssembly 线性内存。 我们不希望为宇宙中的每个单元分配对象，也不想强加一个跨边界调用来读写每个单元。</p>
 <p>这给我们留下了什么? 我们可以将 Universe 表示为，位于 WebAssembly 线性内存中的平面数组，并且每个单元格都有一个字节。 <code>0</code>是一个死单元格，<code>1</code>是一个活单元格。</p>
 <p>以下是 4 x 4 宇宙在内存中的样子:</p>
-<p><img src="./images/game-of-life/universe.png" alt="Screenshot of a 4 by 4 universe" /></p>
+<p><img src="../images/game-of-life/universe.png" alt="Screenshot of a 4 by 4 universe" /></p>
 <p>要在 Universe 的给定行和列中，查找单元格的数组索引，我们可以使用以下公式:</p>
 <pre><code class="language-text">index(row, column, universe) = row * width(universe) + column
 </code></pre>
 <p>我们有几种方法可以将 Universe 的单元格暴露给 JavaScript。 首先，我们为<code>Universe</code>添加<a href="https://doc.rust-lang.org/1.25.0/std/fmt/trait.Display.html"><code>std::fmt::Display</code></a>实现，可以用来产生 一个单元格的 Rust<code>String</code> ，渲染为文本字符。 然后将此 Rust String 从 WebAssembly 线性内存 复制到 JavaScript 的垃圾回收堆中 的 JavaScript String 中，然后通过设置<code>HTML</code>的<code>textContent</code>显示。 在本章的后面，我们将推演这个实现，以避免在堆之间复制 Universe 的单元格，和渲染到<code>&lt;canvas&gt;</code>。</p>
 <p><em>另一个可行的设计替代方案是， Rust 返回每次 tick 后，更改状态的每个单元格的列表，而不是将整个 Universe 暴露给 JavaScript。 好处在于，JavaScript 在渲染时不需要遍历整个 Universe ，只需要相关的子集。 问题权衡，在于这种 基于 delta 的设计实现起来，稍微困难一些。</em></p>
-<a class="header" href="#rust-实现" id="rust-实现"><h2>Rust 实现</h2></a>
+<h2 id="rust-实现"><a class="header" href="#rust-实现">Rust 实现</a></h2>
 <p>在上一章中，我们克隆了一个初始项目模板. 我们现在将修改该项目模板.</p>
 <p>让我们开始删除 <code>wasm-game-of-life/src/lib.rs</code>的 <code>alert</code>导入 和<code>greet</code> 函数，并用单元格的类型定义替换它们:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-#[wasm_bindgen]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[wasm_bindgen]
 #[repr(u8)]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Cell {
     Dead = 0,
     Alive = 1,
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>重要的是我们拥有<code>#[repr(u8)]</code>，以便每个单元格表示为单个字节。 同样重要的是<code>Dead</code>代表<code>0</code>，那个<code>Alive</code>是<code>1</code>，这样我们就可以轻松地计算一个单元格的活邻居。</p>
 <p>接下来，让我们定义宇宙(Universe)。 宇宙具有宽度和高度，以及长度为<code>width * height</code>的单元格向量。</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-#[wasm_bindgen]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[wasm_bindgen]
 pub struct Universe {
     width: u32,
     height: u32,
     cells: Vec&lt;Cell&gt;,
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>要访问 给定行和列 的单元格，我们将 行和列 转换为 单元格向量 的索引，如前所述:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-impl Universe {
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl Universe {
     fn get_index(&amp;self, row: u32, column: u32) -&gt; usize {
         (row * self.width + column) as usize
     }
 
     // ...
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>为了计算单元格的下一个状态，我们需要计算 其邻居有多少 是活着的。 我们来写一个<code>live_neighbor_count</code>方法，做到这一点!</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-impl Universe {
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl Universe {
     // ...
 
     fn live_neighbor_count(&amp;self, row: u32, column: u32) -&gt; u8 {
@@ -235,14 +265,15 @@ impl Universe {
         count
     }
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p><code>live_neighbor_count</code>方法使用 deltas 和 modulo 来避免宇宙的边缘情况。 当应用<code>-1</code>的增量时，我们<em>添加</em>
 <code>self.height - 1</code>，然后让 modulo 做它的事，而不是试图减去<code>1</code>。 <code>row</code>和<code>column</code>可以为<code>0</code>，如果我们试图减去<code>1</code>， 从他们来看，会有一个 无符号整数 下溢。</p>
 <p>现在我们拥有了当前计算下一代所需的一切! 每个游戏的规则遵循 转换条件用<code>match</code>直接表达。 另外，因为我们希望 JavaScript 控制 tick 时间，我们将把这个方法放在一个<code>#[wasm_bindgen]</code>注释下，以便它暴露给 JavaScript。</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-/// 公有方法, 暴露给 JavaScript.
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>/// 公有方法, 暴露给 JavaScript.
 #[wasm_bindgen]
 impl Universe {
     pub fn tick(&amp;mut self) {
@@ -276,13 +307,14 @@ impl Universe {
 
     // ...
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>到目前为止，宇宙的状态被表示为 单元格 的载体。 为了使这个可读，让我们实现一个基本的文本渲染器。 我们的想法是逐行将 Universe 写成文本，对于每个活着的单元格，打印 Unicode 字符<code>◼️</code> (”黑色方格”) 。 对于死单元格，我们将打印<code>◻️</code> (”白色方格”) 。</p>
 <p>通过实现来自 Rust 标准库 的<a href="https://doc.rust-lang.org/1.25.0/std/fmt/trait.Display.html"><code>Display</code></a>trait ，我们可以添加一种面向用户, 格式化结构的方法。 这也会自动给我们一个<a href="https://doc.rust-lang.org/1.25.0/std/string/trait.ToString.html"><code>to_string</code></a>方法.</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-use std::fmt;
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::fmt;
 
 impl fmt::Display for Universe {
     fn fmt(&amp;self, f: &amp;mut fmt::Formatter) -&gt; fmt::Result {
@@ -297,12 +329,13 @@ impl fmt::Display for Universe {
         Ok(())
     }
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>最后，我们定义一个构造函数，用一个有趣的 活单元格和死单元格 模式来初始化宇宙，以及<code>render</code>方法:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-/// Public methods, exported to JavaScript.
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>/// Public methods, exported to JavaScript.
 #[wasm_bindgen]
 impl Universe {
     // ...
@@ -332,10 +365,11 @@ impl Universe {
         self.to_string()
     }
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>有了这个，我们的生命游戏 Rust 实现的一半就完成了!</p>
 <p>在<code>wasm-game-of-life</code> 目录内，通过运行<code>wasm-pack build</code>重新编译为 WebAssembly。</p>
-<a class="header" href="#a使用-javascript-渲染" id="a使用-javascript-渲染"><h2>使用 JavaScript 渲染</h2></a>
+<h2 id="使用-javascript-渲染"><a class="header" href="#使用-javascript-渲染">使用 JavaScript 渲染</a></h2>
 <p>首先，让我们添加一个用于渲染宇宙的<code>&lt;pre&gt;</code>元素到<code>wasm-game-of-life/www/index.html</code>，就放在 <code>&lt;script&gt;</code> 上好了:</p>
 <pre><code class="language-html">&lt;body&gt;
   &lt;pre id=&quot;game-of-life-canvas&quot;&gt;&lt;/pre&gt;
@@ -377,8 +411,8 @@ const universe = Universe.new();
 </code></pre>
 <p>确保你的开发服务器还在运行 (<code>wasm-game-of-life/www</code>目录中，执行 <code>npm run start</code>
 ) 和这就是<a href="http://localhost:8080/">http://localhost:8080/</a> 现在的样子:</p>
-<p><a href="./images/game-of-life/initial-game-of-life-pre.png"><img src="./images/game-of-life/initial-game-of-life-pre.png" alt="Screenshot of the Game of Life implementation with text rendering" /></a></p>
-<a class="header" href="#a直接从内存渲染到-canvas" id="a直接从内存渲染到-canvas"><h2>直接从内存渲染到 Canvas</h2></a>
+<p><a href="../images/game-of-life/initial-game-of-life-pre.png"><img src="../images/game-of-life/initial-game-of-life-pre.png" alt="Screenshot of the Game of Life implementation with text rendering" /></a></p>
+<h2 id="直接从内存渲染到-canvas"><a class="header" href="#直接从内存渲染到-canvas">直接从内存渲染到 Canvas</a></h2>
 <p>在 Rust 中生成 (和分配) 一个<code>String</code>， 然后有<code>wasm-bindgen</code>将其转换为有效的 JavaScript 字符串 ，来会生成 Universe 单元格 的不必要副本。 其实在 JavaScript 代码 知道 Universe 的宽度和高度，并且可以直接从 JavaScript 中读取 WebAssembly 线性内存 中的单元格字节， 我们就可以修改<code>render</code>方法，用来返回 单元数组的开头指针。</p>
 <p>还有，我们将切换到使用<a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">Canvas API</a>。 而不是渲染 unicode 文本。 我们将在本教程的其余部分中使用此设计。</p>
 <p>首先，让我们把<code>pre</code>，换成了一个<code>&lt;canvas&gt;</code> (它也应该在<code>&lt;body&gt;</code>， <code>&lt;script&gt;</code>加载我们的 JavaScript 之前) :</p>
@@ -389,10 +423,10 @@ const universe = Universe.new();
 &lt;/body&gt;
 </code></pre>
 <p>为了从 Rust 实现 中获取必要的信息，我们需要为 Universe 的宽度，高度和指向 其单元数组 的指针 添加更多的一些 <code>getter</code>函数。 所有这些都暴露在 JavaScript 中。添加这些内容<code>wasm-game-of-life/src/lib.rs</code>:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-/// Public methods， exported to JavaScript.
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>/// Public methods， exported to JavaScript.
 #[wasm_bindgen]
 impl Universe {
     // ...
@@ -409,7 +443,8 @@ impl Universe {
         self.cells.as_ptr()
     }
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>接下来，在<code>wasm-game-of-life/www/index.js</code>，我们也从<code>wasm-game-of-life</code>导入<code>Cell</code>，和让我们定义 JavaScript 在渲染 Canvas 时将使用的一些常量:</p>
 <pre><code class="language-js">import {Universe, Cell} from 'wasm-game-of-life';
 
@@ -501,7 +536,7 @@ const drawCells = () =&gt; {
 <pre><code class="language-js">requestAnimationFrame(renderLoop);
 </code></pre>
 <p>请注意，在执行<code>requestAnimationFrame()</code><em>之前</em>，我们要调用<code>drawGrid()</code>和<code>drawCells()</code>。我们这样做的原因是，在我们进行修改之前，绘制宇宙的<em>初始</em>状态。如果我们改为简单地调用<code>requestAnimationFrame(renderLoop)</code>，我们最终得到的第一帧实际的绘制情况是，在第一次调用<code>universe.tick()</code><em>后</em>，也就是这些单元格生命状态的<strong>第二次</strong>“tick”。</p>
-<a class="header" href="#a它工作了" id="a它工作了"><h2>它工作了!</h2></a>
+<h2 id="它工作了"><a class="header" href="#它工作了">它工作了!</a></h2>
 <p>通过在根<code>wasm-game-of-life</code>目录中运行此命令，来重构建 WebAssembly 和绑定粘合剂:</p>
 <pre><code>wasm-pack build
 </code></pre>
@@ -509,10 +544,10 @@ const drawCells = () =&gt; {
 <pre><code>npm run start
 </code></pre>
 <p>如果你刷新<a href="http://localhost:8080/">http://localhost:8080/</a>，你应该受到令人兴奋的展示!</p>
-<p><a href="./images/game-of-life/initial-game-of-life.png"><img src="./images/game-of-life/initial-game-of-life.png" alt="Screenshot of the Game of Life implementation" /></a></p>
+<p><a href="../images/game-of-life/initial-game-of-life.png"><img src="../images/game-of-life/initial-game-of-life.png" alt="Screenshot of the Game of Life implementation" /></a></p>
 <p>您可以 checkout <code>chapter-one</code> 分支 找到完整代码.</p>
 <p>还有一个非常巧妙的算法，来实现生命游戏，叫做<a href="https://en.wikipedia.org/wiki/Hashlife">hashlife</a>。 它使用积极的内存，实际上计算后代的时间越长，获得的<em>指数级更快</em>! 鉴于此，您可能想知道为什么我们在本教程中没有实现<code>hashlife</code>。 因为它超出了本文的范围，我们专注于 Rust 和 WebAssembly 集成，但我们强烈建议您自己去了解<code>hashlife</code>!</p>
-<a class="header" href="#a练习" id="a练习"><h2>练习</h2></a>
+<h2 id="练习"><a class="header" href="#练习">练习</a></h2>
 <ul>
 <li>
 <p>使用单个太空飞船，初始化宇宙.</p>
@@ -520,19 +555,19 @@ const drawCells = () =&gt; {
 <li>
 <p>不是硬编码最初的宇宙，而是生成一个随机的，有五十五个单元格活着或死亡的机会.</p>
 <p><em>提示:使用<a href="https://crates.io/crates/js-sys"><code>js-sys</code>箱</a>导入<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random"><code>Math.random</code>JavaScript 函数</a>.</em></p>
-<p><details>
-<summary>答案</summary>
-<em>首先，在 <code>wasm-game-of-life/Cargo.toml</code>添加依赖:</em></p>
+<details>
+  <summary>答案</summary>
+  *首先，在 `wasm-game-of-life/Cargo.toml`添加依赖:*
 <pre><code class="language-toml"># ...
 [dependencies]
 js-sys = &quot;0.3&quot;
 # ...
 </code></pre>
 <p><em>然后，使用<code>js_sys::Math::random</code>翻转硬币的函数:</em></p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-extern crate js_sys;
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>extern crate js_sys;
 
 // ...
 
@@ -541,20 +576,21 @@ if js_sys::Math::random() &lt; 0.5 {
 } else {
     // Dead...
 }
-#}</code></pre></pre>
-<p></details></p>
+<span class="boring">}
+</span></code></pre></pre>
+</details>
 </li>
 <li>
 <p>用 一个字节 表示 每个单元格 可以很容易地迭代单元格，但这是以浪费内存为代价的. 每个字节是 8 位，但我们只需要 一个位 来表示每个单元 是活还是死. 重构数据表示，以便每个单元，仅使用一个空格位.</p>
 </li>
 </ul>
-<p><details>
-<summary>答案</summary></p>
+<details>
+    <summary>答案</summary>
 <p>在 Rust 中，您可以使用<a href="https://crates.io/crates/fixedbitset"><code>fixedbitset</code>箱子和它的<code>FixedBitSet</code>类型</a>，来表示单元格，代替<code>Vec&lt;Cell&gt;</code>:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-// 确保你添加此依赖到了 Cargo.toml!
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// 确保你添加此依赖到了 Cargo.toml!
 extern crate fixedbitset;
 use fixedbitset::FixedBitSet;
 
@@ -566,12 +602,13 @@ pub struct Universe {
     height: u32,
     cells: FixedBitSet,
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>可以通过以下方式调整 Universe 构造函数:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-pub fn new() -&gt; Universe {
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn new() -&gt; Universe {
     let width = 64;
     let height = 64;
 
@@ -588,24 +625,26 @@ pub fn new() -&gt; Universe {
         cells,
     }
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>要更新宇宙的下一个 tick 中的单元格，我们使用<code>FixedBitSet</code>的<code>set</code>方法:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-next.set(idx, match (cell, live_neighbors) {
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>next.set(idx, match (cell, live_neighbors) {
     (true, x) if x &lt; 2 =&gt; false,
     (true, 2) | (true, 3) =&gt; true,
     (true, x) if x &gt; 3 =&gt; false,
     (false, 3) =&gt; true,
     (otherwise, _) =&gt; otherwise
 });
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>要将指向开头位的指针传递给 JavaScript，您可以转换<code>FixedBitSet</code>到切片，然后将切片转换为指针:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-#[wasm_bindgen]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[wasm_bindgen]
 impl Universe {
     // ...
 
@@ -613,7 +652,8 @@ impl Universe {
         self.cells.as_slice().as_ptr()
     }
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>在 JavaScript 中，构建 Wasm 的内存成一个<code>Uint8Array</code>，与之前相同，只是数组的长度不再是<code>width * height</code>，而是<code>width * height / 8</code>，因为我们一个 位 有一个单元，而不是字节(8 位):</p>
 <pre><code class="language-js">const cells = new Uint8Array(memory.buffer, cellsPtr, (width * height) / 8);
 </code></pre>
@@ -652,7 +692,7 @@ impl Universe {
   ctx.stroke();
 };
 </code></pre>
-<p></details></p>
+</details>
 
                     </main>
 
@@ -677,13 +717,13 @@ impl Universe {
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../game-of-life/rules.zh.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../game-of-life/rules.zh.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a href="../game-of-life/testing.zh.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../game-of-life/testing.zh.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
@@ -709,6 +749,14 @@ impl Universe {
                 ga('create', 'UA-128555056-1', 'auto');
                 ga('send', 'pageview');
             }
+        </script>
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
         </script>
         
 

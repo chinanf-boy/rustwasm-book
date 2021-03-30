@@ -1,24 +1,40 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="zh-CN" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>时间 分析 - Rust 和 WebAssembly</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="立即开始学习如何一起使用 Rust 和 WebAssembly.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
         <link rel="shortcut icon" href="../favicon.png">
+        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
+        
         <link rel="stylesheet" href="../css/print.css" media="print">
+        
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -30,9 +46,12 @@
 
         
     </head>
-    <body class="light">
+    <body>
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">var path_to_root = "../";</script>
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script type="text/javascript">
@@ -53,10 +72,13 @@
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script type="text/javascript">
             var theme;
-            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
-            if (theme === null || theme === undefined) { theme = 'light'; }
-            document.body.className = theme;
-            document.querySelector('html').className = theme + ' js';
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
@@ -72,43 +94,48 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="../introduction.zh.html"><strong aria-hidden="true">1.</strong> 介绍</a></li><li><a href="../why-rust-and-webassembly.zh.html"><strong aria-hidden="true">2.</strong> 为啥 Rust 要与 WebAssembly 合作?</a></li><li><a href="../background-and-concepts.zh.html"><strong aria-hidden="true">3.</strong> 背景和概念</a></li><li><ol class="section"><li><a href="../what-is-webassembly.zh.html"><strong aria-hidden="true">3.1.</strong> 什么是 WebAssembly?</a></li><li class="spacer"></li></ol></li><li><a href="../game-of-life/introduction.zh.html"><strong aria-hidden="true">4.</strong> 教程</a></li><li><ol class="section"><li><a href="../game-of-life/setup.zh.html"><strong aria-hidden="true">4.1.</strong> 安装</a></li><li><a href="../game-of-life/hello-world.zh.html"><strong aria-hidden="true">4.2.</strong> Hello, World!</a></li><li><a href="../game-of-life/rules.zh.html"><strong aria-hidden="true">4.3.</strong> 规则们</a></li><li><a href="../game-of-life/implementing.zh.html"><strong aria-hidden="true">4.4.</strong> 实现康威的生命游戏</a></li><li><a href="../game-of-life/testing.zh.html"><strong aria-hidden="true">4.5.</strong> 测试 生命</a></li><li><a href="../game-of-life/debugging.zh.html"><strong aria-hidden="true">4.6.</strong> 调试</a></li><li><a href="../game-of-life/interactivity.zh.html"><strong aria-hidden="true">4.7.</strong> 添加 交互性</a></li><li><a href="../game-of-life/time-profiling.zh.html" class="active"><strong aria-hidden="true">4.8.</strong> 时间 分析</a></li><li><a href="../game-of-life/code-size.zh.html"><strong aria-hidden="true">4.9.</strong> 收缩 .wasm 尺寸</a></li><li><a href="../game-of-life/publishing-to-npm.zh.html"><strong aria-hidden="true">4.10.</strong> 发布到 npm</a></li><li class="spacer"></li></ol></li><li><a href="../reference/index.zh.html"><strong aria-hidden="true">5.</strong> 参考</a></li><li><ol class="section"><li><a href="../reference/crates.zh.html"><strong aria-hidden="true">5.1.</strong> 你应该知道的 Crates(箱) </a></li><li><a href="../reference/tools.zh.html"><strong aria-hidden="true">5.2.</strong> 你应该知道的 工具 </a></li><li><a href="../reference/project-templates.zh.html"><strong aria-hidden="true">5.3.</strong> 项目模版 Templates</a></li><li><a href="../reference/debugging.zh.html"><strong aria-hidden="true">5.4.</strong> 调试</a></li><li><a href="../reference/time-profiling.zh.html"><strong aria-hidden="true">5.5.</strong> 时间 分析</a></li><li><a href="../reference/code-size.zh.html"><strong aria-hidden="true">5.6.</strong> 收缩 .wasm 尺寸</a></li><li><a href="../reference/js-ffi.zh.html"><strong aria-hidden="true">5.7.</strong> javascript 互操作</a></li><li><a href="../reference/which-crates-work-with-wasm.zh.html"><strong aria-hidden="true">5.8.</strong> 哪些 现成的(crates)箱能与 WebAssembly 合作？</a></li><li><a href="../reference/add-wasm-support-to-crate.zh.html"><strong aria-hidden="true">5.9.</strong> 如何向通用 箱 添加 WebAssembly 支持</a></li><li><a href="../reference/deploying-to-production.zh.html"><strong aria-hidden="true">5.10.</strong> 将 Rust 和 Webassembly 部署到生产中</a></li></ol></li></ol>
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduction.zh.html"><strong aria-hidden="true">1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="../why-rust-and-webassembly.zh.html"><strong aria-hidden="true">2.</strong> 为啥 Rust 要与 WebAssembly 合作?</a></li><li class="chapter-item expanded "><a href="../background-and-concepts.zh.html"><strong aria-hidden="true">3.</strong> 背景和概念</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../what-is-webassembly.zh.html"><strong aria-hidden="true">3.1.</strong> 什么是 WebAssembly?</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../game-of-life/introduction.zh.html"><strong aria-hidden="true">4.</strong> 教程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../game-of-life/setup.zh.html"><strong aria-hidden="true">4.1.</strong> 安装</a></li><li class="chapter-item expanded "><a href="../game-of-life/hello-world.zh.html"><strong aria-hidden="true">4.2.</strong> Hello, World!</a></li><li class="chapter-item expanded "><a href="../game-of-life/rules.zh.html"><strong aria-hidden="true">4.3.</strong> 规则们</a></li><li class="chapter-item expanded "><a href="../game-of-life/implementing.zh.html"><strong aria-hidden="true">4.4.</strong> 实现康威的生命游戏</a></li><li class="chapter-item expanded "><a href="../game-of-life/testing.zh.html"><strong aria-hidden="true">4.5.</strong> 测试 生命</a></li><li class="chapter-item expanded "><a href="../game-of-life/debugging.zh.html"><strong aria-hidden="true">4.6.</strong> 调试</a></li><li class="chapter-item expanded "><a href="../game-of-life/interactivity.zh.html"><strong aria-hidden="true">4.7.</strong> 添加 交互性</a></li><li class="chapter-item expanded "><a href="../game-of-life/time-profiling.zh.html" class="active"><strong aria-hidden="true">4.8.</strong> 时间 分析</a></li><li class="chapter-item expanded "><a href="../game-of-life/code-size.zh.html"><strong aria-hidden="true">4.9.</strong> 收缩 .wasm 尺寸</a></li><li class="chapter-item expanded "><a href="../game-of-life/publishing-to-npm.zh.html"><strong aria-hidden="true">4.10.</strong> 发布到 npm</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../reference/index.zh.html"><strong aria-hidden="true">5.</strong> 参考</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../reference/crates.zh.html"><strong aria-hidden="true">5.1.</strong> 你应该知道的 Crates(箱) </a></li><li class="chapter-item expanded "><a href="../reference/tools.zh.html"><strong aria-hidden="true">5.2.</strong> 你应该知道的 工具 </a></li><li class="chapter-item expanded "><a href="../reference/project-templates.zh.html"><strong aria-hidden="true">5.3.</strong> 项目模版 Templates</a></li><li class="chapter-item expanded "><a href="../reference/debugging.zh.html"><strong aria-hidden="true">5.4.</strong> 调试</a></li><li class="chapter-item expanded "><a href="../reference/time-profiling.zh.html"><strong aria-hidden="true">5.5.</strong> 时间 分析</a></li><li class="chapter-item expanded "><a href="../reference/code-size.zh.html"><strong aria-hidden="true">5.6.</strong> 收缩 .wasm 尺寸</a></li><li class="chapter-item expanded "><a href="../reference/js-ffi.zh.html"><strong aria-hidden="true">5.7.</strong> javascript 互操作</a></li><li class="chapter-item expanded "><a href="../reference/which-crates-work-with-wasm.zh.html"><strong aria-hidden="true">5.8.</strong> 哪些 现成的(crates)箱能与 WebAssembly 合作？</a></li><li class="chapter-item expanded "><a href="../reference/add-wasm-support-to-crate.zh.html"><strong aria-hidden="true">5.9.</strong> 如何向通用 箱 添加 WebAssembly 支持</a></li><li class="chapter-item expanded "><a href="../reference/deploying-to-production.zh.html"><strong aria-hidden="true">5.10.</strong> 将 Rust 和 Webassembly 部署到生产中</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                 
-                <div id="menu-bar" class="menu-bar">
-                    <div id="menu-bar-sticky-container">
-                        <div class="left-buttons">
-                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                                <i class="fa fa-paint-brush"></i>
-                            </button>
-                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                                <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                            </ul>
-                            
-                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                                <i class="fa fa-search"></i>
-                            </button>
-                            
-                        </div>
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
 
-                        <h1 class="menu-title">Rust 和 WebAssembly</h1> 
+                    <h1 class="menu-title">Rust 和 WebAssembly</h1>
 
-                        <div class="right-buttons">
-                            <a href="../print.html" title="Print this book" aria-label="Print this book">
-                                <i id="print-button" class="fa fa-print"></i>
-                            </a>
-                        </div>
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
                     </div>
                 </div>
 
@@ -136,10 +163,10 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#a时间分析" id="a时间分析"><h1>时间分析</h1></a>
+                        <h1 id="时间分析"><a class="header" href="#时间分析">时间分析</a></h1>
 <p>在本章中，我们将改进 Game of Life 实现的性能。我们将使用时间分析来指导我们的工作。</p>
 <p>继续之前，自己熟悉下<a href="../reference/time-profiling.zh.html">时间分析 Rust 和 WebAssembly 代码的可用工具</a>。</p>
-<a class="header" href="#a使用windowperformancenow函数创建秒数时间器" id="a使用windowperformancenow函数创建秒数时间器"><h2>使用<code>window.performance.now</code>函数，创建秒数时间器</h2></a>
+<h2 id="使用windowperformancenow函数创建秒数时间器"><a class="header" href="#使用windowperformancenow函数创建秒数时间器">使用<code>window.performance.now</code>函数，创建秒数时间器</a></h2>
 <p>当我们研究如何加速我们的生命游戏渲染时，这个 FPS 计时器将非常有用。</p>
 <p>我们首先添加一个<code>fps</code>对象到<code>wasm-game-of-life/www/index.js</code>：</p>
 <pre><code class="language-js">const fps = new class {
@@ -206,7 +233,7 @@ max of last 100 = ${Math.round(max)}
 }
 </code></pre>
 <p>瞧！刷新<a href="http://localhost:8080">http://localhost:8080</a>，现在我们有一个 FPS 计数器！</p>
-<a class="header" href="#a用consoletime和consoletimeend计时每个universetick" id="a用consoletime和consoletimeend计时每个universetick"><h3>用<code>console.time</code>和<code>console.timeEnd</code>计时每个<code>Universe::tick</code></h3></a>
+<h3 id="用consoletime和consoletimeend计时每个universetick"><a class="header" href="#用consoletime和consoletimeend计时每个universetick">用<code>console.time</code>和<code>console.timeEnd</code>计时每个<code>Universe::tick</code></a></h3>
 <p>需要测量每次<code>Universe::tick</code>调用的时间，我们可以使用<code>console.time</code>和<code>console.timeEnd</code>，通过<code>web-sys</code>箱。</p>
 <p>首先，在<code>wasm-game-of-life/Cargo.toml</code>添加<code>web-sys</code>作为依赖：</p>
 <pre><code class="language-toml">[dependencies.web-sys]
@@ -216,10 +243,10 @@ features = [
 ]
 </code></pre>
 <p>因为每个<code>console.time</code>调用都应该有一个对应的<code>console.timeEnd</code>调用，方便将它们包装为一个<a href="https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization">RAII</a>类型：</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-extern crate web_sys;
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>extern crate web_sys;
 use web_sys::console;
 
 pub struct Timer&lt;'a&gt; {
@@ -238,17 +265,19 @@ impl&lt;'a&gt; Drop for Timer&lt;'a&gt; {
         console::time_end_with_label(self.name);
     }
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>然后，将此代码段添加到方法的顶部，我们就可以计算每个<code>Universe::tick</code>时间：</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-let _timer = Timer::new(&quot;Universe::tick&quot;);
-#}</code></pre></pre>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let _timer = Timer::new(&quot;Universe::tick&quot;);
+<span class="boring">}
+</span></code></pre></pre>
 <p>每次<code>Universe::tick</code>调用的时间，现在会在控制台上记录了：</p>
 <p><a href="../images/game-of-life/console-time.png"><img src="../images/game-of-life/console-time.png" alt="Screenshot of console.time logs" /></a></p>
 <p>另外，一对<code>console.time</code>和<code>console.timeEnd</code>将显示在浏览器分析器的“时间轴”或“瀑布”视图中：pp<a href="../images/game-of-life/console-time-in-profiler.png"><img src="../images/game-of-life/console-time-in-profiler.png" alt="Screenshot of console.time logs" /></a></p>
-<a class="header" href="#a壮大我们的生命游戏宇宙" id="a壮大我们的生命游戏宇宙"><h2>壮大我们的生命游戏宇宙</h2></a>
+<h2 id="壮大我们的生命游戏宇宙"><a class="header" href="#壮大我们的生命游戏宇宙">壮大我们的生命游戏宇宙</a></h2>
 <blockquote>
 <p>⚠️ 本节使用 Firefox 的示例屏幕截图。虽然所有现代浏览器都有类似的工具，但使用不同的开发人员工具可能会有轻微的细微差别。您提取的配置信息基本相同，但在您使用途中，可能会因您看到的视图和不同工具的命名而有所不同。</p>
 </blockquote>
@@ -325,7 +354,7 @@ for (let row = 0; row &lt; height; row++) {
 <p><a href="../images/game-of-life/drawCells-after-waterfall.png"><img src="../images/game-of-life/drawCells-after-waterfall.png" alt="Screenshot of a waterfall view of rendering a frame after the drawCells changes" /></a></p>
 <p>击败罪魁祸首，我们看到了<code>fillStyle</code>成本已经消失，我们的大部分时间花在了内部的<code>fillRect</code>，其是绘制每个单元格的矩形。</p>
 <p><a href="../images/game-of-life/drawCells-after-flamegraph.png"><img src="../images/game-of-life/drawCells-after-flamegraph.png" alt="Screenshot of a flamegraph view of rendering a frame after the drawCells changes" /></a></p>
-<a class="header" href="#a让时间更快" id="a让时间更快"><h2>让时间更快</h2></a>
+<h2 id="让时间更快"><a class="header" href="#让时间更快">让时间更快</a></h2>
 <p>有些人不喜欢等待，并且，如果每个动画帧不是发生仅一次宇宙嘀嗒(tick)，而是更喜欢九次。我们可以修改<code>wasm-game-of-life/www/index.js</code>的<code>renderLoop</code>函数，这很容易做到这一点：</p>
 <pre><code class="language-js">for (let i = 0; i &lt; 9; i++) {
   universe.tick();
@@ -333,10 +362,10 @@ for (let row = 0; row &lt; height; row++) {
 </code></pre>
 <p>在我的机器上，这使我们恢复到每秒 35 帧。不好。我们想要那个大大滴 60！</p>
 <p>现在我们知道时间花在了<code>Universe::tick</code>，所以让我们添加一些<code>Timer</code>，用<code>console.time</code>和<code>console.timeEnd</code>调用来包装它的各个部分，然后，看看它引导我们的地方。我假设啊，是分配一个新的单元格向量(vector)，后在每次 tick，就要释放旧向量是昂贵的，占用了我们时间预算的很大一部分。</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-pub fn tick(&amp;mut self) {
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn tick(&amp;mut self) {
     let _timer = Timer::new(&quot;Universe::tick&quot;);
 
     let mut next = {
@@ -377,17 +406,18 @@ pub fn tick(&amp;mut self) {
     let _timer = Timer::new(&quot;free old cells&quot;);
     self.cells = next;
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>看看时间，很明显我的假设是不正确的：绝大部分时间，实际花在计算下一代单元格上。令人惊讶的是，在每次 tick 上分配和释放向量，似乎具有可忽略的成本。分析记录是始终指导我们工作的提醒！</p>
 <p><a href="../images/game-of-life/console-time-in-universe-tick.png"><img src="../images/game-of-life/console-time-in-universe-tick.png" alt="Screenshot of a Universe::tick timer results" /></a></p>
 <p>下一节需要<code>nightly</code>编译器。它是必需的，因为<a href="https://doc.rust-lang.org/unstable-book/library-features/test.html">测试 feature(特性) </a>我们准备用于基准测试。我们将安装的另一个工具是<a href="https://github.com/BurntSushi/cargo-benchcmp">Cargo benchcmp</a>。它是一个小实用程序，用于比较<code>cargo bench</code>生成的微基准测试。</p>
 <p>一个<code>#[bench]</code>原生代码，就做了我们 WebAssembly 正在做的事情，但我们可以使用更成熟的分析工具。这是新的<code>wasm-game-of-life/benches/bench.rs</code>：</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#![feature(test)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span>#![feature(test)]
 
-#fn main() {
-extern crate test;
+<span class="boring">fn main() {
+</span>extern crate test;
 extern crate wasm_game_of_life;
 
 #[bench]
@@ -398,7 +428,8 @@ fn universe_ticks(b: &amp;mut test::Bencher) {
         universe.tick();
     });
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>我们还要注释所有的<code>#[wasm_bindgen]</code>标示，和来自<code>Cargo.toml</code>的<code>&quot;cdylib&quot;</code>，不然，构建本机代码将失败并出现链接错误。</p>
 <p>有了这一切，我们就可以运行了<code>cargo bench | tee before.txt</code>编译并运行我们的基准测试！<code>| tee before.txt</code>部分将从<code>cargo bench</code>中获取输出，并放入一个名为<code>before.txt</code>的文件。</p>
 <pre><code>$ cargo bench | tee before.txt
@@ -432,10 +463,10 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 1 measured; 0 filtered out
 <p><a href="../images/game-of-life/bench-perf-annotate.png"><img src="../images/game-of-life/bench-perf-annotate.png" alt="Screenshot of perf’s instruction annotation" /></a></p>
 <p>这告诉我们 26.67％的时间用于求和相邻单元格的值，23.41％的时间用于获取邻居的列索引，另外 15.42％的时间用于获取邻居的行索引。在这三大最昂贵的命令中，第二和第三命令都让<code>div</code>很昂贵。这些<code>div</code>在<code>Universe::live_neighbor_count</code>实现 modulo 索引逻辑。</p>
 <p>回想一下<code>wasm-game-of-life/src/lib.rs</code>里面的<code>live_neighbor_count</code>定义：</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-fn live_neighbor_count(&amp;self, row: u32, column: u32) -&gt; u8 {
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn live_neighbor_count(&amp;self, row: u32, column: u32) -&gt; u8 {
     let mut count = 0;
     for delta_row in [self.height - 1, 0, 1].iter().cloned() {
         for delta_col in [self.width - 1, 0, 1].iter().cloned() {
@@ -451,13 +482,14 @@ fn live_neighbor_count(&amp;self, row: u32, column: u32) -&gt; u8 {
     }
     count
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>我们使用 modulo 的原因是为了避免使代码混乱，<code>if</code>出第一行或最后一行/列的边缘情况分支。但，当我们不在宇宙的边缘<code>row</code>或<code>column</code>的时候，不需要 modulo 包裹处理，会为此最常见情况的<code>div</code>命令付出代价。相反，如果我们使用<code>if</code>出边缘情况，并展开此循环，CPU 的分支预测器<em>应该</em>可以很好地预测它。</p>
 <p>我们改写<code>live_neighbor_count</code>，像这样：</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-fn live_neighbor_count(&amp;self, row: u32, column: u32) -&gt; u8 {
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn live_neighbor_count(&amp;self, row: u32, column: u32) -&gt; u8 {
     let mut count = 0;
 
     let north = if row == 0 {
@@ -510,7 +542,8 @@ fn live_neighbor_count(&amp;self, row: u32, column: u32) -&gt; u8 {
 
     count
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>现在让我们再次运行基准测试！这次输出到<code>after.txt</code>。</p>
 <pre><code>$ cargo bench | tee after.txt
    Compiling wasm_game_of_life v0.1.0 (file:///home/fitzgen/wasm_game_of_life)
@@ -538,7 +571,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 1 measured; 0 filtered out
 <p>让我们<code>wasm-pack build</code>，重建一下<code>.wasm</code>同并刷新<a href="http://localhost:8080/">http://localhost:8080 /</a>。在我的机器上，页面再次以每秒 60 帧的速度运行，并且使用浏览器的分析器记录另一个配置文件，显示每个动画帧大约需要 10 毫秒。</p>
 <p>成功！</p>
 <p><a href="../images/game-of-life/waterfall-after-branches-and-unrolling.png"><img src="../images/game-of-life/waterfall-after-branches-and-unrolling.png" alt="Screenshot of a waterfall view of rendering a frame after replacing modulos with branches" /></a></p>
-<a class="header" href="#a演习" id="a演习"><h2>演习</h2></a>
+<h2 id="演习"><a class="header" href="#演习">演习</a></h2>
 <ul>
 <li>
 <p>在这一点上，下一个最低的强化是，<code>Universe::tick</code>删除分配和释放。实现单元格的双缓冲，其中<code>Universe</code>维护两个向量，从不释放它们中的任何一个，并且<code>tick</code>永远不会分配新的缓冲区。</p>
@@ -574,13 +607,13 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 1 measured; 0 filtered out
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../game-of-life/interactivity.zh.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../game-of-life/interactivity.zh.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a href="../game-of-life/code-size.zh.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../game-of-life/code-size.zh.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
@@ -606,6 +639,14 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 1 measured; 0 filtered out
                 ga('create', 'UA-128555056-1', 'auto');
                 ga('send', 'pageview');
             }
+        </script>
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
         </script>
         
 

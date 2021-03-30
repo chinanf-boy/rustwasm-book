@@ -1,24 +1,40 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="zh-CN" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>如何向通用 箱 添加 WebAssembly 支持 - Rust 和 WebAssembly</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="立即开始学习如何一起使用 Rust 和 WebAssembly.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
         <link rel="shortcut icon" href="../favicon.png">
+        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
+        
         <link rel="stylesheet" href="../css/print.css" media="print">
+        
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -30,9 +46,12 @@
 
         
     </head>
-    <body class="light">
+    <body>
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">var path_to_root = "../";</script>
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script type="text/javascript">
@@ -53,10 +72,13 @@
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script type="text/javascript">
             var theme;
-            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
-            if (theme === null || theme === undefined) { theme = 'light'; }
-            document.body.className = theme;
-            document.querySelector('html').className = theme + ' js';
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
@@ -72,43 +94,48 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="../introduction.zh.html"><strong aria-hidden="true">1.</strong> 介绍</a></li><li><a href="../why-rust-and-webassembly.zh.html"><strong aria-hidden="true">2.</strong> 为啥 Rust 要与 WebAssembly 合作?</a></li><li><a href="../background-and-concepts.zh.html"><strong aria-hidden="true">3.</strong> 背景和概念</a></li><li><ol class="section"><li><a href="../what-is-webassembly.zh.html"><strong aria-hidden="true">3.1.</strong> 什么是 WebAssembly?</a></li><li class="spacer"></li></ol></li><li><a href="../game-of-life/introduction.zh.html"><strong aria-hidden="true">4.</strong> 教程</a></li><li><ol class="section"><li><a href="../game-of-life/setup.zh.html"><strong aria-hidden="true">4.1.</strong> 安装</a></li><li><a href="../game-of-life/hello-world.zh.html"><strong aria-hidden="true">4.2.</strong> Hello, World!</a></li><li><a href="../game-of-life/rules.zh.html"><strong aria-hidden="true">4.3.</strong> 规则们</a></li><li><a href="../game-of-life/implementing.zh.html"><strong aria-hidden="true">4.4.</strong> 实现康威的生命游戏</a></li><li><a href="../game-of-life/testing.zh.html"><strong aria-hidden="true">4.5.</strong> 测试 生命</a></li><li><a href="../game-of-life/debugging.zh.html"><strong aria-hidden="true">4.6.</strong> 调试</a></li><li><a href="../game-of-life/interactivity.zh.html"><strong aria-hidden="true">4.7.</strong> 添加 交互性</a></li><li><a href="../game-of-life/time-profiling.zh.html"><strong aria-hidden="true">4.8.</strong> 时间 分析</a></li><li><a href="../game-of-life/code-size.zh.html"><strong aria-hidden="true">4.9.</strong> 收缩 .wasm 尺寸</a></li><li><a href="../game-of-life/publishing-to-npm.zh.html"><strong aria-hidden="true">4.10.</strong> 发布到 npm</a></li><li class="spacer"></li></ol></li><li><a href="../reference/index.zh.html"><strong aria-hidden="true">5.</strong> 参考</a></li><li><ol class="section"><li><a href="../reference/crates.zh.html"><strong aria-hidden="true">5.1.</strong> 你应该知道的 Crates(箱) </a></li><li><a href="../reference/tools.zh.html"><strong aria-hidden="true">5.2.</strong> 你应该知道的 工具 </a></li><li><a href="../reference/project-templates.zh.html"><strong aria-hidden="true">5.3.</strong> 项目模版 Templates</a></li><li><a href="../reference/debugging.zh.html"><strong aria-hidden="true">5.4.</strong> 调试</a></li><li><a href="../reference/time-profiling.zh.html"><strong aria-hidden="true">5.5.</strong> 时间 分析</a></li><li><a href="../reference/code-size.zh.html"><strong aria-hidden="true">5.6.</strong> 收缩 .wasm 尺寸</a></li><li><a href="../reference/js-ffi.zh.html"><strong aria-hidden="true">5.7.</strong> javascript 互操作</a></li><li><a href="../reference/which-crates-work-with-wasm.zh.html"><strong aria-hidden="true">5.8.</strong> 哪些 现成的(crates)箱能与 WebAssembly 合作？</a></li><li><a href="../reference/add-wasm-support-to-crate.zh.html" class="active"><strong aria-hidden="true">5.9.</strong> 如何向通用 箱 添加 WebAssembly 支持</a></li><li><a href="../reference/deploying-to-production.zh.html"><strong aria-hidden="true">5.10.</strong> 将 Rust 和 Webassembly 部署到生产中</a></li></ol></li></ol>
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduction.zh.html"><strong aria-hidden="true">1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="../why-rust-and-webassembly.zh.html"><strong aria-hidden="true">2.</strong> 为啥 Rust 要与 WebAssembly 合作?</a></li><li class="chapter-item expanded "><a href="../background-and-concepts.zh.html"><strong aria-hidden="true">3.</strong> 背景和概念</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../what-is-webassembly.zh.html"><strong aria-hidden="true">3.1.</strong> 什么是 WebAssembly?</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../game-of-life/introduction.zh.html"><strong aria-hidden="true">4.</strong> 教程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../game-of-life/setup.zh.html"><strong aria-hidden="true">4.1.</strong> 安装</a></li><li class="chapter-item expanded "><a href="../game-of-life/hello-world.zh.html"><strong aria-hidden="true">4.2.</strong> Hello, World!</a></li><li class="chapter-item expanded "><a href="../game-of-life/rules.zh.html"><strong aria-hidden="true">4.3.</strong> 规则们</a></li><li class="chapter-item expanded "><a href="../game-of-life/implementing.zh.html"><strong aria-hidden="true">4.4.</strong> 实现康威的生命游戏</a></li><li class="chapter-item expanded "><a href="../game-of-life/testing.zh.html"><strong aria-hidden="true">4.5.</strong> 测试 生命</a></li><li class="chapter-item expanded "><a href="../game-of-life/debugging.zh.html"><strong aria-hidden="true">4.6.</strong> 调试</a></li><li class="chapter-item expanded "><a href="../game-of-life/interactivity.zh.html"><strong aria-hidden="true">4.7.</strong> 添加 交互性</a></li><li class="chapter-item expanded "><a href="../game-of-life/time-profiling.zh.html"><strong aria-hidden="true">4.8.</strong> 时间 分析</a></li><li class="chapter-item expanded "><a href="../game-of-life/code-size.zh.html"><strong aria-hidden="true">4.9.</strong> 收缩 .wasm 尺寸</a></li><li class="chapter-item expanded "><a href="../game-of-life/publishing-to-npm.zh.html"><strong aria-hidden="true">4.10.</strong> 发布到 npm</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../reference/index.zh.html"><strong aria-hidden="true">5.</strong> 参考</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../reference/crates.zh.html"><strong aria-hidden="true">5.1.</strong> 你应该知道的 Crates(箱) </a></li><li class="chapter-item expanded "><a href="../reference/tools.zh.html"><strong aria-hidden="true">5.2.</strong> 你应该知道的 工具 </a></li><li class="chapter-item expanded "><a href="../reference/project-templates.zh.html"><strong aria-hidden="true">5.3.</strong> 项目模版 Templates</a></li><li class="chapter-item expanded "><a href="../reference/debugging.zh.html"><strong aria-hidden="true">5.4.</strong> 调试</a></li><li class="chapter-item expanded "><a href="../reference/time-profiling.zh.html"><strong aria-hidden="true">5.5.</strong> 时间 分析</a></li><li class="chapter-item expanded "><a href="../reference/code-size.zh.html"><strong aria-hidden="true">5.6.</strong> 收缩 .wasm 尺寸</a></li><li class="chapter-item expanded "><a href="../reference/js-ffi.zh.html"><strong aria-hidden="true">5.7.</strong> javascript 互操作</a></li><li class="chapter-item expanded "><a href="../reference/which-crates-work-with-wasm.zh.html"><strong aria-hidden="true">5.8.</strong> 哪些 现成的(crates)箱能与 WebAssembly 合作？</a></li><li class="chapter-item expanded "><a href="../reference/add-wasm-support-to-crate.zh.html" class="active"><strong aria-hidden="true">5.9.</strong> 如何向通用 箱 添加 WebAssembly 支持</a></li><li class="chapter-item expanded "><a href="../reference/deploying-to-production.zh.html"><strong aria-hidden="true">5.10.</strong> 将 Rust 和 Webassembly 部署到生产中</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                 
-                <div id="menu-bar" class="menu-bar">
-                    <div id="menu-bar-sticky-container">
-                        <div class="left-buttons">
-                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                                <i class="fa fa-paint-brush"></i>
-                            </button>
-                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                                <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                            </ul>
-                            
-                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                                <i class="fa fa-search"></i>
-                            </button>
-                            
-                        </div>
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
 
-                        <h1 class="menu-title">Rust 和 WebAssembly</h1> 
+                    <h1 class="menu-title">Rust 和 WebAssembly</h1>
 
-                        <div class="right-buttons">
-                            <a href="../print.html" title="Print this book" aria-label="Print this book">
-                                <i id="print-button" class="fa fa-print"></i>
-                            </a>
-                        </div>
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
                     </div>
                 </div>
 
@@ -136,61 +163,64 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#a怎么为-一个-通用箱-添加-webassembly-支持" id="a怎么为-一个-通用箱-添加-webassembly-支持"><h1>怎么为 一个 通用箱 添加 WebAssembly 支持</h1></a>
+                        <h1 id="怎么为-一个-通用箱-添加-webassembly-支持"><a class="header" href="#怎么为-一个-通用箱-添加-webassembly-支持">怎么为 一个 通用箱 添加 WebAssembly 支持</a></h1>
 <p>本节适用于，希望支持 WebAssembly 的通用箱作者。</p>
-<a class="header" href="#a也许你的-箱子-以及-支持-webassembly" id="a也许你的-箱子-以及-支持-webassembly"><h2>也许，你的 箱子 以及 支持 WebAssembly!</h2></a>
+<h2 id="也许你的-箱子-以及-支持-webassembly"><a class="header" href="#也许你的-箱子-以及-支持-webassembly">也许，你的 箱子 以及 支持 WebAssembly!</a></h2>
 <p>查看有关<a href="./which-crates-work-with-wasm.zh.html">什么样的事情能让一个通用箱 <em>不能</em> 移植到 WebAssembly</a>的信息。如果您的箱子没有任何这些东西，它可能已经支持 WebAssembly!</p>
 <p>您可以随时通过运行<code>cargo build</code>，检查 WebAssembly 目标:</p>
 <pre><code>cargo build --target wasm32-unknown-unknown
 </code></pre>
 <p>如果该命令失败，那么您的 crate 现在不支持 WebAssembly。如果它没有失败，那么你的箱子<em>不一定</em>支持 WebAssembly。但你可以 100% 确定它(继续跟着做!)<a href="#maintaining-ongoing-support-for-webassembly">为 wasm 添加测试 ，还有在 CI 上运行这些测试。</a></p>
-<a class="header" href="#a添加-webassembly-支持" id="a添加-webassembly-支持"><h2>添加 WebAssembly 支持</h2></a>
-<a class="header" href="#a避免-直接执行-io" id="a避免-直接执行-io"><h3>避免 直接执行 I/O</h3></a>
+<h2 id="添加-webassembly-支持"><a class="header" href="#添加-webassembly-支持">添加 WebAssembly 支持</a></h2>
+<h3 id="避免-直接执行-io"><a class="header" href="#避免-直接执行-io">避免 直接执行 I/O</a></h3>
 <p>在 Web 上，I/O 始终是异步的，且时没有文件系统。从库中分出 I/O 因素吧，让用户以为自己在执行 I/O，但其实将输入 slice 传递到库中。</p>
 <p>例如,重构这个:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-use std::fs;
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::fs;
 use std::path::Path;
 
 pub fn parse_thing(path: &amp;Path) -&gt; Result&lt;MyThing, MyError&gt; {
     let contents = fs::read(path)?;
     // ...
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>进入这个:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-pub fn parse_thing(contents: &amp;[u8]) -&gt; Result&lt;MyThing, MyError&gt; {
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn parse_thing(contents: &amp;[u8]) -&gt; Result&lt;MyThing, MyError&gt; {
     // ...
 }
-#}</code></pre></pre>
-<a class="header" href="#a添加-wasm-bindgen-作为依赖" id="a添加-wasm-bindgen-作为依赖"><h3>添加 <code>wasm-bindgen</code> 作为依赖</h3></a>
+<span class="boring">}
+</span></code></pre></pre>
+<h3 id="添加-wasm-bindgen-作为依赖"><a class="header" href="#添加-wasm-bindgen-作为依赖">添加 <code>wasm-bindgen</code> 作为依赖</a></h3>
 <p>如果您需要与外界进行互动(即，您不能让 库 的使用者为您推动这种互动)，那么您需要添加<code>wasm-bindgen</code>(还有<code>js-sys</code>和<code>web-sys</code>，若你需要它们)作为编译 WebAssembly 目标的依赖项:</p>
 <pre><code class="language-toml">[target.'cfg(target_arch = &quot;wasm32&quot;)'.dependencies]
 wasm-bindgen = &quot;0.2&quot;
 js-sys = &quot;0.3&quot;
 web-sys = &quot;0.3&quot;
 </code></pre>
-<a class="header" href="#a避免-同步-io" id="a避免-同步-io"><h3>避免 同步 I/O</h3></a>
+<h3 id="避免-同步-io"><a class="header" href="#避免-同步-io">避免 同步 I/O</a></h3>
 <p>如果你必须在库中执行 I/O，那它不能同步。Web 上只有异步 I/O。使用<a href="https://crates.io/crates/futures"><code>futures</code>箱</a>和<a href="https://rustwasm.github.io/wasm-bindgen/api/wasm_bindgen_futures/"><code>wasm-bindgen-futures</code>箱</a>管理异步 I/O。如果您的库函数为某些 future 类型<code>F</code>的通用函数，那么 future 是可以实现的，可能是通过在 Web 上<code>fetch</code>，或是通过操作系统提供的非阻塞 I/O。</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-pub fn do_stuff&lt;F&gt;(future: F) -&gt; impl Future&lt;Item = MyOtherThing&gt;
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn do_stuff&lt;F&gt;(future: F) -&gt; impl Future&lt;Item = MyOtherThing&gt;
 where
     F: Future&lt;Item = MyThing&gt;,
 {
     // ...
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>您还可以为 WebAssembly 和 Web 以及本机目标，定义一个 trait 并实现它:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-trait ReadMyThing {
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>trait ReadMyThing {
     type F: Future&lt;Item = MyThing&gt;;
     fn read(&amp;self) -&gt; Self::F;
 }
@@ -214,15 +244,16 @@ struct NativeReadMyThing {
 impl ReadMyThing for NativeReadMyThing {
     // ...
 }
-#}</code></pre></pre>
-<a class="header" href="#a避免-派生线程" id="a避免-派生线程"><h3>避免 派生线程</h3></a>
+<span class="boring">}
+</span></code></pre></pre>
+<h3 id="避免-派生线程"><a class="header" href="#避免-派生线程">避免 派生线程</a></h3>
 <p>Wasm 还不支持线程(但是<a href="https://rustwasm.github.io/2018/10/24/multithreading-rust-and-wasm.html">实验型工作还是在继续</a>)，所以试图在 wasm 中产生线程会引起恐慌。</p>
 <p>您可以使用<code>#[cfg(..)]</code>启用代码路径，是不是线程和非线程，具体取决于目标是否为 WebAssembly:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#![cfg(target_arch = &quot;wasm32&quot;)]
-#fn main() {
-fn do_work() {
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span>#![cfg(target_arch = &quot;wasm32&quot;)]
+<span class="boring">fn main() {
+</span>fn do_work() {
     // 只使用这个线程…
 }
 
@@ -235,13 +266,14 @@ fn do_work() {
         // ...
     });
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>另一种选择是将从库中生成的线程分离出来，并允许用户带上“自己的线程”，类似于将文件 I/O 分离出来，并允许用户带上自己的 I/O。这有一个副作用，就是对想要拥有自己自定义线程池的应用程序要进行友好处理。</p>
-<a class="header" href="#maintaining-ongoing-support-for-webassembly" id="maintaining-ongoing-support-for-webassembly"><h2>Maintaining Ongoing Support for WebAssembly</h2></a>
+<h2 id="maintaining-ongoing-support-for-webassembly"><a class="header" href="#maintaining-ongoing-support-for-webassembly">Maintaining Ongoing Support for WebAssembly</a></h2>
 <blockquote>
 <p>维护对 WebAssembly 的持续支持</p>
 </blockquote>
-<a class="header" href="#a在-ci-上构建成-wasm32-unknown-unknown" id="a在-ci-上构建成-wasm32-unknown-unknown"><h3>在 CI 上，构建成 <code>wasm32-unknown-unknown</code></h3></a>
+<h3 id="在-ci-上构建成-wasm32-unknown-unknown"><a class="header" href="#在-ci-上构建成-wasm32-unknown-unknown">在 CI 上，构建成 <code>wasm32-unknown-unknown</code></a></h3>
 <p>通过让 CI 脚本运行以下命令，确保为 WebAssembly 目标时编译不会失败:</p>
 <pre><code>rustup target add wasm32-unknown-unknown
 cargo check --target wasm32-unknown-unknown
@@ -255,7 +287,7 @@ cargo check --target wasm32-unknown-unknown
       install: rustup target add wasm32-unknown-unknown
       script: cargo check --target wasm32-unknown-unknown
 </code></pre>
-<a class="header" href="#a在-nodejs-和-headless-浏览器-上测试" id="a在-nodejs-和-headless-浏览器-上测试"><h3>在 Node.js 和 Headless 浏览器 上测试</h3></a>
+<h3 id="在-nodejs-和-headless-浏览器-上测试"><a class="header" href="#在-nodejs-和-headless-浏览器-上测试">在 Node.js 和 Headless 浏览器 上测试</a></h3>
 <p>您可以在 Node.js 或无头浏览器中，使用<code>wasm-bindgen-test</code>和<code>wasm-pack test</code>子命令，运行 wasm 测试。您甚至可以将这些测试集成到 CI 中。</p>
 <p><a href="https://rustwasm.github.io/wasm-bindgen/wasm-bindgen-test/index.html">学习 ，更多 测试 wasm 的资源</a></p>
 
@@ -282,13 +314,13 @@ cargo check --target wasm32-unknown-unknown
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../reference/which-crates-work-with-wasm.zh.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../reference/which-crates-work-with-wasm.zh.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a href="../reference/deploying-to-production.zh.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../reference/deploying-to-production.zh.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
@@ -314,6 +346,14 @@ cargo check --target wasm32-unknown-unknown
                 ga('create', 'UA-128555056-1', 'auto');
                 ga('send', 'pageview');
             }
+        </script>
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
         </script>
         
 

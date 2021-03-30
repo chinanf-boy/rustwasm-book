@@ -1,24 +1,40 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="zh-CN" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>调试 - Rust 和 WebAssembly</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="立即开始学习如何一起使用 Rust 和 WebAssembly.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
         <link rel="shortcut icon" href="../favicon.png">
+        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
+        
         <link rel="stylesheet" href="../css/print.css" media="print">
+        
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -30,9 +46,12 @@
 
         
     </head>
-    <body class="light">
+    <body>
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">var path_to_root = "../";</script>
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script type="text/javascript">
@@ -53,10 +72,13 @@
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script type="text/javascript">
             var theme;
-            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
-            if (theme === null || theme === undefined) { theme = 'light'; }
-            document.body.className = theme;
-            document.querySelector('html').className = theme + ' js';
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
@@ -72,43 +94,48 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="../introduction.zh.html"><strong aria-hidden="true">1.</strong> 介绍</a></li><li><a href="../why-rust-and-webassembly.zh.html"><strong aria-hidden="true">2.</strong> 为啥 Rust 要与 WebAssembly 合作?</a></li><li><a href="../background-and-concepts.zh.html"><strong aria-hidden="true">3.</strong> 背景和概念</a></li><li><ol class="section"><li><a href="../what-is-webassembly.zh.html"><strong aria-hidden="true">3.1.</strong> 什么是 WebAssembly?</a></li><li class="spacer"></li></ol></li><li><a href="../game-of-life/introduction.zh.html"><strong aria-hidden="true">4.</strong> 教程</a></li><li><ol class="section"><li><a href="../game-of-life/setup.zh.html"><strong aria-hidden="true">4.1.</strong> 安装</a></li><li><a href="../game-of-life/hello-world.zh.html"><strong aria-hidden="true">4.2.</strong> Hello, World!</a></li><li><a href="../game-of-life/rules.zh.html"><strong aria-hidden="true">4.3.</strong> 规则们</a></li><li><a href="../game-of-life/implementing.zh.html"><strong aria-hidden="true">4.4.</strong> 实现康威的生命游戏</a></li><li><a href="../game-of-life/testing.zh.html"><strong aria-hidden="true">4.5.</strong> 测试 生命</a></li><li><a href="../game-of-life/debugging.zh.html" class="active"><strong aria-hidden="true">4.6.</strong> 调试</a></li><li><a href="../game-of-life/interactivity.zh.html"><strong aria-hidden="true">4.7.</strong> 添加 交互性</a></li><li><a href="../game-of-life/time-profiling.zh.html"><strong aria-hidden="true">4.8.</strong> 时间 分析</a></li><li><a href="../game-of-life/code-size.zh.html"><strong aria-hidden="true">4.9.</strong> 收缩 .wasm 尺寸</a></li><li><a href="../game-of-life/publishing-to-npm.zh.html"><strong aria-hidden="true">4.10.</strong> 发布到 npm</a></li><li class="spacer"></li></ol></li><li><a href="../reference/index.zh.html"><strong aria-hidden="true">5.</strong> 参考</a></li><li><ol class="section"><li><a href="../reference/crates.zh.html"><strong aria-hidden="true">5.1.</strong> 你应该知道的 Crates(箱) </a></li><li><a href="../reference/tools.zh.html"><strong aria-hidden="true">5.2.</strong> 你应该知道的 工具 </a></li><li><a href="../reference/project-templates.zh.html"><strong aria-hidden="true">5.3.</strong> 项目模版 Templates</a></li><li><a href="../reference/debugging.zh.html"><strong aria-hidden="true">5.4.</strong> 调试</a></li><li><a href="../reference/time-profiling.zh.html"><strong aria-hidden="true">5.5.</strong> 时间 分析</a></li><li><a href="../reference/code-size.zh.html"><strong aria-hidden="true">5.6.</strong> 收缩 .wasm 尺寸</a></li><li><a href="../reference/js-ffi.zh.html"><strong aria-hidden="true">5.7.</strong> javascript 互操作</a></li><li><a href="../reference/which-crates-work-with-wasm.zh.html"><strong aria-hidden="true">5.8.</strong> 哪些 现成的(crates)箱能与 WebAssembly 合作？</a></li><li><a href="../reference/add-wasm-support-to-crate.zh.html"><strong aria-hidden="true">5.9.</strong> 如何向通用 箱 添加 WebAssembly 支持</a></li><li><a href="../reference/deploying-to-production.zh.html"><strong aria-hidden="true">5.10.</strong> 将 Rust 和 Webassembly 部署到生产中</a></li></ol></li></ol>
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduction.zh.html"><strong aria-hidden="true">1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="../why-rust-and-webassembly.zh.html"><strong aria-hidden="true">2.</strong> 为啥 Rust 要与 WebAssembly 合作?</a></li><li class="chapter-item expanded "><a href="../background-and-concepts.zh.html"><strong aria-hidden="true">3.</strong> 背景和概念</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../what-is-webassembly.zh.html"><strong aria-hidden="true">3.1.</strong> 什么是 WebAssembly?</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../game-of-life/introduction.zh.html"><strong aria-hidden="true">4.</strong> 教程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../game-of-life/setup.zh.html"><strong aria-hidden="true">4.1.</strong> 安装</a></li><li class="chapter-item expanded "><a href="../game-of-life/hello-world.zh.html"><strong aria-hidden="true">4.2.</strong> Hello, World!</a></li><li class="chapter-item expanded "><a href="../game-of-life/rules.zh.html"><strong aria-hidden="true">4.3.</strong> 规则们</a></li><li class="chapter-item expanded "><a href="../game-of-life/implementing.zh.html"><strong aria-hidden="true">4.4.</strong> 实现康威的生命游戏</a></li><li class="chapter-item expanded "><a href="../game-of-life/testing.zh.html"><strong aria-hidden="true">4.5.</strong> 测试 生命</a></li><li class="chapter-item expanded "><a href="../game-of-life/debugging.zh.html" class="active"><strong aria-hidden="true">4.6.</strong> 调试</a></li><li class="chapter-item expanded "><a href="../game-of-life/interactivity.zh.html"><strong aria-hidden="true">4.7.</strong> 添加 交互性</a></li><li class="chapter-item expanded "><a href="../game-of-life/time-profiling.zh.html"><strong aria-hidden="true">4.8.</strong> 时间 分析</a></li><li class="chapter-item expanded "><a href="../game-of-life/code-size.zh.html"><strong aria-hidden="true">4.9.</strong> 收缩 .wasm 尺寸</a></li><li class="chapter-item expanded "><a href="../game-of-life/publishing-to-npm.zh.html"><strong aria-hidden="true">4.10.</strong> 发布到 npm</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../reference/index.zh.html"><strong aria-hidden="true">5.</strong> 参考</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../reference/crates.zh.html"><strong aria-hidden="true">5.1.</strong> 你应该知道的 Crates(箱) </a></li><li class="chapter-item expanded "><a href="../reference/tools.zh.html"><strong aria-hidden="true">5.2.</strong> 你应该知道的 工具 </a></li><li class="chapter-item expanded "><a href="../reference/project-templates.zh.html"><strong aria-hidden="true">5.3.</strong> 项目模版 Templates</a></li><li class="chapter-item expanded "><a href="../reference/debugging.zh.html"><strong aria-hidden="true">5.4.</strong> 调试</a></li><li class="chapter-item expanded "><a href="../reference/time-profiling.zh.html"><strong aria-hidden="true">5.5.</strong> 时间 分析</a></li><li class="chapter-item expanded "><a href="../reference/code-size.zh.html"><strong aria-hidden="true">5.6.</strong> 收缩 .wasm 尺寸</a></li><li class="chapter-item expanded "><a href="../reference/js-ffi.zh.html"><strong aria-hidden="true">5.7.</strong> javascript 互操作</a></li><li class="chapter-item expanded "><a href="../reference/which-crates-work-with-wasm.zh.html"><strong aria-hidden="true">5.8.</strong> 哪些 现成的(crates)箱能与 WebAssembly 合作？</a></li><li class="chapter-item expanded "><a href="../reference/add-wasm-support-to-crate.zh.html"><strong aria-hidden="true">5.9.</strong> 如何向通用 箱 添加 WebAssembly 支持</a></li><li class="chapter-item expanded "><a href="../reference/deploying-to-production.zh.html"><strong aria-hidden="true">5.10.</strong> 将 Rust 和 Webassembly 部署到生产中</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                 
-                <div id="menu-bar" class="menu-bar">
-                    <div id="menu-bar-sticky-container">
-                        <div class="left-buttons">
-                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                                <i class="fa fa-paint-brush"></i>
-                            </button>
-                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                                <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                            </ul>
-                            
-                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                                <i class="fa fa-search"></i>
-                            </button>
-                            
-                        </div>
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
 
-                        <h1 class="menu-title">Rust 和 WebAssembly</h1> 
+                    <h1 class="menu-title">Rust 和 WebAssembly</h1>
 
-                        <div class="right-buttons">
-                            <a href="../print.html" title="Print this book" aria-label="Print this book">
-                                <i id="print-button" class="fa fa-print"></i>
-                            </a>
-                        </div>
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
                     </div>
                 </div>
 
@@ -136,21 +163,22 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#a调试" id="a调试"><h1>调试</h1></a>
+                        <h1 id="调试"><a class="header" href="#调试">调试</a></h1>
 <p>在我们编写更多代码之前，我们需要一些，在出现问题时使用的调试工具。花一点时间回顾下<a href="../reference/debugging.zh.html">参考页面：可用于调试 Rust 生成的 WebAssembly 的工具和方法</a>。</p>
-<a class="header" href="#a为恐慌panic启用日志记录" id="a为恐慌panic启用日志记录"><h2>为恐慌(panic)，启用日志记录，</h2></a>
+<h2 id="为恐慌panic启用日志记录"><a class="header" href="#为恐慌panic启用日志记录">为恐慌(panic)，启用日志记录，</a></h2>
 <p><a href="../reference/debugging.zh.html#logging-panics">如果我们的代码发生恐慌，我们希望在开发者控制台中，显示信息性错误消息。</a></p>
 <p>我们的<code>wasm-pack-template</code>附带一个<a href="https://github.com/rustwasm/console_error_panic_hook"><code>console_error_panic_hook</code>箱</a>，其有个可选的，默认启用的依赖项，你可在<code>wasm-game-of-life/src/utils.rs</code>看到已配置了。我们需要做的就是在初始化函数或常用代码路径中安装钩子。我们可以在<code>wasm-game-of-life/src/lib.rs</code>中的，<code>Universe::new</code>构造函数里面调用它：</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-pub fn new() -&gt; Universe {
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn new() -&gt; Universe {
     utils::set_panic_hook();
 
     // ...
 }
-#}</code></pre></pre>
-<a class="header" href="#a记录功能添加到我们的生命游戏中" id="a记录功能添加到我们的生命游戏中"><h2>记录功能，添加到我们的生命游戏中</h2></a>
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="记录功能添加到我们的生命游戏中"><a class="header" href="#记录功能添加到我们的生命游戏中">记录功能，添加到我们的生命游戏中</a></h2>
 <p><a href="../reference/debugging.zh.html#logging-with-the-console-apis">运用<code>console.log</code>函数的方式，是由<code>web-sys</code>添加一些记录日志</a>，记录我们<code>Universe::tick</code>函数的每个细胞。</p>
 <p>首先，在<code>wasm-game-of-life/Cargo.toml</code>添加<code>web-sys</code>依赖项，并启用它的<code>&quot;console&quot;</code>功能(特性)：</p>
 <pre><code class="language-toml">[dependencies.web-sys]
@@ -160,10 +188,10 @@ features = [
 ]
 </code></pre>
 <p>为了更符合偷懒，我们将包装<code>console.log</code>到类<code>println!</code>形式的宏中：</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-extern crate web_sys;
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>extern crate web_sys;
 
 // 一个 macro(宏) 提供 `println!(..)`-形式 语法，给到 `console.log` 日志功能.
 macro_rules! log {
@@ -171,7 +199,8 @@ macro_rules! log {
         web_sys::console::log_1(&amp;format!( $( $t )* ).into());
     }
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>现在，我们可以在 Rust 代码中，插入<code>log</code>调用，开始 console 的信息记录。例如，要记录每个单元(cell)的状态，实时邻居计数，以及下一个状态，我们可以修改<code>wasm-game-of-life/src/lib.rs</code>像这样：</p>
 <pre><code class="language-diff">diff --git a/src/lib.rs b/src/lib.rs
 index f757641..a30e107 100755
@@ -202,7 +231,7 @@ index f757641..a30e107 100755
              }
          }
 </code></pre>
-<a class="header" href="#a在每个-tick-之间能用调试器暂停下" id="a在每个-tick-之间能用调试器暂停下"><h2>在每个 Tick 之间，能用调试器暂停下</h2></a>
+<h2 id="在每个-tick-之间能用调试器暂停下"><a class="header" href="#在每个-tick-之间能用调试器暂停下">在每个 Tick 之间，能用调试器暂停下</a></h2>
 <p><a href="../reference/debugging.zh.html#using-a-debugger">浏览器的步进调试器，对检查 Rust 生成的 WebAssembly 与 JavaScript 的交互 非常有用。</a></p>
 <p>例如，我们可用调试器，在我们的<code>renderLoop</code>函数每次迭代时，暂停。只需要放置<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/debugger">一个 JavaScript 的 <code>debugger;</code>声明</a>，位于我们的<code>universe.tick()</code>之上。</p>
 <pre><code class="language-js">const renderLoop = () =&gt; {
@@ -217,7 +246,7 @@ index f757641..a30e107 100755
 </code></pre>
 <p>这为我们提供了一个方便的检查点，用于检查记录的消息，并将当前渲染的’帧’与前一’帧’进行比较。</p>
 <p><a href="../images/game-of-life/debugging.png"><img src="../images/game-of-life/debugging.png" alt="Screenshot of debugging the Game of Life" /></a></p>
-<a class="header" href="#a练习" id="a练习"><h2>练习</h2></a>
+<h2 id="练习"><a class="header" href="#练习">练习</a></h2>
 <ul>
 <li>
 <p>添加日志记录到<code>tick</code>函数，这样就可以记录每个单元格的行和列，知道其状态是从活转换为死，或是相反。</p>
@@ -250,13 +279,13 @@ index f757641..a30e107 100755
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../game-of-life/testing.zh.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../game-of-life/testing.zh.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a href="../game-of-life/interactivity.zh.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../game-of-life/interactivity.zh.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
@@ -282,6 +311,14 @@ index f757641..a30e107 100755
                 ga('create', 'UA-128555056-1', 'auto');
                 ga('send', 'pageview');
             }
+        </script>
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
         </script>
         
 
