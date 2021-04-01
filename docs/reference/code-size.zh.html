@@ -1,24 +1,40 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="zh-CN" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>收缩 .wasm 尺寸 - Rust 和 WebAssembly</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="立即开始学习如何一起使用 Rust 和 WebAssembly.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
         <link rel="shortcut icon" href="../favicon.png">
+        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
+        
         <link rel="stylesheet" href="../css/print.css" media="print">
+        
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -30,9 +46,12 @@
 
         
     </head>
-    <body class="light">
+    <body>
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">var path_to_root = "../";</script>
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script type="text/javascript">
@@ -53,10 +72,13 @@
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script type="text/javascript">
             var theme;
-            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
-            if (theme === null || theme === undefined) { theme = 'light'; }
-            document.body.className = theme;
-            document.querySelector('html').className = theme + ' js';
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
@@ -72,43 +94,48 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="../introduction.zh.html"><strong aria-hidden="true">1.</strong> 介绍</a></li><li><a href="../why-rust-and-webassembly.zh.html"><strong aria-hidden="true">2.</strong> 为啥 Rust 要与 WebAssembly 合作?</a></li><li><a href="../background-and-concepts.zh.html"><strong aria-hidden="true">3.</strong> 背景和概念</a></li><li><ol class="section"><li><a href="../what-is-webassembly.zh.html"><strong aria-hidden="true">3.1.</strong> 什么是 WebAssembly?</a></li><li class="spacer"></li></ol></li><li><a href="../game-of-life/introduction.zh.html"><strong aria-hidden="true">4.</strong> 教程</a></li><li><ol class="section"><li><a href="../game-of-life/setup.zh.html"><strong aria-hidden="true">4.1.</strong> 安装</a></li><li><a href="../game-of-life/hello-world.zh.html"><strong aria-hidden="true">4.2.</strong> Hello, World!</a></li><li><a href="../game-of-life/rules.zh.html"><strong aria-hidden="true">4.3.</strong> 规则们</a></li><li><a href="../game-of-life/implementing.zh.html"><strong aria-hidden="true">4.4.</strong> 实现康威的生命游戏</a></li><li><a href="../game-of-life/testing.zh.html"><strong aria-hidden="true">4.5.</strong> 测试 生命</a></li><li><a href="../game-of-life/debugging.zh.html"><strong aria-hidden="true">4.6.</strong> 调试</a></li><li><a href="../game-of-life/interactivity.zh.html"><strong aria-hidden="true">4.7.</strong> 添加 交互性</a></li><li><a href="../game-of-life/time-profiling.zh.html"><strong aria-hidden="true">4.8.</strong> 时间 分析</a></li><li><a href="../game-of-life/code-size.zh.html"><strong aria-hidden="true">4.9.</strong> 收缩 .wasm 尺寸</a></li><li><a href="../game-of-life/publishing-to-npm.zh.html"><strong aria-hidden="true">4.10.</strong> 发布到 npm</a></li><li class="spacer"></li></ol></li><li><a href="../reference/index.zh.html"><strong aria-hidden="true">5.</strong> 参考</a></li><li><ol class="section"><li><a href="../reference/crates.zh.html"><strong aria-hidden="true">5.1.</strong> 你应该知道的 Crates(箱) </a></li><li><a href="../reference/tools.zh.html"><strong aria-hidden="true">5.2.</strong> 你应该知道的 工具 </a></li><li><a href="../reference/project-templates.zh.html"><strong aria-hidden="true">5.3.</strong> 项目模版 Templates</a></li><li><a href="../reference/debugging.zh.html"><strong aria-hidden="true">5.4.</strong> 调试</a></li><li><a href="../reference/time-profiling.zh.html"><strong aria-hidden="true">5.5.</strong> 时间 分析</a></li><li><a href="../reference/code-size.zh.html" class="active"><strong aria-hidden="true">5.6.</strong> 收缩 .wasm 尺寸</a></li><li><a href="../reference/js-ffi.zh.html"><strong aria-hidden="true">5.7.</strong> javascript 互操作</a></li><li><a href="../reference/which-crates-work-with-wasm.zh.html"><strong aria-hidden="true">5.8.</strong> 哪些 现成的(crates)箱能与 WebAssembly 合作？</a></li><li><a href="../reference/add-wasm-support-to-crate.zh.html"><strong aria-hidden="true">5.9.</strong> 如何向通用 箱 添加 WebAssembly 支持</a></li><li><a href="../reference/deploying-to-production.zh.html"><strong aria-hidden="true">5.10.</strong> 将 Rust 和 Webassembly 部署到生产中</a></li></ol></li></ol>
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduction.zh.html"><strong aria-hidden="true">1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="../why-rust-and-webassembly.zh.html"><strong aria-hidden="true">2.</strong> 为啥 Rust 要与 WebAssembly 合作?</a></li><li class="chapter-item expanded "><a href="../background-and-concepts.zh.html"><strong aria-hidden="true">3.</strong> 背景和概念</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../what-is-webassembly.zh.html"><strong aria-hidden="true">3.1.</strong> 什么是 WebAssembly?</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../game-of-life/introduction.zh.html"><strong aria-hidden="true">4.</strong> 教程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../game-of-life/setup.zh.html"><strong aria-hidden="true">4.1.</strong> 安装</a></li><li class="chapter-item expanded "><a href="../game-of-life/hello-world.zh.html"><strong aria-hidden="true">4.2.</strong> Hello, World!</a></li><li class="chapter-item expanded "><a href="../game-of-life/rules.zh.html"><strong aria-hidden="true">4.3.</strong> 规则们</a></li><li class="chapter-item expanded "><a href="../game-of-life/implementing.zh.html"><strong aria-hidden="true">4.4.</strong> 实现康威的生命游戏</a></li><li class="chapter-item expanded "><a href="../game-of-life/testing.zh.html"><strong aria-hidden="true">4.5.</strong> 测试 生命</a></li><li class="chapter-item expanded "><a href="../game-of-life/debugging.zh.html"><strong aria-hidden="true">4.6.</strong> 调试</a></li><li class="chapter-item expanded "><a href="../game-of-life/interactivity.zh.html"><strong aria-hidden="true">4.7.</strong> 添加 交互性</a></li><li class="chapter-item expanded "><a href="../game-of-life/time-profiling.zh.html"><strong aria-hidden="true">4.8.</strong> 时间 分析</a></li><li class="chapter-item expanded "><a href="../game-of-life/code-size.zh.html"><strong aria-hidden="true">4.9.</strong> 收缩 .wasm 尺寸</a></li><li class="chapter-item expanded "><a href="../game-of-life/publishing-to-npm.zh.html"><strong aria-hidden="true">4.10.</strong> 发布到 npm</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../reference/index.zh.html"><strong aria-hidden="true">5.</strong> 参考</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../reference/crates.zh.html"><strong aria-hidden="true">5.1.</strong> 你应该知道的 Crates(箱) </a></li><li class="chapter-item expanded "><a href="../reference/tools.zh.html"><strong aria-hidden="true">5.2.</strong> 你应该知道的 工具 </a></li><li class="chapter-item expanded "><a href="../reference/project-templates.zh.html"><strong aria-hidden="true">5.3.</strong> 项目模版 Templates</a></li><li class="chapter-item expanded "><a href="../reference/debugging.zh.html"><strong aria-hidden="true">5.4.</strong> 调试</a></li><li class="chapter-item expanded "><a href="../reference/time-profiling.zh.html"><strong aria-hidden="true">5.5.</strong> 时间 分析</a></li><li class="chapter-item expanded "><a href="../reference/code-size.zh.html" class="active"><strong aria-hidden="true">5.6.</strong> 收缩 .wasm 尺寸</a></li><li class="chapter-item expanded "><a href="../reference/js-ffi.zh.html"><strong aria-hidden="true">5.7.</strong> javascript 互操作</a></li><li class="chapter-item expanded "><a href="../reference/which-crates-work-with-wasm.zh.html"><strong aria-hidden="true">5.8.</strong> 哪些 现成的(crates)箱能与 WebAssembly 合作？</a></li><li class="chapter-item expanded "><a href="../reference/add-wasm-support-to-crate.zh.html"><strong aria-hidden="true">5.9.</strong> 如何向通用 箱 添加 WebAssembly 支持</a></li><li class="chapter-item expanded "><a href="../reference/deploying-to-production.zh.html"><strong aria-hidden="true">5.10.</strong> 将 Rust 和 Webassembly 部署到生产中</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                 
-                <div id="menu-bar" class="menu-bar">
-                    <div id="menu-bar-sticky-container">
-                        <div class="left-buttons">
-                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                                <i class="fa fa-paint-brush"></i>
-                            </button>
-                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                                <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                            </ul>
-                            
-                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                                <i class="fa fa-search"></i>
-                            </button>
-                            
-                        </div>
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
 
-                        <h1 class="menu-title">Rust 和 WebAssembly</h1> 
+                    <h1 class="menu-title">Rust 和 WebAssembly</h1>
 
-                        <div class="right-buttons">
-                            <a href="../print.html" title="Print this book" aria-label="Print this book">
-                                <i id="print-button" class="fa fa-print"></i>
-                            </a>
-                        </div>
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
                     </div>
                 </div>
 
@@ -136,24 +163,24 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#a收缩-wasm-尺寸" id="a收缩-wasm-尺寸"><h1>收缩 <code>.wasm</code> 尺寸</h1></a>
+                        <h1 id="收缩-wasm-尺寸"><a class="header" href="#收缩-wasm-尺寸">收缩 <code>.wasm</code> 尺寸</a></h1>
 <p>本节将教您如何优化您的<code>.wasm</code>构建，变为小型代码占用空间，以及如何识别更改 Rust 源的机会，正是缩小<code>.wasm</code>代码。</p>
-<a class="header" href="#a为啥要如此关心代码尺寸" id="a为啥要如此关心代码尺寸"><h2>为啥要如此关心代码尺寸?</h2></a>
+<h2 id="为啥要如此关心代码尺寸"><a class="header" href="#为啥要如此关心代码尺寸">为啥要如此关心代码尺寸?</a></h2>
 <p>要知道<code>.wasm</code>文件终会在网络环境中传输，它越小，客户端下载它的速度就越快。<code>.wasm</code>下载快，就是更快的页面加载时间，也就是更快乐的用户。</p>
 <p>然而，重要的是要记住，虽然代码大小可能不是你最终感兴趣的指标，但更像是一些更模糊和难以衡量的东西，比如”第一次互动的时间”。虽然代码大小在这个测量中起着很大的作用(如果你还没有所有的代码，也无法做任何事情!)，但它不是唯一的因素.</p>
 <p>WebAssembly 通常为用户提供 gzip，因此您会想与 gzip’d 大小比较的网络传输时间差异。还要记住，WebAssembly 二进制格式非常适合 gzip 压缩，通常可以减少 50%以上的大小。</p>
 <p>此外，WebAssembly 的二进制格式经过优化，可以进行非常快速的解析和处理。浏览器现在拥有”baseline 编译器”，它解析 网络上 WebAssembly 并以尽可能快的速度启用编译代码。这意味着<a href="https://hacks.mozilla.org/2018/01/making-webassembly-even-faster-firefoxs-new-streaming-and-tiering-compiler/">如果你正在使用<code>instantiateStreaming</code></a>，那么第二个 Web 请求完成后，WebAssembly 模块可能已准备就绪。另一方面，JavaScript 通常就需要更长时间才能解析，但也可以通过 JIT 编译等方式加快速度。</p>
 <p>最后，请记住，WebAssembly 也比 JavaScript 执行速度更优化。您需要确保 JavaScript 和 WebAssembly 之间的运行时比较的测量，以考虑代码大小的重要性。</p>
 <p>如果你的<code>.wasm</code>文件大于预期，对此，基本上不用立刻沮丧! 代码大小最终可能只是端到端故事中的众多因素之一。不能仅查看 JavaScript 和 WebAssembly 之间的代码大小比较，因为这只是冰山一角。</p>
-<a class="header" href="#a为代码尺寸优化构建" id="a为代码尺寸优化构建"><h2>为代码尺寸，优化构建</h2></a>
+<h2 id="为代码尺寸优化构建"><a class="header" href="#为代码尺寸优化构建">为代码尺寸，优化构建</a></h2>
 <p>我们可以使用很多配置选项来，让<code>rustc</code>缩小<code>.wasm</code>二进制文件。在某些情况下，我们的编译时间较长，<code>.wasm</code>就越小。另一方面说，我们以较小的代码大小交换 WebAssembly 的运行时速度。我们应该权衡每个选项，并且在我们用运行时速度交换代码大小时，应分析和度量，以便做出关于此次交易是否值得的明智决策。</p>
-<a class="header" href="#a使用链接时间优化-lto-进行编译" id="a使用链接时间优化-lto-进行编译"><h3>使用链接时间优化 (LTO) 进行编译</h3></a>
+<h3 id="使用链接时间优化-lto-进行编译"><a class="header" href="#使用链接时间优化-lto-进行编译">使用链接时间优化 (LTO) 进行编译</a></h3>
 <p>在<code>Cargo.toml</code>，添加<code>lto = true</code>在<code>[profile.release]</code>部分:</p>
 <pre><code class="language-toml">[profile.release]
 lto = true
 </code></pre>
 <p>这为 LLVM 提供了更多内联和修剪功能的机会. 它不仅会成功<code>.wasm</code>更小，但它也会在运行时更快! 缺点是编译需要更长时间.</p>
-<a class="header" href="#a告诉-llvm-优化大小而不是速度" id="a告诉-llvm-优化大小而不是速度"><h3>告诉 LLVM 优化大小而不是速度</h3></a>
+<h3 id="告诉-llvm-优化大小而不是速度"><a class="header" href="#告诉-llvm-优化大小而不是速度">告诉 LLVM 优化大小而不是速度</a></h3>
 <p>默认情况下，调整 LLVM 的优化过程是提高速度，而不是大小。 我们可以通过修改目标， 来将目标更改为代码大小</p>
 <p><code>[profile.release]</code>部分:</p>
 <pre><code class="language-toml">[profile.release]
@@ -164,7 +191,7 @@ opt-level = 's'
 opt-level = 'z'
 </code></pre>
 <p>请注意，令人惊讶的是,<code>opt-level = &quot;s&quot;</code>，有时会导致 比 <code>opt-level = &quot;z&quot;</code> 更小。 总是要对比看看!</p>
-<a class="header" href="#a使用wasm-opt工具" id="a使用wasm-opt工具"><h3>使用<code>wasm-opt</code>工具</h3></a>
+<h3 id="使用wasm-opt工具"><a class="header" href="#使用wasm-opt工具">使用<code>wasm-opt</code>工具</a></h3>
 <p>该<a href="https://github.com/WebAssembly/binaryen">Binaryen</a>工具套件 是特定于 WebAssembly 的编译器工具的集合。 它比 LLVM 的 WebAssembly 后端 更进一步.</p>
 <p>使用<code>wasm-opt</code>后，处理 LLVM 生成的<code>.wasm</code>二进制文件通常可以节省 15-20%的代码大小. 它通常还能帮运行时加速!</p>
 <pre><code class="language-bash"># 优化尺寸。
@@ -179,15 +206,15 @@ wasm-opt -O -o output.wasm input.wasm
 # 快速优化。
 wasm-opt -O3 -o output.wasm input.wasm
 </code></pre>
-<a class="header" href="#a调试信息-的-记录" id="a调试信息-的-记录"><h3>调试信息 的 记录</h3></a>
+<h3 id="调试信息-的-记录"><a class="header" href="#调试信息-的-记录">调试信息 的 记录</a></h3>
 <p>wasm 二进制大小的最大贡献之一，是调试信息和<code>wasm 二进制文件的</code>names 部分。但是，<code>wasm-pack</code>工具默认删除 调试信息。另外，默认情况下<code>wasm-opt</code>也会删除<code>names</code>部分，除非<code>-g</code>有使用到。</p>
 <p>这意味着，如果您按照上述步骤操作，则默认情况下不能使用 调试信息 或 wasm 二进制文件中的 names 部分。但是，您可以手动保留在 wasm 二进制文件中的调试信息，请务必注意这一点!</p>
-<a class="header" href="#a大小分析" id="a大小分析"><h2>大小分析</h2></a>
+<h2 id="大小分析"><a class="header" href="#大小分析">大小分析</a></h2>
 <p>如果调整构建配置以优化代码大小后,不会导致足够小<code>.wasm</code>二进制,是时候进行一些分析,以查看剩余代码大小的来源.</p>
 <blockquote>
 <p>⚡ 就像我们如何让时间分析指导我们的加速工作一样,我们希望让大小分析指导我们的代码大小缩小工作量. 不这样做,你可能会浪费自己的时间!</p>
 </blockquote>
-<a class="header" href="#a该twiggy代码大小分析器" id="a该twiggy代码大小分析器"><h3>该<code>twiggy</code>代码大小分析器</h3></a>
+<h3 id="该twiggy代码大小分析器"><a class="header" href="#该twiggy代码大小分析器">该<code>twiggy</code>代码大小分析器</a></h3>
 <p><a href="https://github.com/rustwasm/twiggy"><code>twiggy</code>是一个代码大小分析器</a>支持 WebAssembly 作为输入. 它分析二进制的调用图来回答如下问题:</p>
 <ul>
 <li>
@@ -227,7 +254,7 @@ pre, code {
            514 ┊     1.10% ┊ std::panicking::default_hook::{{closure}}::hfae0c204085471d5
            503 ┊     1.08% ┊ &lt;&amp;'a T as core::fmt::Debug&gt;::fmt::hba207e4f7abaece6
 </code></pre>
-<a class="header" href="#a手动检查-llvm-ir" id="a手动检查-llvm-ir"><h3>手动检查 LLVM-IR</h3></a>
+<h3 id="手动检查-llvm-ir"><a class="header" href="#手动检查-llvm-ir">手动检查 LLVM-IR</a></h3>
 <p>LLVM-IR 是 LLVM 生成 WebAssembly 之前编译器工具链中的最终中间表示。 因此,它与最终发出的 WebAssembly 非常相似。 更多 LLVM-IR 通常意味着更多<code>.wasm</code>大小,如果一个函数占 LLVM-IR 的 25%,那么它通常会占 25%<code>.wasm</code>。 虽然这些数字一般只保留。 LLVM-IR 具有关键信息，而这些信息并不存在<code>.wasm</code>中 (因为 WebAssembly 缺少像 DWARF 这样的调试格式) : 哪些子程序被内联到 给定的函数中。</p>
 <p>您可以使用此方法生成 LLVM-IR:</p>
 <pre><code>cargo rustc --release -- --emit llvm-ir
@@ -235,15 +262,15 @@ pre, code {
 <p>然后,你可以使用<code>find</code>找到<code>.ll</code>包含 LLVM-IR 的文件:</p>
 <pre><code>find target/release -type f -name '*.ll'
 </code></pre>
-<a class="header" href="#a参考" id="a参考"><h4>参考</h4></a>
+<h4 id="参考"><a class="header" href="#参考">参考</a></h4>
 <ul>
 <li><a href="https://llvm.org/docs/LangRef.html">LLVM 语言参考手册</a></li>
 </ul>
-<a class="header" href="#a更具侵入性的工具和技术" id="a更具侵入性的工具和技术"><h2>更具侵入性的工具和技术</h2></a>
+<h2 id="更具侵入性的工具和技术"><a class="header" href="#更具侵入性的工具和技术">更具侵入性的工具和技术</a></h2>
 <p>调整构建配置，以缩小<code>.wasm</code>二进制文件非常适合。 但是，当您需要加倍努力时，您准备使用更具侵入性的技术，例如重写源代码以避免膨胀。 接下来是，一系列可以应用于获取较小代码的自适应技巧。</p>
-<a class="header" href="#a避免使用字符串格式" id="a避免使用字符串格式"><h3>避免使用字符串格式</h3></a>
+<h3 id="避免使用字符串格式"><a class="header" href="#避免使用字符串格式">避免使用字符串格式</a></h3>
 <p><code>format!</code>，<code>to_string</code>等等...可以带来很多代码臃肿。 如果可能，仅在调试模式下进行字符串格式化，在发布模式下使用静态字符串。</p>
-<a class="header" href="#a避免恐慌" id="a避免恐慌"><h3>避免恐慌</h3></a>
+<h3 id="避免恐慌"><a class="header" href="#避免恐慌">避免恐慌</a></h3>
 <p>这说起来容易做起来难，但工具就像<code>twiggy</code>，手动检查 LLVM-IR 可以帮助您找出哪些函数令人恐慌。</p>
 <p>恐慌并不总是表现为<code>panic!()</code>宏调用. 它们隐含地来自许多结构，例如:</p>
 <ul>
@@ -260,10 +287,10 @@ pre, code {
 <p>前两个可以体现为第三个。 索引可以用<code>my_slice.get(i)</code>操作。 分得数 可以<code>checked_div</code>调用。 现在我们只有一个案例可以应对。</p>
 <p>打开一个<code>Option</code>或者<code>Result</code>没有恐慌有两种风格: 安全和不安全。</p>
 <p>安全的方法是<code>abort</code>代替恐慌，当得出一个<code>None</code>或一个<code>Error</code>:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-#[inline]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[inline]
 pub fn unwrap_abort&lt;T&gt;(o: Option&lt;T&gt;) -&gt; T {
     use std::process;
     match o {
@@ -271,31 +298,34 @@ pub fn unwrap_abort&lt;T&gt;(o: Option&lt;T&gt;) -&gt; T {
         None =&gt; process::abort(),
     }
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>最终，无论如何在<code>wasm32-unknown-unknown</code>的恐慌都会转化为 <code>abort</code>，所以这给你相同的行为，并没有代码膨胀。</p>
 <p>或者，<a href="https://crates.io/crates/unreachable"><code>unreachable</code>箱</a>提供不安全的<a href="https://docs.rs/unreachable/1.0.0/unreachable/trait.UncheckedOptionExt.html#tymethod.unchecked_unwrap"><code>unchecked_unwrap</code>扩展方法</a>，给到<code>Option</code>和<code>Result</code>， 它告诉 Rust 编译器<em>假定</em>，那个<code>Option</code>是<code>Some</code>或者<code>Result</code>是<code>Ok</code>。 若它是未定义，则该假设不成立，会发生什么。只有真的 110%确定时，才去使用这种不安全的方法，而且编译器只是不够聪明看到它。 即使你沿着这条路走下去，你也应该有一个仍然进行检查的调试构建配置，并且只在发布版本中使用未经检查的操作。</p>
-<a class="header" href="#a避免分配或切换到wee_alloc" id="a避免分配或切换到wee_alloc"><h3>避免分配或切换到<code>wee_alloc</code></h3></a>
+<h3 id="避免分配或切换到wee_alloc"><a class="header" href="#避免分配或切换到wee_alloc">避免分配或切换到<code>wee_alloc</code></a></h3>
 <p>Rust 对 WebAssembly 的默认分配器，是<code>dlmalloc</code>的一部分。 它的重量大约在 10 千字节左右。 如果你可以完全避免动态分配，那么你应该能够减少这十个千字节。</p>
 <p>完全避免动态分配可能非常困难。 但是从热代码路径中删除分配通常要容易得多 (并且通常也有助于使这些热代码路径更快) 。 在这些情况下，<a href="https://github.com/rustwasm/wee_alloc">用，替换默认的全局分配器<code>wee_alloc</code></a>应该节省你最多 (但不是全部) 的十千字节。 <code>wee_alloc</code>是一个设计为<em>某些</em>您需要类型的情况，但不需要特别快的分配器，并将愉快地用速度换大小的分配器。</p>
-<a class="header" href="#a使用-trait特征-对象而不是通用类型参数" id="a使用-trait特征-对象而不是通用类型参数"><h3>使用 Trait(特征) 对象，而不是通用类型参数</h3></a>
+<h3 id="使用-trait特征-对象而不是通用类型参数"><a class="header" href="#使用-trait特征-对象而不是通用类型参数">使用 Trait(特征) 对象，而不是通用类型参数</a></h3>
 <p>当您创建使用类型参数的泛型函数时，如下所示:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-fn whatever&lt;T: MyTrait&gt;(t: T) { ... }
-#}</code></pre></pre>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn whatever&lt;T: MyTrait&gt;(t: T) { ... }
+<span class="boring">}
+</span></code></pre></pre>
 <p>然后<code>rustc</code>和 LLVM 将为每个创建一个新的函数副本 - <code>T</code>类型函数。 这为基于特定的<code>T</code>每个副本都在使用的编译器的优化提供了许多机会，但这些副本在代码大小方面快速增加。</p>
 <p>如果您使用特征对象而不是类型参数,如下所示:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-fn whatever(t: Box&lt;MyTrait&gt;) { ... }
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn whatever(t: Box&lt;MyTrait&gt;) { ... }
 // or
 fn whatever(t: &amp;MyTrait) { ... }
 // etc...
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>然后使用通过虚拟调用的动态调度，并且仅在该函数中发出单个版本的函数<code>.wasm</code>. 缺点是失去了编译器优化机会，以及间接动态调度函数调用的额外成本.</p>
-<a class="header" href="#a使用wasm-snip工具" id="a使用wasm-snip工具"><h3>使用<code>wasm-snip</code>工具</h3></a>
+<h3 id="使用wasm-snip工具"><a class="header" href="#使用wasm-snip工具">使用<code>wasm-snip</code>工具</a></h3>
 <p><a href="https://github.com/fitzgen/wasm-snip"><code>wasm-snip</code>用一个替换 WebAssembly 函数的主体的<code>unreachable</code>指令. </a>这是一个相当沉重，钝的锤子，如果你足够敏锐，你会看到那些能作为’螺丝’的函数。</p>
 <p>也许您知道某些函数永远不会在运行时调用，但编译器无法在编译时证明这一点? 剪断它! 然后，运行<code>wasm-opt</code>带着<code>--dce</code>，以及’剪’函数传递调用的所有函数 (也可能永远不会在运行时调用) 也将被删除。</p>
 <p>这个工具对于消除恐慌特别有用，不要等恐慌最终会转化为陷阱.</p>
@@ -323,13 +353,13 @@ fn whatever(t: &amp;MyTrait) { ... }
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../reference/time-profiling.zh.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../reference/time-profiling.zh.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a href="../reference/js-ffi.zh.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../reference/js-ffi.zh.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
@@ -337,6 +367,21 @@ fn whatever(t: &amp;MyTrait) { ... }
 
         </div>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         
@@ -355,6 +400,14 @@ fn whatever(t: &amp;MyTrait) { ... }
                 ga('create', 'UA-128555056-1', 'auto');
                 ga('send', 'pageview');
             }
+        </script>
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
         </script>
         
 

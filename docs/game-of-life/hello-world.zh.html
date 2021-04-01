@@ -1,24 +1,40 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="zh-CN" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Hello, World! - Rust 和 WebAssembly</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="立即开始学习如何一起使用 Rust 和 WebAssembly.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
         <link rel="shortcut icon" href="../favicon.png">
+        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
+        
         <link rel="stylesheet" href="../css/print.css" media="print">
+        
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -30,9 +46,12 @@
 
         
     </head>
-    <body class="light">
+    <body>
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">var path_to_root = "../";</script>
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script type="text/javascript">
@@ -53,10 +72,13 @@
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script type="text/javascript">
             var theme;
-            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
-            if (theme === null || theme === undefined) { theme = 'light'; }
-            document.body.className = theme;
-            document.querySelector('html').className = theme + ' js';
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
@@ -72,43 +94,48 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="../introduction.zh.html"><strong aria-hidden="true">1.</strong> 介绍</a></li><li><a href="../why-rust-and-webassembly.zh.html"><strong aria-hidden="true">2.</strong> 为啥 Rust 要与 WebAssembly 合作?</a></li><li><a href="../background-and-concepts.zh.html"><strong aria-hidden="true">3.</strong> 背景和概念</a></li><li><ol class="section"><li><a href="../what-is-webassembly.zh.html"><strong aria-hidden="true">3.1.</strong> 什么是 WebAssembly?</a></li><li class="spacer"></li></ol></li><li><a href="../game-of-life/introduction.zh.html"><strong aria-hidden="true">4.</strong> 教程</a></li><li><ol class="section"><li><a href="../game-of-life/setup.zh.html"><strong aria-hidden="true">4.1.</strong> 安装</a></li><li><a href="../game-of-life/hello-world.zh.html" class="active"><strong aria-hidden="true">4.2.</strong> Hello, World!</a></li><li><a href="../game-of-life/rules.zh.html"><strong aria-hidden="true">4.3.</strong> 规则们</a></li><li><a href="../game-of-life/implementing.zh.html"><strong aria-hidden="true">4.4.</strong> 实现康威的生命游戏</a></li><li><a href="../game-of-life/testing.zh.html"><strong aria-hidden="true">4.5.</strong> 测试 生命</a></li><li><a href="../game-of-life/debugging.zh.html"><strong aria-hidden="true">4.6.</strong> 调试</a></li><li><a href="../game-of-life/interactivity.zh.html"><strong aria-hidden="true">4.7.</strong> 添加 交互性</a></li><li><a href="../game-of-life/time-profiling.zh.html"><strong aria-hidden="true">4.8.</strong> 时间 分析</a></li><li><a href="../game-of-life/code-size.zh.html"><strong aria-hidden="true">4.9.</strong> 收缩 .wasm 尺寸</a></li><li><a href="../game-of-life/publishing-to-npm.zh.html"><strong aria-hidden="true">4.10.</strong> 发布到 npm</a></li><li class="spacer"></li></ol></li><li><a href="../reference/index.zh.html"><strong aria-hidden="true">5.</strong> 参考</a></li><li><ol class="section"><li><a href="../reference/crates.zh.html"><strong aria-hidden="true">5.1.</strong> 你应该知道的 Crates(箱) </a></li><li><a href="../reference/tools.zh.html"><strong aria-hidden="true">5.2.</strong> 你应该知道的 工具 </a></li><li><a href="../reference/project-templates.zh.html"><strong aria-hidden="true">5.3.</strong> 项目模版 Templates</a></li><li><a href="../reference/debugging.zh.html"><strong aria-hidden="true">5.4.</strong> 调试</a></li><li><a href="../reference/time-profiling.zh.html"><strong aria-hidden="true">5.5.</strong> 时间 分析</a></li><li><a href="../reference/code-size.zh.html"><strong aria-hidden="true">5.6.</strong> 收缩 .wasm 尺寸</a></li><li><a href="../reference/js-ffi.zh.html"><strong aria-hidden="true">5.7.</strong> javascript 互操作</a></li><li><a href="../reference/which-crates-work-with-wasm.zh.html"><strong aria-hidden="true">5.8.</strong> 哪些 现成的(crates)箱能与 WebAssembly 合作？</a></li><li><a href="../reference/add-wasm-support-to-crate.zh.html"><strong aria-hidden="true">5.9.</strong> 如何向通用 箱 添加 WebAssembly 支持</a></li><li><a href="../reference/deploying-to-production.zh.html"><strong aria-hidden="true">5.10.</strong> 将 Rust 和 Webassembly 部署到生产中</a></li></ol></li></ol>
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduction.zh.html"><strong aria-hidden="true">1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="../why-rust-and-webassembly.zh.html"><strong aria-hidden="true">2.</strong> 为啥 Rust 要与 WebAssembly 合作?</a></li><li class="chapter-item expanded "><a href="../background-and-concepts.zh.html"><strong aria-hidden="true">3.</strong> 背景和概念</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../what-is-webassembly.zh.html"><strong aria-hidden="true">3.1.</strong> 什么是 WebAssembly?</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../game-of-life/introduction.zh.html"><strong aria-hidden="true">4.</strong> 教程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../game-of-life/setup.zh.html"><strong aria-hidden="true">4.1.</strong> 安装</a></li><li class="chapter-item expanded "><a href="../game-of-life/hello-world.zh.html" class="active"><strong aria-hidden="true">4.2.</strong> Hello, World!</a></li><li class="chapter-item expanded "><a href="../game-of-life/rules.zh.html"><strong aria-hidden="true">4.3.</strong> 规则们</a></li><li class="chapter-item expanded "><a href="../game-of-life/implementing.zh.html"><strong aria-hidden="true">4.4.</strong> 实现康威的生命游戏</a></li><li class="chapter-item expanded "><a href="../game-of-life/testing.zh.html"><strong aria-hidden="true">4.5.</strong> 测试 生命</a></li><li class="chapter-item expanded "><a href="../game-of-life/debugging.zh.html"><strong aria-hidden="true">4.6.</strong> 调试</a></li><li class="chapter-item expanded "><a href="../game-of-life/interactivity.zh.html"><strong aria-hidden="true">4.7.</strong> 添加 交互性</a></li><li class="chapter-item expanded "><a href="../game-of-life/time-profiling.zh.html"><strong aria-hidden="true">4.8.</strong> 时间 分析</a></li><li class="chapter-item expanded "><a href="../game-of-life/code-size.zh.html"><strong aria-hidden="true">4.9.</strong> 收缩 .wasm 尺寸</a></li><li class="chapter-item expanded "><a href="../game-of-life/publishing-to-npm.zh.html"><strong aria-hidden="true">4.10.</strong> 发布到 npm</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../reference/index.zh.html"><strong aria-hidden="true">5.</strong> 参考</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../reference/crates.zh.html"><strong aria-hidden="true">5.1.</strong> 你应该知道的 Crates(箱) </a></li><li class="chapter-item expanded "><a href="../reference/tools.zh.html"><strong aria-hidden="true">5.2.</strong> 你应该知道的 工具 </a></li><li class="chapter-item expanded "><a href="../reference/project-templates.zh.html"><strong aria-hidden="true">5.3.</strong> 项目模版 Templates</a></li><li class="chapter-item expanded "><a href="../reference/debugging.zh.html"><strong aria-hidden="true">5.4.</strong> 调试</a></li><li class="chapter-item expanded "><a href="../reference/time-profiling.zh.html"><strong aria-hidden="true">5.5.</strong> 时间 分析</a></li><li class="chapter-item expanded "><a href="../reference/code-size.zh.html"><strong aria-hidden="true">5.6.</strong> 收缩 .wasm 尺寸</a></li><li class="chapter-item expanded "><a href="../reference/js-ffi.zh.html"><strong aria-hidden="true">5.7.</strong> javascript 互操作</a></li><li class="chapter-item expanded "><a href="../reference/which-crates-work-with-wasm.zh.html"><strong aria-hidden="true">5.8.</strong> 哪些 现成的(crates)箱能与 WebAssembly 合作？</a></li><li class="chapter-item expanded "><a href="../reference/add-wasm-support-to-crate.zh.html"><strong aria-hidden="true">5.9.</strong> 如何向通用 箱 添加 WebAssembly 支持</a></li><li class="chapter-item expanded "><a href="../reference/deploying-to-production.zh.html"><strong aria-hidden="true">5.10.</strong> 将 Rust 和 Webassembly 部署到生产中</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                 
-                <div id="menu-bar" class="menu-bar">
-                    <div id="menu-bar-sticky-container">
-                        <div class="left-buttons">
-                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                                <i class="fa fa-paint-brush"></i>
-                            </button>
-                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                                <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                            </ul>
-                            
-                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                                <i class="fa fa-search"></i>
-                            </button>
-                            
-                        </div>
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
 
-                        <h1 class="menu-title">Rust 和 WebAssembly</h1> 
+                    <h1 class="menu-title">Rust 和 WebAssembly</h1>
 
-                        <div class="right-buttons">
-                            <a href="../print.html" title="Print this book" aria-label="Print this book">
-                                <i id="print-button" class="fa fa-print"></i>
-                            </a>
-                        </div>
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
                     </div>
                 </div>
 
@@ -136,16 +163,16 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#a你好世界" id="a你好世界"><h1>你好,世界!</h1></a>
+                        <h1 id="你好世界"><a class="header" href="#你好世界">你好,世界!</a></h1>
 <p>本节将向您展示如何构建和运行您的第一个 Rust 和 WebAssembly 程序:一个 alert “Hello,World!”的网页。</p>
 <p>在开始之前，确保你已经遵照了<a href="setup.zh.html">安装说明</a>。</p>
-<a class="header" href="#a克隆项目模板" id="a克隆项目模板"><h2>克隆项目模板</h2></a>
+<h2 id="克隆项目模板"><a class="header" href="#克隆项目模板">克隆项目模板</a></h2>
 <p>项目模板预先配置了默认值，因此您可以快速构建，集成和打包 Web 代码.</p>
 <p>使用以下命令，克隆项目模板:</p>
 <pre><code class="language-text">cargo generate --git https://github.com/rustwasm/wasm-pack-template
 </code></pre>
-<p>这应该会提示您输入新项目的名称。我们会用**”wasm-game-of-life”**.</p>
-<a class="header" href="#a里面有什么" id="a里面有什么"><h2>里面有什么</h2></a>
+<p>这应该会提示您输入新项目的名称。我们会用**“wasm-game-of-life”**.</p>
+<h2 id="里面有什么"><a class="header" href="#里面有什么">里面有什么</a></h2>
 <p>进入新的<code>wasm-game-of-life</code>项目，让我们来看看它的内容:</p>
 <pre><code class="language-text">wasm-game-of-life/
 ├── Cargo.toml
@@ -157,14 +184,14 @@
     └── utils.rs
 </code></pre>
 <p>我们来详细介绍几个这样的文件.</p>
-<a class="header" href="#wasm-game-of-lifecargotoml" id="wasm-game-of-lifecargotoml"><h3><code>wasm-game-of-life/Cargo.toml</code></h3></a>
+<h3 id="wasm-game-of-lifecargotoml"><a class="header" href="#wasm-game-of-lifecargotoml"><code>wasm-game-of-life/Cargo.toml</code></a></h3>
 <p>该<code>Cargo.toml</code>文件是<code>cargo</code>的 指定依赖项和元数据，Cargo 则是 Rust 的包管理器和构建工具。这个预先配置了一个<code>wasm-bindgen</code>依赖项，我们将在后面深入研究一些可选的依赖项，和正确初始化<code>crate-type</code>以生成<code>.wasm</code>库。</p>
-<a class="header" href="#wasm-game-of-lifesrclibrs" id="wasm-game-of-lifesrclibrs"><h3><code>wasm-game-of-life/src/lib.rs</code></h3></a>
+<h3 id="wasm-game-of-lifesrclibrs"><a class="header" href="#wasm-game-of-lifesrclibrs"><code>wasm-game-of-life/src/lib.rs</code></a></h3>
 <p>该<code>src/lib.rs</code>文件 Rust 包的根，我们要编译成 WebAssembly 的。它用<code>wasm-bindgen</code>与 JavaScript 交互。它导入了<code>window.alert</code>的 JavaScript 函数，并导出为这个名为<code>greet</code>的 Rust 函数，用于警告(alert)一个问候(greet)消息。</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-extern crate cfg_if;
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>extern crate cfg_if;
 extern crate wasm_bindgen;
 
 mod utils;
@@ -190,10 +217,11 @@ extern {
 pub fn greet() {
     alert(&quot;Hello, wasm-game-of-life!&quot;);
 }
-#}</code></pre></pre>
-<a class="header" href="#wasm-game-of-lifesrcutilsrs" id="wasm-game-of-lifesrcutilsrs"><h3><code>wasm-game-of-life/src/utils.rs</code></h3></a>
+<span class="boring">}
+</span></code></pre></pre>
+<h3 id="wasm-game-of-lifesrcutilsrs"><a class="header" href="#wasm-game-of-lifesrcutilsrs"><code>wasm-game-of-life/src/utils.rs</code></a></h3>
 <p>该<code>src/utils.rs</code>模块提供了常用的实用函数，让 Rust 编译成 WebAssembly 来得更容易。我们将在本教程后面详细介绍其中一些实用函数，例如我们查看的内容<a href="debugging.zh.html">调试我们的 wasm 代码</a>,但我们现在可以先略过。</p>
-<a class="header" href="#a构建项目" id="a构建项目"><h2>构建项目</h2></a>
+<h2 id="构建项目"><a class="header" href="#构建项目">构建项目</a></h2>
 <p>我们用<code>wasm-pack</code>，是根据以下构建步骤:</p>
 <ul>
 <li>确保我们有 Rust 1.30 或打上版本，通过<code>rustup</code>安装<code>wasm32-unknown-unknown</code>目标(target),</li>
@@ -212,9 +240,9 @@ pub fn greet() {
 └── wasm_game_of_life.js
 </code></pre>
 <p>该<code>README.md</code>文件是从主项目复制的，但其他文件是新来的。</p>
-<a class="header" href="#wasm-game-of-lifepkgwasm_game_of_life_bgwasm" id="wasm-game-of-lifepkgwasm_game_of_life_bgwasm"><h3><code>wasm-game-of-life/pkg/wasm_game_of_life_bg.wasm</code></h3></a>
+<h3 id="wasm-game-of-lifepkgwasm_game_of_life_bgwasm"><a class="header" href="#wasm-game-of-lifepkgwasm_game_of_life_bgwasm"><code>wasm-game-of-life/pkg/wasm_game_of_life_bg.wasm</code></a></h3>
 <p>该<code>.wasm</code>文件 是 Rust 编译器从 Rust 源生成的 WebAssembly 二进制文件。其包含 wasm 编译版本(具有所有 Rust 函数和数据)。例如,它具有导出的”greet”函数.</p>
-<a class="header" href="#wasm-game-of-lifepkgwasm_game_of_lifejs" id="wasm-game-of-lifepkgwasm_game_of_lifejs"><h3><code>wasm-game-of-life/pkg/wasm_game_of_life.js</code></h3></a>
+<h3 id="wasm-game-of-lifepkgwasm_game_of_lifejs"><a class="header" href="#wasm-game-of-lifepkgwasm_game_of_lifejs"><code>wasm-game-of-life/pkg/wasm_game_of_life.js</code></a></h3>
 <p>该<code>.js</code>文件是由<code>wasm-bindgen</code>生成的，并包含 JavaScript 胶水，其用于将 DOM 和 JavaScript 函数导入 Rust，并向 WebAssembly 函数公开一个很好的 API 到 JavaScript。例如，有一个 JavaScript 的<code>greet</code>函数，其包裹着从 WebAssembly 模块导出的<code>greet</code>函数。就现在而言，这胶水并没有做太多，但是当我们开始在 wasm 和 JavaScript 之间，来回传递更多有趣的值时，它将有助于将这些值传过边界。</p>
 <pre><code class="language-js">import * as wasm from './wasm_game_of_life_bg';
 
@@ -224,11 +252,11 @@ export function greet() {
   return wasm.greet();
 }
 </code></pre>
-<a class="header" href="#wasm-game-of-lifepkgwasm_game_of_lifedts" id="wasm-game-of-lifepkgwasm_game_of_lifedts"><h3><code>wasm-game-of-life/pkg/wasm_game_of_life.d.ts</code></h3></a>
+<h3 id="wasm-game-of-lifepkgwasm_game_of_lifedts"><a class="header" href="#wasm-game-of-lifepkgwasm_game_of_lifedts"><code>wasm-game-of-life/pkg/wasm_game_of_life.d.ts</code></a></h3>
 <p>该<code>.d.ts</code>文件包含给 JavaScript 胶水的<a href="http://www.typescriptlang.org/">TypeScript</a>类型声明。如果您使用的是 TypeScript，可以检查对 WebAssembly 函数的调用类型，并且您的 IDE 可以提供自动完成和建议!如果您不使用 TypeScript，则可以安全地忽略此文件。</p>
 <pre><code class="language-typescript">export function greet(): void;
 </code></pre>
-<a class="header" href="#wasm-game-of-lifepkgpackagejson" id="wasm-game-of-lifepkgpackagejson"><h3><code>wasm-game-of-life/pkg/package.json</code></h3></a>
+<h3 id="wasm-game-of-lifepkgpackagejson"><a class="header" href="#wasm-game-of-lifepkgpackagejson"><code>wasm-game-of-life/pkg/package.json</code></a></h3>
 <p><a href="https://docs.npmjs.com/files/package.json">该<code>package.json</code>文件 包含有关生成的 JavaScript 和 WebAssembly 包的元数据。</a>npm 和 JavaScript 捆绑包使用它来确定包，包名，版本和一堆其他东西之间的依赖关系。它帮助我们与 JavaScript 工具集成，并允许我们将我们的包发布到 npm。</p>
 <pre><code class="language-json">{
   &quot;name&quot;: &quot;wasm-game-of-life&quot;,
@@ -242,7 +270,7 @@ export function greet() {
   &quot;types&quot;: &quot;wasm_game_of_life.d.ts&quot;
 }
 </code></pre>
-<a class="header" href="#a将其放入网页" id="a将其放入网页"><h2>将其放入网页</h2></a>
+<h2 id="将其放入网页"><a class="header" href="#将其放入网页">将其放入网页</a></h2>
 <p>拿我们的<code>wasm-game-of-life</code>去打包，并在网页中使用它，我们使用<a href="https://github.com/rustwasm/create-wasm-app">该<code>create-wasm-app</code>JavaScript 项目模板</a>.</p>
 <p>在<code>wasm-game-of-life</code>目录中，运行此命令:</p>
 <pre><code>npm init wasm-app www
@@ -260,11 +288,11 @@ export function greet() {
 </code></pre>
 <p>再一次,让我们仔细看看其中的一些文件。</p>
 <!-- here -->
-<a class="header" href="#wasm-game-of-lifewwwpackagejson" id="wasm-game-of-lifewwwpackagejson"><h3><code>wasm-game-of-life/www/package.json</code></h3></a>
+<h3 id="wasm-game-of-lifewwwpackagejson"><a class="header" href="#wasm-game-of-lifewwwpackagejson"><code>wasm-game-of-life/www/package.json</code></a></h3>
 <p>这个<code>package.json</code>预配置了<code>webpack</code>和<code>webpack-dev-server</code>依赖项,以及<code>hello-wasm-pack</code>依赖，这是已发布到 npm 的<code>wasm-pack-template</code>包初始版本。</p>
-<a class="header" href="#wasm-game-of-lifewwwwebpackconfigjs" id="wasm-game-of-lifewwwwebpackconfigjs"><h3><code>wasm-game-of-life/www/webpack.config.js</code></h3></a>
+<h3 id="wasm-game-of-lifewwwwebpackconfigjs"><a class="header" href="#wasm-game-of-lifewwwwebpackconfigjs"><code>wasm-game-of-life/www/webpack.config.js</code></a></h3>
 <p>此文件配置 webpack 及其本地开发服务器。它是预配置的，你根本不需要调整它，就可以使用 webpack 及其本地开发服务器。</p>
-<a class="header" href="#wasm-game-of-lifewwwindexhtml" id="wasm-game-of-lifewwwindexhtml"><h3><code>wasm-game-of-life/www/index.html</code></h3></a>
+<h3 id="wasm-game-of-lifewwwindexhtml"><a class="header" href="#wasm-game-of-lifewwwindexhtml"><code>wasm-game-of-life/www/index.html</code></a></h3>
 <p>这是网页的根 HTML 文件。它除了加载<code>bootstrap.js</code>之外，没有其他作用，就是装着<code>index.js</code>的薄膜。</p>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -277,13 +305,13 @@ export function greet() {
   &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<a class="header" href="#wasm-game-of-lifewwwindexjs" id="wasm-game-of-lifewwwindexjs"><h3><code>wasm-game-of-life/www/index.js</code></h3></a>
+<h3 id="wasm-game-of-lifewwwindexjs"><a class="header" href="#wasm-game-of-lifewwwindexjs"><code>wasm-game-of-life/www/index.js</code></a></h3>
 <p>该<code>index.js</code>是我们网页的 JavaScript 的主要入口点。它导入了<code>hello-wasm-pack</code>npm 包，包含默认<code>wasm-pack-template</code>的 WebAssembly 编译 和 JavaScript 胶水，然后调用<code>hello-wasm-pack</code>的<code>greet</code>函数。</p>
 <pre><code class="language-js">import * as wasm from 'hello-wasm-pack';
 
 wasm.greet();
 </code></pre>
-<a class="header" href="#a安装依赖项" id="a安装依赖项"><h3>安装依赖项</h3></a>
+<h3 id="安装依赖项"><a class="header" href="#安装依赖项">安装依赖项</a></h3>
 <p>首先，通过运行在<code>wasm-game-of-life/www</code>子目录内<code>npm install</code>，确保安装本地开发服务器及其依赖项:</p>
 <pre><code class="language-text">npm install
 </code></pre>
@@ -291,7 +319,7 @@ wasm.greet();
 <blockquote>
 <p>注意<code>webpack</code>，并不是 Rust 和 WebAssembly 的必需品,它只是我们为方便起见，而选择的捆绑器和开发服务器。Parcel 和 Rollup 也可以支持将 WebAssembly 导入为 ECMAScript 模块.</p>
 </blockquote>
-<a class="header" href="#a使用我们www中的本地wasm-game-of-life包" id="a使用我们www中的本地wasm-game-of-life包"><h3>使用我们<code>www</code>中的本地<code>wasm-game-of-life</code>包</h3></a>
+<h3 id="使用我们www中的本地wasm-game-of-life包"><a class="header" href="#使用我们www中的本地wasm-game-of-life包">使用我们<code>www</code>中的本地<code>wasm-game-of-life</code>包</a></h3>
 <p>不是使用来自 npm 的<code>hello-wasm-pack</code>包，而是想使用我们的本地<code>wasm-game-of-life</code>包。这将使我们能够逐步开发我们的生命游戏程序。</p>
 <p>首先，在<code>wasm-game-of-life/pkg</code>目录的里面，运行<code>npm link</code>，以便本地包可以被其他本地包依赖，而不需要将它们发布到 npm:</p>
 <pre><code class="language-bash">npm link
@@ -308,32 +336,33 @@ wasm.greet();
 wasm.greet();
 </code></pre>
 <p>我们的网页，现已准备好在本地供给!</p>
-<a class="header" href="#a本地供给" id="a本地供给"><h2>本地供给</h2></a>
+<h2 id="本地供给"><a class="header" href="#本地供给">本地供给</a></h2>
 <p>接下来，为开发服务器打开一个新终端。在新终端中运行服务器，我们让它在后台运行，并且不会阻止我们在此期间运行其他命令。在新终端中，从<code>wasm-game-of-life/www</code>目录内部运行此命令:</p>
 <pre><code>npm run start
 </code></pre>
 <p>浏览 Web 浏览器<a href="http://localhost:8080/">http://localhost:8080/</a>你应该收到一条警告(alert)信息:</p>
 <p><a href="../images/game-of-life/hello-world.png"><img src="../images/game-of-life/hello-world.png" alt="Screenshot of the “Hello， wasm-game-of-life!” Web page alert" /></a></p>
 <p>任何时候你做出改变，并希望它们反映在<a href="http://localhost:8080/">http://localhost:8080/</a>,只是在<code>wasm-game-of-life</code>目录内，重新运行<code>wasm-pack build</code>命令。</p>
-<a class="header" href="#a演示" id="a演示"><h2>演示</h2></a>
+<h2 id="演示"><a class="header" href="#演示">演示</a></h2>
 <ul>
 <li>
 <p>修改<code>wasm-game-of-life/src/lib.rs</code>中的<code>greet</code>函数，让其拿一个<code>name: &amp;str</code>，这是可以自定义警报消息的参数，并在<code>wasm-game-of-life/www/index.js</code>内部，将您的名称传递给<code>greet</code>函数，让新版本发挥作用。用<code>wasm-pack build</code>，重建<code>.wasm</code>二进制，然后刷新<a href="http://localhost:8080/">http://localhost:8080/</a>在您的 Web 浏览器中，您应该看到自定义的问候语!</p>
-<p><details>
-<summary>Answer</summary></p>
+<details>
+  <summary>Answer</summary>
 <p>新版本<code>wasm-game-of-life/src/lib.rs</code>的<code>greet</code>函数:</p>
-<pre><pre class="playpen"><code class="language-rust">
-# #![allow(unused_variables)]
-#fn main() {
-#[wasm_bindgen]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[wasm_bindgen]
 pub fn greet(name: &amp;str) {
     alert(&amp;format!(&quot;Hello, {}!&quot;, name));
 }
-#}</code></pre></pre>
+<span class="boring">}
+</span></code></pre></pre>
 <p>在<code>wasm-game-of-life/www/index.js</code>中新的<code>greet</code>调用:</p>
 <pre><code class="language-js">wasm.greet('Your Name');
 </code></pre>
-<p></details></p>
+</details>
 </li>
 </ul>
 
@@ -360,13 +389,13 @@ pub fn greet(name: &amp;str) {
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../game-of-life/setup.zh.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../game-of-life/setup.zh.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a href="../game-of-life/rules.zh.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../game-of-life/rules.zh.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
@@ -374,6 +403,21 @@ pub fn greet(name: &amp;str) {
 
         </div>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         
@@ -392,6 +436,14 @@ pub fn greet(name: &amp;str) {
                 ga('create', 'UA-128555056-1', 'auto');
                 ga('send', 'pageview');
             }
+        </script>
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
         </script>
         
 

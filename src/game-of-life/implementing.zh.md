@@ -45,7 +45,7 @@ JavaScript 的垃圾收集堆 - `Object`，`Array`和 DOM 节点 是被分配的
 
 以下是 4 x 4 宇宙在内存中的样子:
 
-![Screenshot of a 4 by 4 universe](./images/game-of-life/universe.png)
+![Screenshot of a 4 by 4 universe](../images/game-of-life/universe.png)
 
 要在 Universe 的给定行和列中，查找单元格的数组索引，我们可以使用以下公式:
 
@@ -291,7 +291,7 @@ requestAnimationFrame(renderLoop);
 确保你的开发服务器还在运行 (`wasm-game-of-life/www`目录中，执行 `npm run start`
 ) 和这就是[http://localhost:8080/](http://localhost:8080/) 现在的样子:
 
-[![Screenshot of the Game of Life implementation with text rendering](./images/game-of-life/initial-game-of-life-pre.png)](./images/game-of-life/initial-game-of-life-pre.png)
+[![Screenshot of the Game of Life implementation with text rendering](../images/game-of-life/initial-game-of-life-pre.png)](../images/game-of-life/initial-game-of-life-pre.png)
 
 ## 直接从内存渲染到 Canvas
 
@@ -458,7 +458,7 @@ npm run start
 
 如果你刷新[http://localhost:8080/](http://localhost:8080/)，你应该受到令人兴奋的展示!
 
-[![Screenshot of the Game of Life implementation](./images/game-of-life/initial-game-of-life.png)](./images/game-of-life/initial-game-of-life.png)
+[![Screenshot of the Game of Life implementation](../images/game-of-life/initial-game-of-life.png)](../images/game-of-life/initial-game-of-life.png)
 
 您可以 checkout `chapter-one` 分支 找到完整代码.
 

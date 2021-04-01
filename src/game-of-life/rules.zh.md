@@ -17,7 +17,7 @@ _注意: 如果您已熟悉康威的生命游戏及其规则,请跳到下一部�
 
 考虑以下初始 Universe:
 
-<img src='./images/game-of-life/initial-universe.png' alt='Initial Universe' width="80" />
+<img src='../images/game-of-life/initial-universe.png' alt='Initial Universe' width="80" />
 
 我们可以通过考虑每个单元来计算下一代. 左上角的单元格已经死了. 规则 (4) 是适用于死细胞的唯一转换规则. 但是,因为左上角的单元格没有正好三个活动邻居,所以转换规则不适用,并且它在下一代中仍然不存在. 对于 第一行 中的每个其他单元也是如此.
 
@@ -29,7 +29,7 @@ _注意: 如果您已熟悉康威的生命游戏及其规则,请跳到下一部�
 
 把它们放在一起,我们在下一个滴答之后得到这个宇宙:
 
-<img src='./images/game-of-life/next-universe.png' alt='Next Universe' width=80 />
+<img src='../images/game-of-life/next-universe.png' alt='Next Universe' width=80 />
 
 从这些简单的,确定性的规则出现,奇怪和令人兴奋的行为出现了:
 
